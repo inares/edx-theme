@@ -1,6 +1,6 @@
 Overview
 ========
-This directory stores a theme for INARES Open edX instance.
+This directory stores the theme for the Open edX instance of the INARES.
 
 
 License
