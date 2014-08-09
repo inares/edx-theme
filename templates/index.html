@@ -10,7 +10,7 @@
   homepage_overlay_html = microsite.get_value('homepage_overlay_html')
 
   show_homepage_promo_video = microsite.get_value('show_homepage_promo_video', True)
-  homepage_promo_video_youtube_id = microsite.get_value('homepage_promo_video_youtube_id', "GylRTX69TxM")
+  homepage_promo_video_youtube_id = microsite.get_value('homepage_promo_video_youtube_id', "XNaiOGxWeto")
 
   show_partners = microsite.get_value('show_partners', True)
 
@@ -29,8 +29,8 @@
           % endif
         </hgroup>
 
+
         ## Disable social buttons for non-edX sites
-        ##% if not self.theme_enabled():
           <section class="actions">
             <div class="main-cta">
               <a href="#signup-modal" id="signup_action" class="find-courses" rel="leanModal">${_("Sign Up")}</a>
@@ -51,7 +51,6 @@
               </div>
             </div>
           </section>
-          ##% endif
       </div>
 
       % if show_homepage_promo_video:
