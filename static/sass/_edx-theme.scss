@@ -16,7 +16,7 @@ $light-color: #E1E1E1; //Selected Header BG Color, ie. calendar        ***Custom
 $bg-color: #959595; //Selected Content BG Color, ie. calendar          ***Custom, not from palette***
 
 //Main BG Color Variables
-$main-bg: #EEEEEE;
+$main-bg: #AAAAAA;
 $main-bg-60: lighten($main-bg, 18.5%); //Main Border/HR Color
 $main-bg-25: lighten($main-bg, 25%); 
 
@@ -92,7 +92,7 @@ $header-graphic-sub-color: $lighter-base-font-color;
 $header-link-color: $dark-color;
 $header-link-hover: $light-color;
 
-$button-color: $main-color;
+$button-color: #333333;
 $button-archive-color: $gray-3;
 
 $shadow-color: $gray;
@@ -205,4 +205,8 @@ $video-thumb-url: '../themes/edx-theme/images/logo-inares-carre.jpg';
 @mixin footer_references_style {
     margin: 0 !important;
     text-align: right;
+}
+
+header.global .nav-global {
+    margin-top: -5px;
 }
