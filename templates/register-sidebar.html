@@ -27,8 +27,8 @@ from django.core.urlresolvers import reverse
 ##       override in a more generalizable fashion.
 % if not stanford_theme_enabled():
   <div class="cta cta-welcome">
-    <h3>Bienvenue àl'${_("{platform_name}").format(platform_name=platform_name)}</h3>
-    <p>${_("Registering with {platform_name} gives you access to all of our current and future free courses. Not ready to take a course just yet? Registering puts you on our mailing list - we will update you as courses are added.").format(platform_name=platform_name)}</p>
+    <h3>Bienvenue &agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)}</h3>
+    <p>L&acute;inscription &agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)} vous donne acc&egrave;s &agrave; tous nos cours gratuits actuels et futurs. Vous n&acute;êtes pas prêt &agrave; suivre un cours pour l&acute;instant ? L&acute;inscription vous ajoute &agrave; notre liste de diffusion - nous vous tiendrons au courant d&egrave;s que des cours sont ajout&eacute;s.</p>
   </div>
 % endif
 
@@ -37,14 +37,14 @@ from django.core.urlresolvers import reverse
   % if stanford_theme_enabled():
     <p>${_("You will receive an activation email.  You must click on the activation link to complete the process.  Don't see the email?  Check your spam folder and mark emails from class.stanford.edu as 'not spam', since you'll want to be able to receive email from your courses.")}</p>
   % else:
-    <p>${_("As part of joining {platform_name}, you will receive an activation email.  You must click on the activation link to complete the process.  Don't see the email?  Check your spam folder and mark {platform_name} emails as 'not spam'.  At {platform_name}, we communicate mostly through email.").format(platform_name=platform_name)}</p>
+    <p>En rejoignant l&acute;${_("{platform_name}").format(platform_name=platform_name)}, vous recevrez un mail d&acute;activation. Vous devrez cliquer sur le lien d&acute;activation pour compl&eacute;ter l&acute;inscription. Vous ne voyez pas le mail ? V&eacute;rifiez votre dossier de spam et marquez les mails provenant de l&acute;${_("{platform_name}").format(platform_name=platform_name)} comme n&acute;&eacute;tant pas du spam. &Agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)}, nous communiquons essentiellement par mail.</p>
   % endif
 </div>
 
 % if settings.MKTG_URL_LINK_MAP.get('FAQ'):
   <div class="cta cta-help">
     <h3>${_("Need Help?")}</h3>
-    <p>${_("Need help in registering with {platform_name}?").format(platform_name=platform_name)}
+    <p>Besoin d&acute;aide pour vous inscrire &agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)} ?
       <a href="${marketing_link('FAQ')}">
           ${_("View our FAQs for answers to commonly asked questions.")}
       </a>
