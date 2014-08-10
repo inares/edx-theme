@@ -27,8 +27,8 @@ from django.core.urlresolvers import reverse
 ##       override in a more generalizable fashion.
 % if not stanford_theme_enabled():
   <div class="cta cta-welcome">
-    <h3>Bienvenue &agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)}</h3>
-    <p>L&acute;inscription &agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)} vous donne acc&egrave;s &agrave; tous nos cours gratuits actuels et futurs. Vous n&acute;êtes pas prêt &agrave; suivre un cours pour l&acute;instant ? L&acute;inscription vous ajoute &agrave; notre liste de diffusion - nous vous tiendrons au courant d&egrave;s que des cours sont ajout&eacute;s.</p>
+    <h3>Bienvenue &#224; l&#39;${_("{platform_name}").format(platform_name=platform_name)}</h3>
+    <p>L&#39;inscription &#224; l&#39;${_("{platform_name}").format(platform_name=platform_name)} vous donne acc&#232;s &#224; tous nos cours gratuits actuels et futurs. Vous n&#39;&#234;tes pas pr&#234;t &#224; suivre un cours pour l&#39;instant ? L&#39;inscription vous ajoute &#224; notre liste de diffusion - nous vous tiendrons au courant d&#232;s que des cours sont ajout&#233;s.</p>
   </div>
 % endif
 
@@ -37,14 +37,14 @@ from django.core.urlresolvers import reverse
   % if stanford_theme_enabled():
     <p>${_("You will receive an activation email.  You must click on the activation link to complete the process.  Don't see the email?  Check your spam folder and mark emails from class.stanford.edu as 'not spam', since you'll want to be able to receive email from your courses.")}</p>
   % else:
-    <p>En rejoignant l&acute;${_("{platform_name}").format(platform_name=platform_name)}, vous recevrez un mail d&acute;activation. Vous devrez cliquer sur le lien d&acute;activation pour compl&eacute;ter l&acute;inscription. Vous ne voyez pas le mail ? V&eacute;rifiez votre dossier de spam et marquez les mails provenant de l&acute;${_("{platform_name}").format(platform_name=platform_name)} comme n&acute;&eacute;tant pas du spam. &Agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)}, nous communiquons essentiellement par mail.</p>
+    <p>En rejoignant l&#39;${_("{platform_name}").format(platform_name=platform_name)}, vous recevrez un mail d&#39;activation. Vous devrez cliquer sur le lien d&#39;activation pour compl&#233;ter l&#39;inscription. Vous ne voyez pas le mail ? V&#233;rifiez votre dossier de spam et marquez les mails provenant de l&#39;${_("{platform_name}").format(platform_name=platform_name)} comme n&#39;&#233;tant pas du spam. &#192; l&#39;${_("{platform_name}").format(platform_name=platform_name)}, nous communiquons essentiellement par mail.</p>
   % endif
 </div>
 
 % if settings.MKTG_URL_LINK_MAP.get('FAQ'):
   <div class="cta cta-help">
     <h3>${_("Need Help?")}</h3>
-    <p>Besoin d&acute;aide pour vous inscrire &agrave; l&acute;${_("{platform_name}").format(platform_name=platform_name)} ?
+    <p>Besoin d&#39;aide pour vous inscrire &#224; l&#39;${_("{platform_name}").format(platform_name=platform_name)} ?
       <a href="${marketing_link('FAQ')}">
           ${_("View our FAQs for answers to commonly asked questions.")}
       </a>
