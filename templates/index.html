@@ -1,0 +1,231 @@
+<%! from django.utils.translation import ugettext as _ %>
+
+<%! from django.core.urlresolvers import reverse %>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+
+<%!
+  from microsite_configuration import microsite
+  from django.utils.translation import ugettext as _
+  from django.core.urlresolvers import reverse
+  from courseware.courses import course_image_url, get_course_about_section
+%>
+
+<%
+  homepage_overlay_html = microsite.get_value('homepage_overlay_html')
+
+  show_homepage_promo_video = microsite.get_value('show_homepage_promo_video', True)
+  homepage_promo_video_youtube_id = microsite.get_value('homepage_promo_video_youtube_id', "XNaiOGxWeto")
+
+  show_partners = microsite.get_value('show_partners', True)
+%>
+
+
+<%block name="pagetitle">Accueil</%block>
+
+
+
+<%block name="css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="${static.url('themes/edx-theme/css/bootstrap.css')}"> -->
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
+
+
+
+
+    <style type="text/css">
+      html { position: relative;  min-height: 100%; }
+      body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important; font-family: "Titillium Web", sans-serif !important; }
+      .footer { position: absolute;  bottom: 0;  width: 100%;  /* Set the fixed height of the footer here */  height: 40px;  background-color: #f5f5f5; }
+      body > .container { padding: 60px 15px 0; }
+      .container .text-muted { margin: 20px 0; }
+      .footer > .container { padding-right: 15px;  padding-left: 15px; }
+      code { font-size: 80%; }
+      .icon {	margin-right: 12px; }
+      .navbar, .footer { font-family: "Titillium Web", sans-serif;	font-weight: 600; }
+      .nav > li > a:hover { margin-bottom: -4px;border-radius: 0px;border-bottom-width: 4px;border-bottom-style: solid;border-bottom-color: #62228C;color: #000 !important; }
+      .divider { margin: 0px 5%; width: 90%; color: #62228C; text-align: center; display: block; height: 1px; border: 0; border-top: 1px solid #62228C; padding: 0; }
+      .cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
+
+      .nowrap { overflow-x: auto;  overflow-y: hidden;  white-space: nowrap; }
+
+      .text-muted-feat   { color: rgb(119, 119, 119); }
+      .text-muted-feat-v { color: rgb(136, 136, 136); }
+      .featurette { padding: 7% 0px; overflow: hidden; }
+      .featurette-transp { width: 100%; }
+      .featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }
+      .featurette-violet > .text-muted { color: rgb(204, 204, 204); }
+      .featurette-image { }
+      .featurette-image.pull-left { margin-right: 40px;  margin-bottom: 20px; } /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+      .featurette-image.pull-right { margin-left: 40px;  margin-bottom: 20px; }
+      .featurette-heading { font-size: 50px;  font-weight: 300;  line-height: 1;  letter-spacing: -1px; } /* Thin out the marketing headings */
+    </style>
+</%block>
+
+
+
+<%block name="content">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <!--<span class="sr-only">Toggle navigation</span>-->
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#"><img src="${static.url('themes/{name}/images/logo-inares-carre-petit.png'.format(name=settings.THEME_NAME))}" alt="INARES"></a>&nbsp;&nbsp;
+          </div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav text-uppercase" role="navigation" style="width:auto;white-space: nowrap;">
+              <li><a href="#"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
+              <li><a href="#presentation"><span class="fa fa-user fa-fw"></span> Présentation</a></li>
+              <li><a href="#fonctionnement"><span class="fa fa-cogs fa-fw"></span> Fonctionnement</a></li>
+              <li><a href="#pedagogie"><span class="fa fa-wrench fa-fw"></span> Pédagogie</a></li>
+              <li><a href="#cours"><span class="fa fa-graduation-cap fa-fw"></span> Cours</a></li>
+              <li><a href="#aide"><div class="hidden-sm"><span class="fa fa-question fa-fw"></span> Aide</div></a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+
+    <!-- === MAIN === -->
+    <div class="container">
+      <h1><strong>INARES</strong> Apprendre les sciences</h1>
+      <p class="lead text-justify">Cours en ligne de l'Institut Aristotélicien d'Études Scientifiques.</p>
+      <p class="lead text-justify">Aristote a changé durablement l’approche des sciences avec une méthode réaliste basée sur l’observation. C'est cette démarche scientifique qui fait la force de notre enseignement.</p>
+      <br />
+      <br />
+    </div><!-- /container -->
+
+
+    <div class="featurette-violet">
+      <div class="container">
+        <div class="featurette">
+          <img class="featurette-image img-circle pull-right" src="http://placehold.it/400">
+          <h2 id="presentation" class="featurette-heading"><span class="nowrap"><span class="fa fa-user"></span> Présentation</span><br><span class="text-muted-feat-v">Cours de sciences en ligne</span></h2>
+          <p class="lead text-justify">
+            <span class="cap">L</span>'INARES propose un enseignement dans trois sciences principales : la Philosophie, l'Histoire et l'Économie.
+            L'INARES propose des cours en ligne dans différentes sciences, principalement la <strong>philosophie, l'histoire et l'économie</strong>.<br>
+            Nous allions un enseignement de <strong>qualité</strong> aux technologies et techniques <strong>modernes</strong>. Tout le monde peut ainsi profiter de ces savoirs.
+          </p>
+        </div><!-- /featurette -->
+      </div><!-- /container -->
+    </div><!-- /featurette-violet -->
+
+
+    <div class="featurette-transp">
+      <div class="container">
+        <div class="featurette">
+          <img class="featurette-image img-circle pull-left" src="http://placehold.it/400">
+          <h2 id="fonctionnement" class="featurette-heading"><span class="nowrap"><span class="fa fa-cogs"></span> Fonctionnement</span><br><span class="text-muted-feat">Des cours adaptés ouverts à tous</span></h2>
+          <p class="lead text-justify">
+            <span class="cap">L</span>es cours possèdent toutes les qualités modernes des <a href="fr.wikipedia.org/wiki/Formation_en_ligne_ouverte_à_tous">MOOC</a> (formation en ligne ouverte à tous). Ils sont entièrement gratuits. Internet permet par ailleurs à <strong>chacun de participer aux différentes formations</strong> proposées. Plus besoin de se déplacer physiquement dans un lieu donné ni de respecter des horaires parfois incompatibles avec les exigences du quotidien.<br>
+            Nos cours allient les derniers outils technologiques, comme la vidéos, le web 2.0, la visioconférence ou les réseaux sociaux, à des méthodes pédagogiques adaptées. L’INARES propose des cours depuis quatre ans, en mettant l’<strong>innovation au service de l’enseignement</strong>.
+          </p>
+        </div>
+      </div><!-- /container -->
+    </div><!-- /featurette-transp -->
+
+
+    <div class="featurette-violet">
+      <div class="container">
+        <div class="featurette featurette-violet">
+          <img class="featurette-image img-circle pull-right" src="http://placehold.it/400">
+          <h2 id="pedagogie" class="featurette-heading"><span class="nowrap"><span class="fa fa-wrench"></span> Pédagogie</span><br><span class="text-muted-feat-v">Faciliter l'apprentissage</span></h2>
+          <p class="lead text-justify">
+            <span class="cap">L</span>es cours sont <strong>centrés sur l’apprenant</strong> et non sur l’enseignant. Nous utilisons les meilleurs outils et méthodes pour susciter l’<strong>envie d’apprendre</strong>.<br>
+            Ainsi, sans négliger le <strong>suivi pédagogique</strong> des élèves, l’INARES <strong>adapte son enseignement</strong> à cette forme précise de transmission de savoir que sont les MOOCs.
+          </p>
+        </div>
+      </div><!-- /container -->
+    </div><!-- /featurette-violet -->
+
+
+    <div class="featurette-transp">
+      <div class="container">
+        <div class="featurette">
+          <h2 id="cours" class="featurette-heading"><span class="nowrap"><span class="fa fa-graduation-cap"></span> Cours</span></h2>
+          <br />
+            % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+              <div class="row">
+                  %for course in courses:
+                    <div class="col-sm-6 col-md-3" id="${course.id.to_deprecated_string()}">
+                      <a href="${reverse('about_course', args=[course.id.to_deprecated_string()])}">
+                        <div class="thumbnail">
+                          <img src="${course_image_url(course)}" alt="${course.display_number_with_default | h} ${get_course_about_section(course, 'title')} Cover Image" />
+                          <div class="caption">
+                            %if course.is_newish:
+                              <p>Nouveau cours</p>
+                            %endif
+                            <h3>${get_course_about_section(course, 'title')}</h3>
+                            <p>${get_course_about_section(course, 'short_description')}</p>
+
+                            % if not course.start_date_is_still_default:
+                              <p>${course.start_date_text}</p>
+                            % endif
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  %endfor
+              </div>
+            % endif
+
+        </div>
+      </div><!-- /container -->
+    </div><!-- /featurette-transp -->
+
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+              <!-- TODO affichage en SM -->
+              <li><a href="#"><span class="fa fa-home"></span> Accueil</a></li>
+              <li><a href="#"><div class="hidden-sm">Conditions d'utilisation</div></a></li>
+              <li><a href="#"><div class="hidden-sm">Politique de confidentialité</div></a></li>
+              <li><a href="#"><div class="hidden-sm">Charte</div></a></li>
+              <li><a href="#"><span class="fa fa-envelope-o fa-fw"></span> Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-muted text-right">Basé sur <a href="http://code.edx.org">OpenEdX</a>.</p>
+
+
+    <%include file="widgets/segment-io.html" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</%block>
+
+
+
+<%block name="js">
+
+</%block>
+
+
+
+<%block name="js_extra">
+   <script type="text/javascript">
+      $(window).load(function() {
+         if(getParameterByName('next')) {
+              $('#login').trigger("click");
+         }
+      })
+   </script>
+</%block>
+
+% if show_signup_immediately is not UNDEFINED:
+  ## NOTE: This won't work in production, because anonymous views are cached, so it will
+  ## show either with or without this extra js for 3 minutes at a time.
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+</script>
+% endif

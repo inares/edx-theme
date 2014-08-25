@@ -7,17 +7,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
   <%! from django.utils.translation import ugettext as _ %>
   <%! from microsite_configuration import microsite %>
   <%! from microsite_configuration import page_title_breadcrumbs %>
 
   <%namespace name='static' file='static_content.html'/>
   <%! from django.utils import html %>
-    
-<%def name="pagetitle()" />
+
+
+  <%def name="theme_enabled()">
+  	<% return True %>
+  </%def>
+
+  <%def name="is_microsite()">
+  	<% return False %>
+  </%def>
+
+  <%def name="stanford_theme_enabled()">
+    <% return False %>
+  </%def>
+
+
+	<%def name="pagetitle()" />
   <%block name="title">
-    <title>${page_title_breadcrumbs(self.pagetitle())}</title>
+    <title>${page_title_breadcrumbs(self.pagetitle())} | V1.2.18</title>
   </%block>
 
     <script type="text/javascript">
@@ -28,12 +42,12 @@
         }
       })(this);
     </script>
-    
+
     <script type="text/javascript" src="/jsi18n/"></script>
 
     <link rel="icon" type="image/x-icon" href="${static.url(microsite.get_value('favicon_path', settings.FAVICON_PATH))}" />
 
-    <%block name="headextra"/>
+    <%block name="headextra" />
 
     <%include file="theme-head-extra.html" />
 
@@ -41,115 +55,43 @@
       <script src="${static.url('js/html5shiv.js')}"></script>
     <![endif]-->
 
-    <meta name="path_prefix" content="${EDX_ROOT_URL}">
+    <meta name="path_prefix" content="${EDX_ROOT_URL}" />
     <meta name="google-site-verification" content="" />
 
     <%include file="theme-google-analytics.html" />
-    
-    <style type="text/css">
-            html {  position: relative;  min-height: 100%;}body {  margin-bottom: 60px;  font-family: "Titillium Web", sans-serif;  font-weight: normal;  -webkit-font-smoothing: antialiased !important;}.footer {  position: absolute;  bottom: 0;  width: 100%;  /* Set the fixed height of the footer here */  height: 40px;  background-color: #f5f5f5;}/* Custom page CSS-------------------------------------------------- *//* Not required for template or sticky footer method. */body > .container {  padding: 60px 15px 0;}.container .text-muted {  margin: 20px 0;}.footer > .container {  padding-right: 15px;  padding-left: 15px;}code {  font-size: 80%;}.icon {		margin-right: 12px;}.font-thin {	font-family: "Titillium Web", sans-serif;	font-weight: 200;}.font-semibold {	font-family: "Titillium Web", sans-serif;	font-weight: 600;}.font-light {	font-family: "Titillium Web", sans-serif;	font-weight: 300;}.navbar, .footer {	font-family: "Titillium Web", sans-serif;	font-weight: 600;}  .nav > li > a:hover {margin-bottom: -4px;border-radius: 0px;border-bottom-width: 4px;border-bottom-style: solid;border-bottom-color: #62228C;color: #000 !important;}      .divider {  margin: 40px 0; /* Space out the Bootstrap <hr> more */}.featurette {  padding-top: 40px; /* Vertically center images part 1: add padding above and below text. */  overflow: hidden; /* Vertically center images part 2: clear their floats. */  margin: 40px;}.featurette-image {  margin-top: -40px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */  margin: 0px;}/* Give some space on the sides of the floated elements so text doesn't run right into it. */.featurette-image.pull-left {  margin-right: 40px;  margin-bottom: 20px;}.featurette-image.pull-right {  margin-left: 40px;  margin-bottom: 20px;}  /* Thin out the marketing headings */.featurette-heading {  font-size: 50px;  font-weight: 300;  line-height: 1;  letter-spacing: -1px;}
-    </style>
-  
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" >
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    <%block name="css">
+      <%static:css group='style-vendor'/>
+      <%static:css group='style-app'/>
+      <%static:css group='style-app-extend1'/>
+      <%static:css group='style-app-extend2'/>
+      <%static:js  group='main_vendor'/>
+    </%block>
+
+    <%block name="js">
+      <%static:js group='main_vendor'/>
+    </%block>
   </head>
-  
-  
+
+
   <body class="<%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <!--<span class="sr-only">Toggle navigation</span>-->
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="#"><img src="http://inares.org/static/themes/edx-theme/images/logo-inares-carre-petit.463c5b8ad9cc.png" alt="INARES">&nbsp;&nbsp;</a>
-          </div>
-          
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav text-uppercase" role="navigation" style="width:auto;white-space: nowrap;">
-              <li><a href="#"><span class="fa fa-home"></span> Accueil</a></li>
-              <li><a href="#presentation"><span class="fa fa-user"></span> Présentation</a></li>
-              <li><a href="#fonctionnement"><span class="fa fa-cogs"></span> Fonctionnement</a></li>
-              <li><a href="#pedagogie"><span class="fa fa-wrench"></span> Pédagogie</a></li>
-              <li><a href="#cours"><span class="fa fa-graduation-cap"></span> Cours</a></li>
-              <li><a href="#aide"><div class="hidden-sm"><span class="fa fa-question"></span> Aide</div></a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+    <%block name="content">
+      <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to this view's content")}</a>
+      <%include file="mathjax_accessible.html" />
+      <%include file="theme-header.html" />
+
+      <div class="content-wrapper" id="content">
+        ${self.body()}
+        <%block name="bodyextra"/>
       </div>
 
-
-    <!-- === MAIN Background === -->
-    <div class="container">
-      <div id="home-row-1" class="row clearfix">
-        <div class="col-12">
-          <h1 class="font-semibold">INARES<span class="font-thin"> Apprendre les sciences</span></h1>
-          <h4>Cours en ligne de l'Institut Aristotélicien d'Études Scientifiques.</h4>
-          <h4>Aristote a changé durablement l’approche des sciences avec une méthode réaliste basée sur l’observation. Nous souhaitons prendre exemple sur lui à travers notre démarche scientifique.</h4>
-          <br>
-          <br>
-        </div><!-- /col-12 -->
-      </div><!-- /row -->
-    </div><!-- /container -->
-
-    <hr class="divider">
-
-    <div class="featurette">
-      <img class="featurette-image img-circle pull-right" src="http://placehold.it/400">
-      <h2 id="presentation" class="featurette-heading">Présentation<br><span class="text-muted">Cours de sciences en ligne</span></h2>
-      <p class="lead text-justify">
-        L'INARES propose des cours en ligne dans différentes sciences, principalement la <strong>philosophie, l'histoire et l'économie</strong>.<br>
-        Nous allions un enseignement de <strong>qualité</strong> aux technologies et techniques <strong>modernes</strong>. Tout le monde peut ainsi profiter de ces savoirs.
-      </p>
-    </div>
-
-    <hr class="divider">
-
-    <div class="featurette">
-      <img class="featurette-image img-circle pull-left" src="http://placehold.it/400">
-      <h2 id="fonctionnement" class="featurette-heading">Fonctionnement<br><span class="text-muted">Des cours adaptés ouverts à tous</span></h2>
-      <p class="lead text-justify">
-        Les cours sont des <strong><a href="fr.wikipedia.org/wiki/Formation_en_ligne_ouverte_à_tous">MOOC</a></strong> (formation en ligne ouverte à tous). Ils sont gratuits. <strong>Chacun peut donc participer au cours</strong> grâce à Internet. Il n’y a plus besoin de se déplacer physiquement ni d’avoir des horaires imposés.<br>
-        Nos cours allient les derniers outils technologiques, comme la vidéos, le web 2.0, la visioconférence ou les réseaux sociaux, à des méthodes pédagogiques adaptées. L’INARES donne des cours depuis quatre ans en mettant l’<strong>innovation au service de l’enseignement</strong>.
-      </p>
-    </div>
-
-    <hr class="divider">
-
-    <div class="featurette">
-      <img class="featurette-image img-circle pull-right" src="http://placehold.it/400">
-      <h2 id="pedagogie" class="featurette-heading">Pédagogie<br><span class="text-muted">Faciliter l'apprentissage</span></h2>
-      <p class="lead text-justify">
-        Les cours sont <strong>centrés sur l’apprenant</strong> et non sur l’enseignant. Nous utilisons les meilleurs outils et méthodes pour susciter l’<strong>envie d’apprendre</strong>.<br>
-        Ainsi, sans négliger le <strong>suivi pédagogique</strong> des élèves, l’INARES <strong>adapte son enseignement</strong> à cette forme précise de transmission de savoir que sont les MOOCs.
-      </p>
-    </div>
-
-
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="nav nav-pills nav-justified">
-              <li><a href="#"><span class="fa fa-home"></span> Accueil</a></li>
-              <li><a href="#"><div class="hidden-sm">Conditions d'utilisation</div></a></li>
-              <li><a href="#"><div class="hidden-sm">Politique de confidentialité</div></a></li>
-              <li><a href="#"><div class="hidden-sm">Charte</div></a></li>
-              <li><a href="#"><span class="fa fa-envelope-o"></span> Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="text-muted text-right">Basé sur <a href="http://code.edx.org">OpenEdX</a>.</p>
-
-    <%include file="widgets/segment-io.html" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <%include file="theme-footer.html" />
+      <script>window.baseUrl = "${settings.STATIC_URL}";</script>
+      <%static:js group='application'/>
+      <%static:js group='module-js'/>
+      <%block name="js_extra"/>
+      <%include file="widgets/segment-io.html" />
+    </%block>
   </body>
 </html>
 
@@ -159,4 +101,3 @@
     html.escape(enrollment_action)
   ) if course_id and enrollment_action else ""
 }</%def>
-
