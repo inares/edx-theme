@@ -28,72 +28,9 @@
 <%block name="css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
   	<%static:css group='style-bootstrap'/>
-    <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="${static.url('themes/edx-theme/css/bootstrap.css')}"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"> --> -->
+  	<link rel="stylesheet" type="text/css" href="${static.url('themes/{name}/css/main.css'.format(name=settings.THEME_NAME))}">
 
     <style type="text/css">
-      html { position: relative;  min-height: 100%; }
-      body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important;
-        /*background-image: url("${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center center;
-        background-size: cover;*/
-      }
-      body > .container { padding: 60px 15px 0; }
-
-
-      .cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
-      .nowrap { overflow-x: auto;  overflow-y: hidden;  white-space: nowrap; }
-
-      .text-muted-feat   { font-size: 80%;  color: rgb(119, 119, 119); }
-      .text-muted-feat-v { font-size: 80%;  color: rgb(136, 136, 136); }
-      .featurette { padding: 7% 0px; overflow: hidden; }
-      .featurette-transp { /*background-color: #FFFFFF;*/  width: 100%; }
-      .featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }
-      .featurette-violet > .text-muted { color: rgb(204, 204, 204); }
-
-      .featurette-image.pull-left { margin-right: 40px;  margin-bottom: 20px; } /* Give some space on the sides of the floated elements so text doesn't run right into it. */
-      .featurette-image.pull-right { margin-left: 40px;  margin-bottom: 20px; }
-      .featurette-heading { font-size: 50px;  font-weight: 300;  line-height: 1;  letter-spacing: -1px; } /* Thin out the marketing headings */
-
-      .navbar-hover { line-height: 0px;  display: inline-block; float: none; }
-      .navbar .navbar-collapse { text-align: center; }
-      .navbar { line-height: 0px; }
-      .footer { /*background-color: #FFFFFF;*/  position: absolute;  bottom: 0;  width: 100%;  /* Set the fixed height of the footer here */  height: 40px;  background-color: #f5f5f5; }
-      .footer > .container { padding-right: 15px;  padding-left: 15px; }
-      .navbar, .footer { font-weight: 600; }
-
-			@media(min-width: 1000px) {
-        .navbar-hover > li > a { line-height: 0px;  padding-top: 18px;  padding-left: 10px;  padding-right: 10px;  padding-bottom: 18px; }
-        .navbar-hover > li > a:hover { padding-bottom: 16px;  margin-bottom: -4px;  border-radius: 0px;  border-bottom-width: 4px;  border-bottom-style: solid;  border-bottom-color: #62228C;  color: #000 !important; }
-        .featurette-image { width:400px;  height: 400px; }
-        .image-inares { background-image: url("${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.THEME_NAME))}");  background-repeat: no-repeat;  background-size: cover; }
-        .image-outils { background-image: url("${static.url('themes/{name}/images/outils.jpg'.format(name=settings.THEME_NAME))}");  background-repeat: no-repeat; }
-        .image-platon { background-image: url("${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}");  background-repeat: no-repeat; }
-			}
-
-			@media(max-width: 1000px) {
-        .navbar-hover > li > a { line-height: 0px; }
-        .navbar-nav { margin: 0px; }
-        .featurette-image { width:200px;  height: 200px;  margin-top: 40px;}
-        .image-inares { background-image: url("${static.url('themes/{name}/images/logo-inares-moyen.jpg'.format(name=settings.THEME_NAME))}");  background-repeat: no-repeat; }
-        .image-outils { background-image: url("${static.url('themes/{name}/images/outils-petit.jpg'.format(name=settings.THEME_NAME))}");  background-repeat: no-repeat; }
-        .image-platon { background-image: url("${static.url('themes/{name}/images/platon_aristote-petit.jpg'.format(name=settings.THEME_NAME))}");  background-repeat: no-repeat; }
-			}
-
-			/*.parallax { }
-      .background { background-repeat:no-repeat;  background-position:50% 50%;  background-position:50% 50%\9 !important; }
-      .image-inares { background-size: 42%; background-image: url("${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.THEME_NAME))}"); }
-      .image-platon { background-size: 50%; background-image: url("${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}"); }
-
-      .bgParallax {
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }*/
-
     </style>
 </%block>
 
