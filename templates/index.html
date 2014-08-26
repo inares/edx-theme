@@ -26,40 +26,69 @@
 
 
 <%block name="css">
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="${static.url('themes/edx-theme/css/bootstrap.css')}"> -->
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
-
-
-
+  	<%static:css group='style-bootstrap'/>
+    <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="${static.url('themes/edx-theme/css/bootstrap.css')}"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"> --> -->
 
     <style type="text/css">
       html { position: relative;  min-height: 100%; }
-      body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important; font-family: "Titillium Web", sans-serif !important; }
-      .footer { position: absolute;  bottom: 0;  width: 100%;  /* Set the fixed height of the footer here */  height: 40px;  background-color: #f5f5f5; }
+      body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important;
+        /*background-image: url("${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;*/
+      }
       body > .container { padding: 60px 15px 0; }
-      .container .text-muted { margin: 20px 0; }
-      .footer > .container { padding-right: 15px;  padding-left: 15px; }
-      code { font-size: 80%; }
-      .icon {	margin-right: 12px; }
-      .navbar, .footer { font-family: "Titillium Web", sans-serif;	font-weight: 600; }
-      .nav > li > a:hover { margin-bottom: -4px;border-radius: 0px;border-bottom-width: 4px;border-bottom-style: solid;border-bottom-color: #62228C;color: #000 !important; }
-      .divider { margin: 0px 5%; width: 90%; color: #62228C; text-align: center; display: block; height: 1px; border: 0; border-top: 1px solid #62228C; padding: 0; }
-      .cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
 
+
+      .cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
       .nowrap { overflow-x: auto;  overflow-y: hidden;  white-space: nowrap; }
 
-      .text-muted-feat   { color: rgb(119, 119, 119); }
-      .text-muted-feat-v { color: rgb(136, 136, 136); }
+      .text-muted-feat   { font-size: 80%;  color: rgb(119, 119, 119); }
+      .text-muted-feat-v { font-size: 80%;  color: rgb(136, 136, 136); }
       .featurette { padding: 7% 0px; overflow: hidden; }
-      .featurette-transp { width: 100%; }
+      .featurette-transp { /*background-color: #FFFFFF;*/  width: 100%; }
       .featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }
       .featurette-violet > .text-muted { color: rgb(204, 204, 204); }
-      .featurette-image { }
+
       .featurette-image.pull-left { margin-right: 40px;  margin-bottom: 20px; } /* Give some space on the sides of the floated elements so text doesn't run right into it. */
       .featurette-image.pull-right { margin-left: 40px;  margin-bottom: 20px; }
       .featurette-heading { font-size: 50px;  font-weight: 300;  line-height: 1;  letter-spacing: -1px; } /* Thin out the marketing headings */
+
+      .navbar-hover { line-height: 0px;  display: inline-block; float: none; }
+      .navbar .navbar-collapse { text-align: center; }
+      .navbar { line-height: 0px; }
+      .footer { /*background-color: #FFFFFF;*/  position: absolute;  bottom: 0;  width: 100%;  /* Set the fixed height of the footer here */  height: 40px;  background-color: #f5f5f5; }
+      .footer > .container { padding-right: 15px;  padding-left: 15px; }
+      .navbar, .footer { font-weight: 600; }
+
+			@media(min-width: 1000px) {
+        .navbar-hover > li > a { line-height: 0px;  padding-top: 18px;  padding-left: 10px;  padding-right: 10px;  padding-bottom: 18px; }
+        .navbar-hover > li > a:hover { padding-bottom: 16px;  margin-bottom: -4px;  border-radius: 0px;  border-bottom-width: 4px;  border-bottom-style: solid;  border-bottom-color: #62228C;  color: #000 !important; }
+        .featurette-image { width:400px;  height: 400px; }
+			}
+
+			@media(max-width: 1000px) {
+        .navbar-hover > li > a { line-height: 0px; }
+        .navbar-nav { margin: 0px; }
+        .featurette-image { width:200px;  height: 200px;  margin-top: 40px;}
+			}
+
+			.parallax { }
+      .background { background-repeat:no-repeat;  background-position:50% 50%;  background-position:50% 50%\9 !important; }
+      .image-inares { background-size: 50%; background-image: url("${static.url('themes/{name}/images/logo-inares-carre.jpg'.format(name=settings.THEME_NAME))}"); }
+      .image-platon { background-size: 50%; background-image: url("${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}"); }
+
+      .bgParallax {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /*background-size: cover;*/
+      }
+
     </style>
 </%block>
 
@@ -75,26 +104,64 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="#"><img src="${static.url('themes/{name}/images/logo-inares-carre-petit.png'.format(name=settings.THEME_NAME))}" alt="INARES"></a>&nbsp;&nbsp;
-          </div>
+            <a href="#"><img src="${static.url('themes/{name}/images/logo-inares-carre-petit.png'.format(name=settings.THEME_NAME))}" alt="INARES"></b></a>&nbsp;&nbsp;
+          </div><!--/navbar-header -->
 
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav text-uppercase" role="navigation" style="width:auto;white-space: nowrap;">
+          <div class="navbar-collapse collapse" style="float:center;">
+            <ul class="nav navbar-nav navbar-hover text-uppercase" role="navigation">
+              <li><a href="#"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
+              <li><a href="#presentation"><span class="fa fa-user fa-fw"></span> Présentation</a></li>
+              <li><a href="#fonctionnement"><span class="fa fa-cogs fa-fw"></span> Fonctionnement</a></li>
+              <li><a href="#pedagogie"><span class="fa fa-wrench fa-fw"></span> Pédagogie</a></li>
+              <li><a href="#cours"><span class="fa fa-graduation-cap fa-fw"></span> Cours</a></li>
+              <li><a href="#aide"><span class="fa fa-question fa-fw"></span> Aide</a></li>
+            </ul>
+
+            <!--<ul class="nav navbar-nav text-uppercase hidden-lg" role="navigation"> hidden-sx hidden-sm hidden-md
               <li><a href="#"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
               <li><a href="#presentation"><span class="fa fa-user fa-fw"></span> Présentation</a></li>
               <li><a href="#fonctionnement"><span class="fa fa-cogs fa-fw"></span> Fonctionnement</a></li>
               <li><a href="#pedagogie"><span class="fa fa-wrench fa-fw"></span> Pédagogie</a></li>
               <li><a href="#cours"><span class="fa fa-graduation-cap fa-fw"></span> Cours</a></li>
               <li><a href="#aide"><div class="hidden-sm"><span class="fa fa-question fa-fw"></span> Aide</div></a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
+            </ul> -->
+            <!--<div class="navbar-header navbar-right"> -->
+						<ul class="nav navbar-nav navbar-right" role="navigation">
+                % if user.is_authenticated():
+                	<li class="dropdown">
+                    <a href="${reverse('dashboard')}" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> ${user.username}</a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="${reverse('dashboard')}">${_("Dashboard")}</a></li>
+                      <li><a href="${reverse('logout')}">${_("Log Out")}</a></li>
+                    </ul>
+                  </li>
+                % else:
+                  <!--<div class="btn-group navbar-btn">
+                    <button class="btn"><a href="/login">${_("Dashboard")}</a></button>
+                    <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="/login">${_("Log in")}</a></li>
+                      <li><a href="/register">${_("Register Now")}</a></li>
+                    </ul>
+                  </div> -->
+                	<li class="dropdown">
+                    <a href="/login" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> ${_("Dashboard")}</a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="/login">${_("Log in")}</a></li>
+                      <li><a href="/register">${_("Register Now")}</a></li>
+                    </ul>
+                  </li>
+                % endif
+						</ul>
+            <!--</div> -->
+          </div><!--/navbar-collapse -->
+        </div><!--/container -->
+      </div><!--/navbar -->
 
 
     <!-- === MAIN === -->
     <div class="container">
-      <h1><strong>INARES</strong> Apprendre les sciences</h1>
+      <h1><strong>INARES</strong> <span class="text-muted-feat">Apprendre les sciences</span></h1>
       <p class="lead text-justify">Cours en ligne de l'Institut Aristotélicien d'Études Scientifiques.</p>
       <p class="lead text-justify">Aristote a changé durablement l’approche des sciences avec une méthode réaliste basée sur l’observation. C'est cette démarche scientifique qui fait la force de notre enseignement.</p>
       <br />
@@ -105,7 +172,8 @@
     <div class="featurette-violet">
       <div class="container">
         <div class="featurette">
-          <img class="featurette-image img-circle pull-right" src="http://placehold.it/400">
+          <div class="bgParallax image-inares img-circle featurette-image pull-right" data-speed="15" data-img-width="270" data-img-height="270" data-diff="25" data-oriz-pos="100%"></div>
+          <!-- <img class="featurette-image img-circle pull-right" src="http://placehold.it/400"> -->
           <h2 id="presentation" class="featurette-heading"><span class="nowrap"><span class="fa fa-user"></span> Présentation</span><br><span class="text-muted-feat-v">Cours de sciences en ligne</span></h2>
           <p class="lead text-justify">
             <span class="cap">L</span>'INARES propose un enseignement dans trois sciences principales : la Philosophie, l'Histoire et l'Économie.
@@ -120,7 +188,8 @@
     <div class="featurette-transp">
       <div class="container">
         <div class="featurette">
-          <img class="featurette-image img-circle pull-left" src="http://placehold.it/400">
+          <div class="bgParallax image-platon img-circle featurette-image pull-left" data-img-width="804" data-img-height="1052" data-diff="25" data-oriz-pos="0%"></div>
+          <!-- <img class="featurette-image img-circle pull-left" src="http://placehold.it/400"> -->
           <h2 id="fonctionnement" class="featurette-heading"><span class="nowrap"><span class="fa fa-cogs"></span> Fonctionnement</span><br><span class="text-muted-feat">Des cours adaptés ouverts à tous</span></h2>
           <p class="lead text-justify">
             <span class="cap">L</span>es cours possèdent toutes les qualités modernes des <a href="fr.wikipedia.org/wiki/Formation_en_ligne_ouverte_à_tous">MOOC</a> (formation en ligne ouverte à tous). Ils sont entièrement gratuits. Internet permet par ailleurs à <strong>chacun de participer aux différentes formations</strong> proposées. Plus besoin de se déplacer physiquement dans un lieu donné ni de respecter des horaires parfois incompatibles avec les exigences du quotidien.<br>
@@ -134,7 +203,8 @@
     <div class="featurette-violet">
       <div class="container">
         <div class="featurette featurette-violet">
-          <img class="featurette-image img-circle pull-right" src="http://placehold.it/400">
+          <div class="bgParallax image-platon img-circle featurette-image pull-right" data-img-width="804" data-img-height="1052" data-diff="25" data-oriz-pos="100%"></div>
+          <!-- <img class="featurette-image img-circle pull-right" src="http://placehold.it/400"> -->
           <h2 id="pedagogie" class="featurette-heading"><span class="nowrap"><span class="fa fa-wrench"></span> Pédagogie</span><br><span class="text-muted-feat-v">Faciliter l'apprentissage</span></h2>
           <p class="lead text-justify">
             <span class="cap">L</span>es cours sont <strong>centrés sur l’apprenant</strong> et non sur l’enseignant. Nous utilisons les meilleurs outils et méthodes pour susciter l’<strong>envie d’apprendre</strong>.<br>
@@ -196,12 +266,164 @@
         </div>
       </div>
     </div>
+
     <p class="text-muted text-right">Basé sur <a href="http://code.edx.org">OpenEdX</a>.</p>
 
 
-    <%include file="widgets/segment-io.html" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $('.navbar-nav li').click(function(e) {
+        var $this = $(this);
+        if( ! $this.hasClass("dropdown") ) {
+          $('.navbar-nav li.active').removeClass('active');
+          $this.addClass('active');
+        }
+  		});
+
+      /*$("body").on("click", ".navbar-collapse a", function() {
+        var $this = $(this);
+
+        setTimeout(function() {
+           $this.closest(".navbar-collapse").collapse('hide');
+        }, 350);
+      });*/
+
+      $(function() {
+          $('.nav a').on('click', function(){
+              if( $('.navbar-toggle').css('display')!='none'
+              && !$(this).hasClass('dropdown-toggle')  ){
+                  $('.navbar-toggle').trigger( 'click' );
+              }
+          });
+      });
+
+      $('.dropdown-toggle').click(function(event) {
+        if( $('.navbar-toggle').css('display') != 'none' ) {
+          //event.preventDefault();
+          var n = $(document).height();
+          $('.container .navbar-collapse').animate({ scrollTop: n }, 50);
+        }
+      });
+
+
+
+      /* detect touch */
+      if("ontouchstart" in window){
+          document.documentElement.className = document.documentElement.className + " touch";
+      }
+      if(!$("html").hasClass("touch")){
+          /* background fix */
+          $(".parallax").css("background-attachment", "fixed");
+      }
+
+      /* fix vertical when not overflow
+      call fullscreenFix() if .fullscreen content changes */
+      function fullscreenFix(){
+          var h = $('body').height();
+          // set .fullscreen height
+          $(".content-b").each(function(i){
+              if($(this).innerHeight() <= h){
+                  $(this).closest(".fullscreen").addClass("not-overflow");
+              }
+          });
+      }
+      $(window).resize(fullscreenFix);
+      fullscreenFix();
+
+      /* resize background images */
+      function backgroundResize(){
+          var windowH = $(window).height();
+          $(".background").each(function(i){
+              var path = $(this);
+              // variables
+              var contW = path.width();
+              var contH = path.height();
+              var imgW = path.attr("data-img-width");
+              var imgH = path.attr("data-img-height");
+              var ratio = imgW / imgH;
+              // overflowing difference
+              var diff = parseFloat(path.attr("data-diff"));
+              diff = diff ? diff : 0;
+              // remaining height to have fullscreen image only on parallax
+              var remainingH = 0;
+              if(path.hasClass("parallax") && !$("html").hasClass("touch")){
+                  var maxH = contH > windowH ? contH : windowH;
+                  remainingH = windowH - contH;
+              }
+              // set img values depending on cont
+              imgH = contH + remainingH + diff;
+              imgW = imgH * ratio;
+              // fix when too large
+              if(contW > imgW){
+                  imgW = contW;
+                  imgH = imgW / ratio;
+              }
+              //
+              path.data("resized-imgW", imgW);
+              path.data("resized-imgH", imgH);
+              path.css("background-size", imgW + "px " + imgH + "px");
+          });
+      }
+      $(window).resize(backgroundResize);
+      $(window).focus(backgroundResize);
+      backgroundResize();
+
+      /* set parallax background-position */
+      function parallaxPosition(e){
+          var heightWindow = $(window).height();
+          var topWindow = $(window).scrollTop();
+          var bottomWindow = topWindow + heightWindow;
+          var currentWindow = (topWindow + bottomWindow) / 2;
+          $(".parallax").each(function(i){
+              var path = $(this);
+              var height = path.height();
+              var top = path.offset().top;
+              var bottom = top + height;
+              // only when in range
+              if(bottomWindow > top && topWindow < bottom){
+                  var imgW = path.data("resized-imgW");
+                  var imgH = path.data("resized-imgH");
+                  // min when image touch top of window
+                  var min = 0;
+                  // max when image touch bottom of window
+                  var max = - imgH + heightWindow;
+                  // overflow changes parallax
+                  var overflowH = height < heightWindow ? imgH - height : imgH - heightWindow; // fix height on overflow
+                  top = top - overflowH;
+                  bottom = bottom + overflowH;
+                  // value with linear interpolation
+                  var value = min + (max - min) * (currentWindow - top) / (bottom - top);
+                  // set background-position
+                  var orizontalPosition = path.attr("data-oriz-pos");
+                  orizontalPosition = orizontalPosition ? orizontalPosition : "50%";
+                  $(this).css("background-position", orizontalPosition + " " + value + "px");
+              }
+          });
+      }
+      if(!$("html").hasClass("touch")){
+          $(window).resize(parallaxPosition);
+          //$(window).focus(parallaxPosition);
+          $(window).scroll(parallaxPosition);
+          parallaxPosition();
+      }
+
+
+      $('div.bgParallax').each(function(){
+        var $obj = $(this);
+
+        $(window).scroll(function() {
+          var yPos  = -($(window).scrollTop() / 15);
+          var bgpos = $obj.attr("data-oriz-pos") + ' ' + yPos + 'px';
+          $obj.css('background-position', bgpos );
+        });
+      });
+    </script>
+
+
+    <%include file="widgets/segment-io.html" />
+
 </%block>
 
 
