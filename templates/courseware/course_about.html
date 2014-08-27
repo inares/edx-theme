@@ -22,7 +22,7 @@
   <meta property="og:description" content="${get_course_about_section(course, 'short_description')}" />
 </%block>
 
-<%block name="pagetitle">${get_course_about_section(course, "title")} | V01</%block>
+<%block name="pagetitle">${get_course_about_section(course, "title")} | V02</%block>
 
 <%block name="css">
   <%include file="../css-bootstrap.html" />
@@ -96,7 +96,9 @@
 <%block name="content">
 	<%include file="../navigation-bootstrap.html" />
 
-	
+  <div class="container">
+    <h1>${get_course_about_section(course, "title")}</h1>
+  </div>
 </%block>
 
 
