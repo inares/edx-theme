@@ -1,0 +1,98 @@
+<%namespace name='static' file='static_content.html'/>
+
+<%!
+  from django.utils.translation import ugettext as _
+  from django.core.urlresolvers import reverse
+%>
+
+			<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <!--<span class="sr-only">Toggle navigation</span>-->
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#"><img src="${static.url('themes/{name}/images/logo-inares-petit.png'.format(name=settings.THEME_NAME))}" alt="INARES"></b></a>&nbsp;&nbsp;
+          </div><!--/navbar-header -->
+
+          <div class="navbar-collapse collapse" style="float:center;">
+            <ul class="nav navbar-nav navbar-hover text-uppercase" role="navigation">
+              <li><a href="/#accueil"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
+              <li><a href="/#presentation"><span class="fa fa-user fa-fw"></span> Présentation</a></li>
+              <li><a href="/#fonctionnement"><span class="fa fa-cogs fa-fw"></span> Fonctionnement</a></li>
+              <li><a href="/#pedagogie"><span class="fa fa-wrench fa-fw"></span> Pédagogie</a></li>
+              <li><a href="/#cours"><span class="fa fa-graduation-cap fa-fw"></span> Cours</a></li>
+              <li><a href="/#aide"><span class="fa fa-question fa-fw"></span> Aide</a></li>
+            </ul>
+
+						<ul class="nav navbar-nav navbar-right" role="navigation">
+                % if user.is_authenticated():
+                	<li class="dropdown">
+                    <a href="${reverse('dashboard')}" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> ${user.username}</a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="${reverse('dashboard')}">${_("Dashboard")}</a></li>
+                      <li><a href="${reverse('logout')}">${_("Log Out")}</a></li>
+                    </ul>
+                  </li>
+                % else:
+                	<li class="dropdown">
+                    <a href="/login" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> ${_("Dashboard")}</a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="/login">${_("Log in")}</a></li>
+                      <li><a href="/register">${_("Register Now")}</a></li>
+                    </ul>
+                  </li>
+                % endif
+						</ul>
+            <!--</div> -->
+          </div><!--/navbar-collapse -->
+        </div><!--/container -->
+      </div><!--/navbar -->
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+		<script type="text/javascript">
+      var $navbar = $('.navbar-collapse'),
+      	   offset = $navbar.outerHeight() + 40;
+
+      $('body').scrollspy({ target: '.navbar-collapse', offset: offset });
+
+
+      /* Auto-close the collapsed navbar */
+			$(function() {
+          $('.nav a').on('click', function(){
+              if( $('.navbar-toggle').css('display')!='none'
+              && !$(this).hasClass('dropdown-toggle')  ){
+                  $('.navbar-toggle').trigger( 'click' );
+              }
+          });
+      });
+
+      /* Scroll bottom when opening dropdown in collapsed navbar (otherwise, elements stays hidden) */
+      $('.dropdown-toggle').click(function(event) {
+        if( $('.navbar-toggle').css('display') != 'none' ) {
+          var n = $(document).height();
+          $('.container .navbar-collapse').animate({ scrollTop: n }, 50);
+        }
+      });
+
+
+      /* Smooth scrolling */
+      if( $('.navbar-toggle').css('display') == 'none' ) {    // Only active on large screen, do to performance issue on mobiles and tablets
+        $(".navbar-collapse ul li a[href^='/#']").on('click', function(e) {
+           e.preventDefault();
+           var hash = this.hash;
+
+           $('html, body').animate({
+               scrollTop: $(this.hash).offset().top - 20
+             }, 300, function(){
+               //window.location.hash = hash;  // when done, add hash to url (default click behaviour)
+             });
+        });
+      }
+    </script>
