@@ -22,12 +22,27 @@
   <meta property="og:description" content="${get_course_about_section(course, 'short_description')}" />
 </%block>
 
-<%block name="pagetitle">${get_course_about_section(course, "title")} | V02</%block>
+<%block name="pagetitle">${get_course_about_section(course, "title")} | V09</%block>
 
 <%block name="css">
   <%include file="../css-bootstrap.html" />
-  .image-platon { background-image: url("${course_image_url(course)}");  background-repeat: no-repeat; }
-  .course-image {  }
+
+  <style type="text/css">
+    .image-course { padding: 0% 3%;  background-image: url("${course_image_url(course)}");  background-repeat: no-repeat; }
+    .course-image {  }
+    .featurette.border   { border: 1px solid #222222 }
+    .course-image.border { border: 1px solid #222222 }
+
+    /*@media(min-width: 1000px) {
+      .pull-left-me  { float: left  !important;  margin-right: 40px;  margin-left: auto;  margin-bottom: 20px; }
+      .pull-right-me { float: right !important;  margin-right: auto;  margin-left: 40px;  margin-bottom: 20px; }
+    }
+
+    @media(max-width: 999px) {
+      .pull-left-me  { margin-right: auto;  margin-left: auto; }
+      .pull-right-me { margin-right: auto;  margin-left: auto; }
+    }*/
+  </style>
 </%block>
 
 
@@ -99,10 +114,13 @@
 	<%include file="../navigation-bootstrap.html" />
 
   <div class="container">
-    <div class="image-course featurette-image featurette-image.pull-left-me"></div>
-    <h1>${get_course_about_section(course, "title")}</h1>
-    <div class="clearfix"></div>
-  </div>
+    <div class="featurette featurette-violet border">
+			<img src="${course_image_url(course)}" class="pull-left-me course-image border" />
+      <!-- <div class="image-course featurette-image featurette-image.pull-left-me"></div> -->
+      <div class="featurette-heading"><span class="fa fa-graduation-cap"></span> ${get_course_about_section(course, "title")}</div>
+      <div class="clearfix"></div>
+    </div><!-- /featurette -->
+  </div><!-- /container -->
 </%block>
 
 
@@ -133,13 +151,13 @@
             </a>
           %endif
 
-        
+
         % elif is_course_full:
           <span class="register disabled">
             ${_("Course is full")}
           </span>
-          
-          
+
+
         % elif invitation_only and not can_enroll:
           <span class="register disabled">${_("Enrollment in this course is by invitation only")}</span>
         ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
@@ -147,8 +165,8 @@
         ## so that they can register and become a real user that can enroll.
         % elif not is_shib_course and not can_enroll:
           <span class="register disabled">${_("Enrollment is Closed")}</span>
-          
-          
+
+
         %else:
           <a href="#" class="register">
             ${_("Register for {course.display_number_with_default}").format(course=course) | h}

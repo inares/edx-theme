@@ -1,30 +1,3 @@
-
-@media(min-width: 1000px) {
-  .navbar-hover > li > a { line-height: 0px;  padding-top: 18px;  padding-left: 10px;  padding-right: 10px;  padding-bottom: 18px; }
-  .navbar-hover > li > a:hover { padding-bottom: 16px;  margin-bottom: -4px;  border-radius: 0px;  border-bottom-width: 4px;  border-bottom-style: solid;  border-bottom-color: #62228C;  color: #000 !important; }
-  .featurette-image { width:400px;  height: 400px; }
-  .image-inares { background-image: url("../images/logo-inares.jpg");      background-repeat: no-repeat;  background-size: cover; }
-  .image-outils { background-image: url("../images/outils.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote.jpg");  background-repeat: no-repeat; }
-  .hidden-lg  { display:none  !important; }
-  .visible-lg { display:block !important; }
-  .featurette-image.pull-left  { margin-right: 40px;  margin-bottom: 20px; }
-  .featurette-image.pull-right { margin-left:  40px;  margin-bottom: 20px; }
-}
-
-@media(max-width: 999px) {
-  .navbar-hover > li > a { line-height: 0px; }
-  .navbar-nav { margin: 0px; }
-  .featurette-image { width:200px;  height: 200px;  margin-top: 40px;  margin-right: auto;  margin-left: auto; }
-  .image-inares { background-image: url("../images/logo-inares-moyen.jpg");      background-repeat: no-repeat; }
-  .image-outils { background-image: url("../images/outils-petit.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote-petit.jpg");  background-repeat: no-repeat; }
-  .hidden-lg  { display:block !important; }
-  .visible-lg { display:none  !important; }
-  .featurette-image.pull-left  { margin-bottom: 20px;  clear:both; }
-  .featurette-image.pull-right { margin-bottom: 20px;  clear:both; }
-}
-
 html { position: relative;  min-height: 100%; }
 body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important; }
 body > .container { padding: 60px 15px 0; }
@@ -32,13 +5,12 @@ body > .container { padding: 60px 15px 0; }
 .cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
 .nowrap { overflow-x: auto;  overflow-y: hidden;  white-space: nowrap; }
 
-.text-muted-feat   { font-size: 80%;  color: rgb(119, 119, 119); }
-.text-muted-feat-v { font-size: 80%;  color: rgb(136, 136, 136); }
+.text-muted-feat { font-size: 80%; }
+.text-muted-feat.violet { color: rgb(136, 136, 136); }
 
 .featurette-transp { width: 100%; }
 .featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }
 .featurette-violet > .text-muted { color: rgb(204, 204, 204); }
-.featurette-heading { font-size: 50px;  font-weight: 300;  line-height: 1;  letter-spacing: -1px; }
 
 .navbar-hover { line-height: 0px;  display: inline-block; float: none; }
 .navbar .navbar-collapse { text-align: center; }
@@ -58,9 +30,12 @@ body > .container { padding: 60px 15px 0; }
 	.container { max-width: 1000px; }
 
   .featurette { padding: 5% 0px; overflow: hidden; max-width:900px; }
-  .featurette-image { width:400px;  height: 400px; }
-  .featurette-image.pull-left-me  { float: left  !important;  margin-right: 40px;  margin-left: auto;  margin-bottom: 20px; }
-  .featurette-image.pull-right-me { float: right !important;  margin-right: auto;  margin-left: 40px;  margin-bottom: 20px; }
+  .featurette-heading { font-size: 50px;  font-weight: 600;  line-height: 1.1;  letter-spacing: -1px; }
+  .image-accueil { width:400px;  height: 400px;  margin-bottom: 20px; }
+  .pull-left-me  { float: left  !important; }
+  .pull-right-me { float: right !important; }
+	.pull-left-me.image-accueil  { margin-right: 40px;  margin-left: auto; }
+	.pull-right-me.image-accueil { margin-right: auto;  margin-left: 40px; }
 }
 
 @media(max-width: 999px) {
@@ -74,9 +49,10 @@ body > .container { padding: 60px 15px 0; }
   .container { max-width: 600px; }
 
   .featurette { padding: 2% 0px; overflow: hidden; }
-  .featurette-image { width:200px;  height: 200px; }
-  .featurette-image.pull-left-me  { margin-right: auto;  margin-left: auto; }
-  .featurette-image.pull-right-me { margin-right: auto;  margin-left: auto; }
+  .featurette-heading { font-size: 40px;  font-weight: 600;  line-height: 1;  letter-spacing: -1px; }
+  .image-accueil { width:200px;  height: 200px;  margin: 2%; }
+  .pull-left-me  { margin-right: auto;  margin-left: auto; }
+  .pull-right-me { margin-right: auto;  margin-left: auto; }
 }
 
 /*.parallax { }

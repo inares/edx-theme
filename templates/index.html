@@ -9,7 +9,7 @@
 %>
 
 
-<%block name="pagetitle">Accueil | V29</%block>
+<%block name="pagetitle">Accueil | V31</%block>
 
 <%block name="css">
   <%include file="css-bootstrap.html" />
@@ -32,11 +32,8 @@
     <div class="featurette-violet">
       <div class="container" id="presentation">
         <div class="featurette">
-          <!-- <div class="bgParallax image-inares img-circle featurette-image pull-right" data-speed="15" data-img-width="270" data-img-height="270" data-diff="25" data-oriz-pos="100%"></div> -->
-          <div class="image-inares img-circle featurette-image pull-right-me"></div>
-          <!-- <span class="image-inares img-circle featurette-image pull-right hidden-lg"></span> -->
-          <!-- <img class="featurette-image img-circle pull-right" src="${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.THEME_NAME))}">-->
-          <h2 class="featurette-heading"><span class="nowrap"><span class="fa fa-user"></span> Présentation</span><br><span class="text-muted-feat-v">Cours de sciences en ligne</span></h2>
+          <div class="image-inares image-accueil pull-right-me img-circle"></div>
+          <p class="featurette-heading"><span class="fa fa-user"></span> Présentation<br><span class="text-muted-feat violet">Cours de sciences en ligne</span></p>
           <p class="lead text-justify">
             <span class="cap">L</span>'INARES propose un enseignement dans trois sciences principales : la Philosophie, l'Histoire et l'Économie.
             L'INARES propose des cours en ligne dans différentes sciences, principalement la <strong>philosophie, l'histoire et l'économie</strong>.
@@ -52,35 +49,31 @@
     <div class="featurette-transp">
       <div class="container" id="fonctionnement">
         <div class="featurette clearfix">
-          <!-- <div class="bgParallax image-platon img-circle featurette-image pull-left" data-img-width="804" data-img-height="1052" data-diff="25" data-oriz-pos="0%"></div> -->
-          <div class="image-outils img-circle featurette-image pull-left-me"></div>
-          <!-- <img class="featurette-image img-circle pull-left" src="${static.url('themes/{name}/images/outils.jpg'.format(name=settings.THEME_NAME))}"> -->
-          <h2 class="featurette-heading"><span class="nowrap"><span class="fa fa-cogs"></span> Fonctionnement</span><br><span class="text-muted-feat">Des cours adaptés ouverts à tous</span></h2>
+          <div class="image-outils image-accueil pull-left-me img-circle"></div>
+          <p class="featurette-heading"><span class="fa fa-cogs"></span> Fonctionnement<br><span class="text-muted-feat">Des cours adaptés ouverts à tous</span></p>
           <p class="lead text-justify">
             <span class="cap">L</span>es cours possèdent toutes les qualités modernes des <a href="fr.wikipedia.org/wiki/Formation_en_ligne_ouverte_à_tous" id="link-mooc" data-toggle="tooltip" data-placement="top" title="Massive Open Online Course">MOOC</a> (formation en ligne ouverte à tous). Ils sont entièrement gratuits. Internet permet par ailleurs à <strong>chacun de participer aux différentes formations</strong> proposées. Plus besoin de se déplacer physiquement dans un lieu donné ni de respecter des horaires parfois incompatibles avec les exigences du quotidien.
           </p>
           <p class="lead text-justify">
             Nos cours allient les derniers outils technologiques, comme la vidéos, le web 2.0, la visioconférence ou les réseaux sociaux, à des méthodes pédagogiques adaptées. L’INARES propose des cours depuis quatre ans, en mettant l’<strong>innovation au service de l’enseignement</strong>.
           </p>
-        </div>
+        </div><!-- /featurette -->
       </div><!-- /container -->
     </div><!-- /featurette-transp -->
 
 
     <div class="featurette-violet">
       <div class="container" id="pedagogie">
-        <div class="featurette featurette-violet">
-          <!-- <div class="bgParallax image-platon img-circle featurette-image pull-right" data-img-width="804" data-img-height="1052" data-diff="25" data-oriz-pos="100%"></div> -->
-          <div class="image-platon img-circle featurette-image pull-right-me"></div>
-          <!-- <img class="featurette-image img-circle pull-right" src="${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}"> -->
-          <h2 class="featurette-heading"><span class="nowrap"><span class="fa fa-wrench"></span> Pédagogie</span><br><span class="text-muted-feat-v">Faciliter l'apprentissage</span></h2>
+        <div class="featurette">
+          <div class="image-platon image-accueil pull-right-me img-circle"></div>
+          <p class="featurette-heading"><span class="fa fa-wrench"></span> Pédagogie<br><span class="text-muted-feat violet">Faciliter l'apprentissage</span></p>
           <p class="lead text-justify">
             <span class="cap">L</span>es cours sont <strong>centrés sur l’apprenant</strong> et non sur l’enseignant. Nous utilisons les meilleurs outils et méthodes pour susciter l’<strong>envie d’apprendre</strong>.
           </p>
           <p class="lead text-justify">
             Ainsi, sans négliger le <strong>suivi pédagogique</strong> des élèves, l’INARES <strong>adapte son enseignement</strong> à cette forme précise de transmission de savoir que sont les MOOCs.
           </p>
-        </div>
+        </div><!-- /featurette -->
       </div><!-- /container -->
     </div><!-- /featurette-violet -->
 
@@ -88,7 +81,7 @@
     <div class="featurette-transp">
       <div class="container" id="cours">
         <div class="featurette">
-          <h2 class="featurette-heading"><span class="nowrap"><span class="fa fa-graduation-cap"></span> Cours</span></h2>
+          <p class="featurette-heading"><span class="fa fa-graduation-cap"></span> Cours</p>
           <br />
             % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
               <div class="row">
