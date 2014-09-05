@@ -22,9 +22,9 @@ body > .container { padding: 60px 15px 0; }
 @media(min-width: 1000px) {
   .navbar-hover > li > a { line-height: 0px;  padding-top: 18px;  padding-left: 10px;  padding-right: 10px;  padding-bottom: 18px; }
   .navbar-hover > li > a:hover { padding-bottom: 16px;  margin-bottom: -4px;  border-radius: 0px;  border-bottom-width: 4px;  border-bottom-style: solid;  border-bottom-color: #62228C;  color: #000 !important; }
-  .image-inares { background-image: url("../images/logo-inares.jpg");      background-repeat: no-repeat;  background-size: cover; }
-  .image-outils { background-image: url("../images/outils.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote.jpg");  background-repeat: no-repeat; }
+  .image-inares { background-image: url("../themes/edx-theme/images/logo-inares.jpg");      background-repeat: no-repeat;  background-size: cover; }
+  .image-outils { background-image: url("../themes/edx-theme/images/outils.jpg");           background-repeat: no-repeat; }
+  .image-platon { background-image: url("../themes/edx-theme/images/platon_aristote.jpg");  background-repeat: no-repeat; }
   .hidden-lg  { display:none  !important; }
   .visible-lg { display:block !important; }
 	.container { max-width: 1000px; }
@@ -41,9 +41,9 @@ body > .container { padding: 60px 15px 0; }
 @media(max-width: 999px) {
   .navbar-hover > li > a { line-height: 0px; }
   .navbar-nav { margin: 0px; }
-  .image-inares { background-image: url("../images/logo-inares-moyen.jpg");      background-repeat: no-repeat; }
-  .image-outils { background-image: url("../images/outils-petit.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote-petit.jpg");  background-repeat: no-repeat; }
+  .image-inares { background-image: url("../themes/edx-theme/images/logo-inares-moyen.jpg");      background-repeat: no-repeat; }
+  .image-outils { background-image: url("../themes/edx-theme/images/outils-petit.jpg");           background-repeat: no-repeat; }
+  .image-platon { background-image: url("../themes/edx-theme/images/platon_aristote-petit.jpg");  background-repeat: no-repeat; }
   .hidden-lg  { display:block !important; }
   .visible-lg { display:none  !important; }
   .container { max-width: 600px; }
