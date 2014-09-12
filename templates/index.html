@@ -9,13 +9,11 @@
 %>
 
 
-<%block name="pagetitle">Accueil | V31</%block>
+<%block name="pagetitle">Accueil | V34</%block>
 
 <%block name="css">
   <%include file="css-bootstrap.html" />
   <style type="text/css">
-    body div:nth-child(even){ font-size: 10px !important; }
-		.cap2::first-letter { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
   </style>
 </%block>
 
@@ -72,7 +70,7 @@
           <div class="image-platon image-accueil pull-right-me img-circle"></div>
           <p class="featurette-heading"><span class="fa fa-wrench"></span> Pédagogie<br><span class="text-muted-feat violet">Faciliter l'apprentissage</span></p>
           <p class="lead text-justify">
-            <span class="cap">L</span>es cours sont <strong>centrés sur l’apprenant</strong> et non sur l’enseignant. Nous utilisons les meilleurs outils et méthodes pour susciter l’<strong>envie d’apprendre</strong>.
+            Les cours sont <strong>centrés sur l’apprenant</strong> et non sur l’enseignant. Nous utilisons les meilleurs outils et méthodes pour susciter l’<strong>envie d’apprendre</strong>.
           </p>
           <p class="lead text-justify">
             Ainsi, sans négliger le <strong>suivi pédagogique</strong> des élèves, l’INARES <strong>adapte son enseignement</strong> à cette forme précise de transmission de savoir que sont les MOOCs.
@@ -96,70 +94,7 @@
                           <img src="${course_image_url(course)}" alt="${course.display_number_with_default | h} ${get_course_about_section(course, 'title')} Cover Image" />
                           <div class="caption">
                             %if course.is_newish:
-                              <p>Nouveau cours</p>
-                            %endif
-                            <h3>${get_course_about_section(course, 'title')}</h3>
-                            <p>${get_course_about_section(course, 'short_description')}</p>
-
-                            % if not course.start_date_is_still_default:
-                              <p>${course.start_date_text}</p>
-                            % endif
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  %endfor
-
-                	%for course in courses:
-                    <div class="col-xs-12 col-md-6 col-lg-4" id="${course.id.to_deprecated_string()}">
-                      <a href="${reverse('about_course', args=[course.id.to_deprecated_string()])}">
-                        <div class="thumbnail">
-                          <img src="${course_image_url(course)}" alt="${course.display_number_with_default | h} ${get_course_about_section(course, 'title')} Cover Image" />
-                          <div class="caption">
-                            %if course.is_newish:
-                              <p>Nouveau cours</p>
-                            %endif
-                            <h3>${get_course_about_section(course, 'title')}</h3>
-                            <p>${get_course_about_section(course, 'short_description')}</p>
-
-                            % if not course.start_date_is_still_default:
-                              <p>${course.start_date_text}</p>
-                            % endif
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  %endfor
-
-                	%for course in courses:
-                    <div class="col-xs-12 col-md-6 col-lg-4" id="${course.id.to_deprecated_string()}">
-                      <a href="${reverse('about_course', args=[course.id.to_deprecated_string()])}">
-                        <div class="thumbnail">
-                          <img src="${course_image_url(course)}" alt="${course.display_number_with_default | h} ${get_course_about_section(course, 'title')} Cover Image" />
-                          <div class="caption">
-                            %if course.is_newish:
-                              <p>Nouveau cours</p>
-                            %endif
-                            <h3>${get_course_about_section(course, 'title')}</h3>
-                            <p>${get_course_about_section(course, 'short_description')}</p>
-
-                            % if not course.start_date_is_still_default:
-                              <p>${course.start_date_text}</p>
-                            % endif
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  %endfor
-
-									%for course in courses:
-                    <div class="col-xs-12 col-md-6 col-lg-4" id="${course.id.to_deprecated_string()}">
-                      <a href="${reverse('about_course', args=[course.id.to_deprecated_string()])}">
-                        <div class="thumbnail">
-                          <img src="${course_image_url(course)}" alt="${course.display_number_with_default | h} ${get_course_about_section(course, 'title')} Cover Image" />
-                          <div class="caption">
-                            %if course.is_newish:
-                              <p>Nouveau cours</p>
+                              <!-- <p>Nouveau cours</p> -->
                             %endif
                             <h3>${get_course_about_section(course, 'title')}</h3>
                             <p>${get_course_about_section(course, 'short_description')}</p>

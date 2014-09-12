@@ -22,91 +22,36 @@
   <meta property="og:description" content="${get_course_about_section(course, 'short_description')}" />
 </%block>
 
-<%block name="pagetitle">${get_course_about_section(course, "title")} | V09</%block>
-
 <%block name="css">
   <%include file="../css-bootstrap.html" />
 
   <style type="text/css">
-    .image-course { padding: 0% 3%;  background-image: url("${course_image_url(course)}");  background-repeat: no-repeat; }
-    .course-image {  }
-    .featurette.border   { border: 1px solid #222222 }
-    .course-image.border { border: 1px solid #222222 }
+    .course-image { margin: 2% }
+    .featurette-violet.border { border: 0px solid #222222;  border-radius: 5px 5px 5px 5px;  -moz-border-radius: 5px 5px 5px 5px;  -webkit-border-radius: 5px 5px 5px 5px; }
+    .course-image.border      { border: 2px solid #222222;  border-radius: 5px 5px 5px 5px;  -moz-border-radius: 5px 5px 5px 5px;  -webkit-border-radius: 5px 5px 5px 5px;  -webkit-box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75);  -moz-box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75);  box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75); }
 
-    /*@media(min-width: 1000px) {
-      .pull-left-me  { float: left  !important;  margin-right: 40px;  margin-left: auto;  margin-bottom: 20px; }
-      .pull-right-me { float: right !important;  margin-right: auto;  margin-left: 40px;  margin-bottom: 20px; }
+
+    @media(min-width: 1000px) {
+      .course-head { padding: 1%; overflow: hidden; max-width:900px; }
+      .course-heading { font-size: 50px;  font-weight: 600;  line-height: 1.1;  letter-spacing: -1px;  margin: 2% 0%; }
+      .course-image { }
     }
 
     @media(max-width: 999px) {
-      .pull-left-me  { margin-right: auto;  margin-left: auto; }
-      .pull-right-me { margin-right: auto;  margin-left: auto; }
-    }*/
+      .course-head { padding: 1%; overflow: hidden; }
+      .course-heading { font-size: 40px;  font-weight: 600;  line-height: 1;  letter-spacing: -1px;  margin: 2% 0%; }
+      .course-image { margin-right: auto;  margin-left: auto; }
+    }
   </style>
 </%block>
 
 
 
 <%block name="js_extra">
-  <script type="text/javascript">
-  (function() {
-    $(".register").click(function(event) {
-      $("#class_enroll_form").submit();
-      event.preventDefault();
-    });
-
-
-
-    ## making the conditional around this entire JS block for sanity
-    %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
-      <%
-        perms_error = _('The currently logged-in user account does not have permission to enroll in this course. '
-                        'You may need to {start_logout_tag}log out{end_tag} then try the register button again. '
-                        'Please visit the {start_help_tag}help page{end_tag} for a possible solution.').format(
-                          start_help_tag="<a href='{url}'>".format(url=marketing_link('FAQ')), end_tag='</a>',
-                          start_logout_tag="<a href='{url}'>".format(url=reverse('logout'))
-                          )
-      %>
-    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
-      if(xhr.status == 200) {
-        location.href = "${reverse('dashboard')}";
-      } else if (xhr.status == 403) {
-        location.href = "${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}?course_id=${course.id.to_deprecated_string()}&enrollment_action=enroll";
-      } else if (xhr.status == 400) { //This means the user did not have permission
-        $('#register_error').html("${perms_error}").css("display", "block");
-      } else {
-        $('#register_error').html(
-            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
-        ).css("display", "block");
-      }
-    });
-
-    %else:
-
-    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
-      if(xhr.status == 200) {
-        if (xhr.responseText == "") {
-          location.href = "${reverse('dashboard')}";
-        }
-        else {
-          location.href = xhr.responseText;
-        }
-      } else if (xhr.status == 403) {
-        location.href = "${reverse('register_user')}?course_id=${course.id.to_deprecated_string()}&enrollment_action=enroll";
-      } else {
-        $('#register_error').html(
-            (xhr.responseText ? xhr.responseText : 'An error occurred. Please try again later.')
-        ).css("display", "block");
-      }
-    });
-
-    %endif
-
-  })(this)
-  </script>
-
-  <script src="${static.url('js/course_info.js')}"></script>
 </%block>
+
+
+<%block name="pagetitle">${get_course_about_section(course, "title")} | V36</%block>
 
 
 
@@ -114,13 +59,215 @@
 	<%include file="../navigation-bootstrap.html" />
 
   <div class="container">
-    <div class="featurette featurette-violet border">
-			<img src="${course_image_url(course)}" class="pull-left-me course-image border" />
-      <!-- <div class="image-course featurette-image featurette-image.pull-left-me"></div> -->
-      <div class="featurette-heading"><span class="fa fa-graduation-cap"></span> ${get_course_about_section(course, "title")}</div>
+    <div class="course-head featurette-violet border">
+			<img src="${course_image_url(course)}" class="pull-left-me course-image border img-responsive" />
+      <div class="course-heading">${get_course_about_section(course, "title")}</div>
+			<div class="lead">${get_course_about_section(course, 'short_description')}</div>
+      <div class="lead">
+        %if user.is_authenticated() and registered:
+          %if show_courseware_link:
+            <a href="${course_target}">
+          %endif
+
+          <span class="register disabled">${_("You are registered for this course")}.</span>
+
+          %if show_courseware_link:
+            <strong> ${_("View Courseware")}</strong>
+            </a>
+          %endif
+        % elif is_course_full:
+          <span class="register disabled">
+            ${_("Course is full")}
+          </span>
+        % elif invitation_only and not can_enroll:
+          <span class="register disabled">${_("Enrollment in this course is by invitation only")}</span>
+        ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
+        ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
+        ## so that they can register and become a real user that can enroll.
+        % elif not is_shib_course and not can_enroll:
+          <span class="register disabled">${_("Enrollment is Closed")}</span>
+        %else:
+          <a href="#" class="register" id="register">S'inscrire au cours</a>
+        	<div id="register_error"></div>
+        %endif
+      </div>
+
+      % if staff_access and studio_url is not None:
+      <div class="wrap-instructor-info studio-view">
+        <a class="instructor-info-action" href="${studio_url}">Voir le cours dans Studio.</a>
+      </div>
+      % endif
+
       <div class="clearfix"></div>
     </div><!-- /featurette -->
+    
+    <br />
+
+    <div class="">
+      % if not course.start_date_is_still_default:
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3 class="panel-title"><i class="fa fa-calendar"></i> ${_("Classes Start")}</h3></div>
+        <div class="panel-body">${course.start_date_text}</div>
+      </div>
+      % endif
+
+      % if get_course_about_section(course, "end_date") or course.end:
+      <p><i class="fa fa-calendar"></i> ${_("Classes End")} : 
+        % if get_course_about_section(course, "end_date"):
+            ${get_course_about_section(course, "end_date")}
+        % else:
+            ${course.end_date_text}
+        % endif
+      </p>
+      % endif
+
+      % if get_course_about_section(course, "effort"):
+      <ul class="list-group">
+        <li class="list-group-item active">
+          <i class="fa clock-o"></i> ${_("Estimated Effort")}
+        </li>
+        <li class="list-group-item">
+          ${get_course_about_section(course, "effort")}
+        </li>
+      </ul>
+
+      <!-- <div class="list-group">
+        <div class="panel-heading"><i class="fa clock-o"></i> ${_("Estimated Effort")}</div>
+        <div class="panel-body">${get_course_about_section(course, "effort")}</div>
+      </div> -->
+        ##<!-- <p><i class="fa fa-clock-o"></i> ${_("Estimated Effort")} : ${get_course_about_section(course, "effort")}</p> -->
+      % endif
+
+      ##<!-- <p><i class="fa fa-calendar"></i> Durée du cours : ${_('{number} weeks').format(number=15)}</p> -->
+
+      % if get_course_about_section(course, "prerequisites"):
+        <p>${_("Prerequisites")} : ${get_course_about_section(course, "prerequisites")}</p>
+      % endif
+    </div>
+
+
+		<div style="">
+
+		</div><!-- / -->
   </div><!-- /container -->
+
+  %if active_reg_button or is_shib_course:
+  <div style="display: none;">
+    <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
+      <fieldset class="enroll_fieldset">
+        <input name="course_id" type="hidden" value="${course.id.to_deprecated_string()}">
+        <input name="enrollment_action" type="hidden" value="enroll">
+      </fieldset>
+      <input name="submit" type="submit" value="enroll">
+    </form>
+  </div>
+	%endif
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      /*$( "#class_enroll_form" ).submit(function( event ) {
+        console.log("ici 4 !");
+        event.preventDefault();
+      });*/
+
+      (function($, undefined) {
+        var form_ext;
+        $.form_ext  = form_ext = {
+          ajax: function(options) {
+            return $.ajax(options);
+          },
+          handleRemote: function(element) {
+            var method = element.attr('method');
+            var url = element.attr('action');
+            var data = element.serializeArray();
+            var options = {
+              type: method || 'GET',
+              data: data,
+              dataType: 'text json',
+              success: function(data, status, xhr) {
+                element.trigger("ajax:success", [data, status, xhr]);
+              },
+              complete: function(xhr, status) {
+                element.trigger("ajax:complete", [xhr, status]);
+              },
+              error: function(xhr, status, error) {
+                element.trigger("ajax:error", [xhr, status, error]);
+              }
+            }
+            if(url) { options.url = url; }
+            return form_ext.ajax(options)
+          },
+          CSRFProtection: function(xhr) {
+            var token = $.cookie('csrftoken');
+            if (token) xhr.setRequestHeader('X-CSRFToken', token);
+          }
+        }
+        $.ajaxPrefilter(function(options, originalOptions, xhr){ if ( !options.crossDomain ) { form_ext.CSRFProtection(xhr); }});
+        $(document).delegate('form', 'submit', function(e) {
+          var form = $(this),
+          remote = form.data("remote") !== undefined;
+
+          if(remote) {
+            form_ext.handleRemote(form);
+            return false;
+          }
+
+        });
+      })(jQuery);
+
+      $("#register").click(function(event) {
+        $("#class_enroll_form").submit();
+        event.preventDefault();
+      });
+
+
+
+      ## making the conditional around this entire JS block for sanity
+      %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
+        <%
+          perms_error = _('The currently logged-in user account does not have permission to enroll in this course. '
+                          'You may need to {start_logout_tag}log out{end_tag} then try the register button again. '
+                          'Please visit the {start_help_tag}help page{end_tag} for a possible solution.').format(
+                            start_help_tag="<a href='{url}'>".format(url=marketing_link('FAQ')), end_tag='</a>',
+                            start_logout_tag="<a href='{url}'>".format(url=reverse('logout'))
+                            )
+        %>
+      $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
+        if(xhr.status == 200) {
+          location.href = "${reverse('dashboard')}";
+        } else if (xhr.status == 403) {
+          location.href = "${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}?course_id=${course.id.to_deprecated_string()}&enrollment_action=enroll";
+        } else if (xhr.status == 400) { //This means the user did not have permission
+          $('#register_error').html("${perms_error}").css("display", "block");
+        } else {
+          $('#register_error').html(
+              (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
+          ).css("display", "block");
+        }
+      });
+      %else:
+      $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
+        if(xhr.status == 200) {
+          if (xhr.responseText == "") {
+            location.href = "${reverse('dashboard')}";
+          }
+          else {
+            location.href = xhr.responseText;
+          }
+        } else if (xhr.status == 403) {
+          location.href = "${reverse('register_user')}?course_id=${course.id.to_deprecated_string()}&enrollment_action=enroll";
+        } else {
+          $('#register_error').html(
+              (xhr.responseText ? xhr.responseText : 'An error occurred. Please try again later.')
+          ).css("display", "block");
+        }
+      });
+      %endif
+    })(this)
+  </script>
+
+  <script src="${static.url('js/course_info.js')}"></script>
 </%block>
 
 
@@ -350,4 +497,5 @@
 
 
 <%block name="js">
+
 </%block>

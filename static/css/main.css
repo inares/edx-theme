@@ -36,6 +36,9 @@ body > .container { padding: 60px 15px 0; }
   .pull-right-me { float: right !important; }
 	.pull-left-me.image-accueil  { margin-right: 40px;  margin-left: auto; }
 	.pull-right-me.image-accueil { margin-right: auto;  margin-left: 40px; }
+  .cap2::first-letter { display: block;  float: left;  font-size: 67px;  line-height: 80%;  font-weight: bold; }
+
+  .course-head { padding: 2% 2%; overflow: hidden; max-width:900px; }
 }
 
 @media(max-width: 999px) {
@@ -53,6 +56,9 @@ body > .container { padding: 60px 15px 0; }
   .image-accueil { width:200px;  height: 200px;  margin: 2%; }
   .pull-left-me  { margin-right: auto;  margin-left: auto; }
   .pull-right-me { margin-right: auto;  margin-left: auto; }
+  .cap2::first-letter { display: block;  float: left;  font-size: 50px;  line-height: 80%;  font-weight: bold; }
+
+  .course-head { padding: 2% 2%; overflow: hidden; }
 }
 
 /*.parallax { }
