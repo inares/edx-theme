@@ -5,7 +5,7 @@
   from django.core.urlresolvers import reverse
 %>
 
-			<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,17 +19,23 @@
 
           <div class="navbar-collapse collapse" style="float:center;">
             <ul class="nav navbar-nav navbar-hover text-uppercase" role="navigation">
-              <li><a href="/#accueil"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
-              <li><a href="/#presentation"><span class="fa fa-user fa-fw"></span> Présentation</a></li>
-              <li><a href="/#fonctionnement"><span class="fa fa-cogs fa-fw"></span> Fonctionnement</a></li>
-              <li><a href="/#pedagogie"><span class="fa fa-wrench fa-fw"></span> Pédagogie</a></li>
-              <li><a href="/#cours"><span class="fa fa-graduation-cap fa-fw"></span> Cours</a></li>
-              <li><a href="/#aide"><span class="fa fa-question fa-fw"></span> Aide</a></li>
+              <%
+                if request.path == "/":
+                  first = ""
+                else:
+                  first = "/"
+              %>
+              <li><a href="${first}#accueil"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
+              <li><a href="${first}#presentation"><span class="fa fa-user fa-fw"></span> Présentation</a></li>
+              <li><a href="${first}#fonctionnement"><span class="fa fa-cogs fa-fw"></span> Fonctionnement</a></li>
+              <li><a href="${first}#pedagogie"><span class="fa fa-wrench fa-fw"></span> Pédagogie</a></li>
+              <li><a href="${first}#cours"><span class="fa fa-graduation-cap fa-fw"></span> Cours</a></li>
+              <li><a href="${first}#aide"><span class="fa fa-question fa-fw"></span> Aide</a></li>
             </ul>
 
-						<ul class="nav navbar-nav navbar-right" role="navigation">
+            <ul class="nav navbar-nav navbar-right" role="navigation">
                 % if user.is_authenticated():
-                	<li class="dropdown">
+                  <li class="dropdown">
                     <a href="${reverse('dashboard')}" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> ${user.username}</a>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="${reverse('dashboard')}">${_("Dashboard")}</a></li>
@@ -37,7 +43,7 @@
                     </ul>
                   </li>
                 % else:
-                	<li class="dropdown">
+                  <li class="dropdown">
                     <a href="/login" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> ${_("Dashboard")}</a>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="/login">${_("Log in")}</a></li>
@@ -45,7 +51,7 @@
                     </ul>
                   </li>
                 % endif
-						</ul>
+            </ul>
             <!--</div> -->
           </div><!--/navbar-collapse -->
         </div><!--/container -->
@@ -56,15 +62,9 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
-		<script type="text/javascript">
-      var $navbar = $('.navbar-collapse'),
-      	   offset = $navbar.outerHeight() + 40;
-
-      $('body').scrollspy({ target: '.navbar-collapse', offset: offset });
-
-
+    <script type="text/javascript">
       /* Auto-close the collapsed navbar */
-			$(function() {
+      $(function() {
           $('.nav a').on('click', function(){
               if( $('.navbar-toggle').css('display')!='none'
               && !$(this).hasClass('dropdown-toggle')  ){
@@ -72,6 +72,7 @@
               }
           });
       });
+
 
       /* Scroll bottom when opening dropdown in collapsed navbar (otherwise, elements stays hidden) */
       $('.dropdown-toggle').click(function(event) {
@@ -82,17 +83,25 @@
       });
 
 
-      /* Smooth scrolling */
-      if( $('.navbar-toggle').css('display') == 'none' ) {    // Only active on large screen, do to performance issue on mobiles and tablets
-        $(".navbar-collapse ul li a[href^='/#']").on('click', function(e) {
-           e.preventDefault();
-           var hash = this.hash;
+      if( window.location.pathname === "/" ) {
+        var $navbar = $('.navbar-collapse'),
+             offset = $navbar.outerHeight() + 40;
 
-           $('html, body').animate({
-               scrollTop: $(this.hash).offset().top - 20
-             }, 300, function(){
-               //window.location.hash = hash;  // when done, add hash to url (default click behaviour)
-             });
-        });
+        $('body').scrollspy( { target: '.navbar-collapse', offset: offset } );
+
+
+        /* Smooth scrolling */
+        if( $('.navbar-toggle').css('display') == 'none' ) {    // Only active on large screen, do to performance issue on mobiles and tablets
+          $(".navbar-collapse ul li a[href^='/#']").on('click', function(e) {
+             e.preventDefault();
+             var hash = this.hash;
+
+             $('html, body').animate({
+                 scrollTop: $(this.hash).offset().top - 20
+               }, 300, function(){
+                 //window.location.hash = hash;  // when done, add hash to url (default click behaviour)
+               });
+          });
+        }
       }
     </script>

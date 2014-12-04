@@ -1,5 +1,5 @@
-html { position: relative;  min-height: 100%; }
-body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important; }
+html { min-height: 100%; }
+body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important; position: relative; }
 body > .container { padding: 60px 15px 0; }
 
 .cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }

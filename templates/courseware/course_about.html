@@ -29,16 +29,19 @@
     .course-image { margin: 2% }
     .featurette-violet.border { border: 0px solid #222222;  border-radius: 5px 5px 5px 5px;  -moz-border-radius: 5px 5px 5px 5px;  -webkit-border-radius: 5px 5px 5px 5px; }
     .course-image.border      { border: 2px solid #222222;  border-radius: 5px 5px 5px 5px;  -moz-border-radius: 5px 5px 5px 5px;  -webkit-border-radius: 5px 5px 5px 5px;  -webkit-box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75);  -moz-box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75);  box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75); }
-
+    .course-overview { padding: 1%; max-width: 800px; margin-right: auto;  margin-left: auto; }
+    .teacher:after{ content:""; display:table; clear:both; }
+    .teacher-image{ background: #fff; border: 1px solid #d9d9d9; /*height: 115px;*/ float: left; margin :0 15px 0px 0; overflow: hidden; padding: 1px; /*width: 115px;*/ }
+    section{ margin-bottom: 40px; }
 
     @media(min-width: 1000px) {
-      .course-head { padding: 1%; overflow: hidden; max-width:900px; }
+      .course-head { padding: 2px; overflow: hidden; max-width:900px; }
       .course-heading { font-size: 50px;  font-weight: 600;  line-height: 1.1;  letter-spacing: -1px;  margin: 2% 0%; }
       .course-image { }
     }
 
     @media(max-width: 999px) {
-      .course-head { padding: 1%; overflow: hidden; }
+      .course-head { padding: 2%; overflow: hidden; }
       .course-heading { font-size: 40px;  font-weight: 600;  line-height: 1;  letter-spacing: -1px;  margin: 2% 0%; }
       .course-image { margin-right: auto;  margin-left: auto; }
     }
@@ -51,7 +54,7 @@
 </%block>
 
 
-<%block name="pagetitle">${get_course_about_section(course, "title")} | V36</%block>
+<%block name="pagetitle">${get_course_about_section(course, "title")} | V50</%block>
 
 
 
@@ -93,62 +96,46 @@
       </div>
 
       % if staff_access and studio_url is not None:
-      <div class="wrap-instructor-info studio-view">
-        <a class="instructor-info-action" href="${studio_url}">Voir le cours dans Studio.</a>
+      <div class="">
+        <a href="${studio_url}">Voir le cours dans Studio.</a>
       </div>
       % endif
 
-      <div class="clearfix"></div>
-    </div><!-- /featurette -->
-    
-    <br />
-
-    <div class="">
       % if not course.start_date_is_still_default:
-      <div class="panel panel-primary">
-        <div class="panel-heading"><h3 class="panel-title"><i class="fa fa-calendar"></i> ${_("Classes Start")}</h3></div>
-        <div class="panel-body">${course.start_date_text}</div>
+      <div class="">
+        <span class="fa fa-calendar" style="width: 18px;"></span> ${_("Classes Start")} : ${course.start_date_text}
       </div>
       % endif
 
       % if get_course_about_section(course, "end_date") or course.end:
-      <p><i class="fa fa-calendar"></i> ${_("Classes End")} : 
+      <div class="">
+        <span class="fa fa-calendar" style="width: 18px;"></span> ${_("Classes End")} :
         % if get_course_about_section(course, "end_date"):
             ${get_course_about_section(course, "end_date")}
         % else:
             ${course.end_date_text}
         % endif
-      </p>
+      </div>
       % endif
 
       % if get_course_about_section(course, "effort"):
-      <ul class="list-group">
-        <li class="list-group-item active">
-          <i class="fa clock-o"></i> ${_("Estimated Effort")}
-        </li>
-        <li class="list-group-item">
-          ${get_course_about_section(course, "effort")}
-        </li>
-      </ul>
-
-      <!-- <div class="list-group">
-        <div class="panel-heading"><i class="fa clock-o"></i> ${_("Estimated Effort")}</div>
-        <div class="panel-body">${get_course_about_section(course, "effort")}</div>
+      <!-- <div class="">
+        <span class="" style="margin-right: 5px;"><span class="fa fa-clock-o"></span> ${_("Estimated Effort")}</span>
+        <span class="">${get_course_about_section(course, "effort")}</span>
       </div> -->
-        ##<!-- <p><i class="fa fa-clock-o"></i> ${_("Estimated Effort")} : ${get_course_about_section(course, "effort")}</p> -->
+      <div class="">
+        <span class="fa fa-clock-o" style="width: 18px;"></span> ${_("Estimated Effort")} : ${get_course_about_section(course, "effort")}
+      </div>
       % endif
 
-      ##<!-- <p><i class="fa fa-calendar"></i> Durée du cours : ${_('{number} weeks').format(number=15)}</p> -->
+      <div class="clearfix"></div>
+    </div><!-- /featurette -->
 
-      % if get_course_about_section(course, "prerequisites"):
-        <p>${_("Prerequisites")} : ${get_course_about_section(course, "prerequisites")}</p>
-      % endif
-    </div>
+    <br />
 
-
-		<div style="">
-
-		</div><!-- / -->
+		<div class="course-overview">
+			${get_course_about_section(course, "overview")}
+		</div><!-- /course-overview -->
   </div><!-- /container -->
 
   %if active_reg_button or is_shib_course:
