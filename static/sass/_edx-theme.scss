@@ -804,19 +804,19 @@ $register-banner-image: none;
           }
 
           &.length {
-#            @include background-image(url('../images/chart-icon.png'));                      
+//            @include background-image(url('../images/chart-icon.png'));                      
           }
 
           &.course-number {
-#            @include background-image(url('../images/course-info-icon.png'));                  
+//            @include background-image(url('../images/course-info-icon.png'));                  
           }
 
           &.effort {
-#            @include background-image(url('../images/pencil-icon.png'));                
+//            @include background-image(url('../images/pencil-icon.png'));                
           }
 
           &.prereq {
-#            @include background-image(url('../images/prerec-icon.png'));                        
+//            @include background-image(url('../images/prerec-icon.png'));                        
           }
         }
 
