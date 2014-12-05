@@ -796,27 +796,27 @@ $register-banner-image: none;
           width: 19px;
 
           &.start {
-            @include background-image(url('../images/portal-icons/calendar-icon.png'));
+            @include background-image(url('../images/calendar-icon.png'));
           }
 
           &.end {
-            @include background-image(url('../images/portal-icons/calendar-icon.png'));
+            @include background-image(url('../images/calendar-icon.png'));                
           }
 
           &.length {
-            @include background-image(url('../images/portal-icons/chart-icon.png'));
+            @include background-image(url('../images/chart-icon.png'));                      
           }
 
           &.course-number {
-            @include background-image(url('../images/portal-icons/course-info-icon.png'));
+            @include background-image(url('../images/course-info-icon.png'));                  
           }
 
           &.effort {
-            @include background-image(url('../images/portal-icons/pencil-icon.png'));
+            @include background-image(url('../images/pencil-icon.png'));                
           }
 
           &.prereq {
-            @include background-image(url('../images/portal-icons/prerec-icon.png'));
+            @include background-image(url('../images/prerec-icon.png'));                        
           }
         }
 
