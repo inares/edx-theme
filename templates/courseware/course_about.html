@@ -103,7 +103,7 @@
 
       % if not course.start_date_is_still_default:
       <div class="">
-        <span class="fa fa-calendar" style="width: 18px;"></span> ${_("Classes Start")} : ${course.start_date_text}
+        <span class="fa fa-calendar" style="width: 18px;"></span> ${_("Classes Start")} : ${course.start_datetime_text()}
       </div>
       % endif
 
@@ -414,7 +414,7 @@
         <ol class="important-dates">
           <li><div class="icon course-number"></div><p>${_("Course Number")}</p><span class="course-number">${course.display_number_with_default | h}</span></li>
           % if not course.start_date_is_still_default:
-          <li><div class="icon start"></div><p>${_("Classes Start")}</p><span class="start-date">${course.start_date_text}</span></li>
+          <li><div class="icon start"></div><p>${_("Classes Start")}</p><span class="start-date">${course.start_datetime_text()}</span></li>
           % endif
             ## We plan to ditch end_date (which is not stored in course metadata),
             ## but for backwards compatibility, show about/end_date blob if it exists.
