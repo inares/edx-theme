@@ -7,7 +7,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
-<%static:css group='style-bootstrap'/>
+<link rel="stylesheet" type="text/css" href="${static.url('themes/{name}/css/bootstrap.min.css'.format(name=settings.THEME_NAME))}">
 <link rel="stylesheet" type="text/css" href="${static.url('themes/{name}/css/main.css'.format(name=settings.THEME_NAME))}">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
