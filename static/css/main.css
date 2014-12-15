@@ -1,4 +1,5 @@
-html { min-height: 100%; }
+html { min-height: 100%; color: #3E0466; background-color: #BF8A2E; }
+/*html { min-height: 100%; }*/
 body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important; position: relative; }
 body > .container { padding: 60px 15px 0; }
 
@@ -6,11 +7,12 @@ body > .container { padding: 60px 15px 0; }
 .nowrap { overflow-x: auto;  overflow-y: hidden;  white-space: nowrap; }
 
 .text-muted-feat { font-size: 80%; }
-.text-muted-feat.violet { color: rgb(136, 136, 136); }
+.text-muted-feat.violet { color: #888888; }
 
 .featurette-transp { width: 100%; }
-.featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }
-.featurette-violet > .text-muted { color: rgb(204, 204, 204); }
+.featurette-violet { width: 100%; background-color: #3E0466;  color: #CCCCCC; }
+/*.featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }*/
+.featurette-violet > .text-muted { color: #CCCCCC; }
 
 .navbar-hover { line-height: 0px;  display: inline-block; float: none; }
 .navbar .navbar-collapse { text-align: center; }
@@ -21,7 +23,7 @@ body > .container { padding: 60px 15px 0; }
 
 @media(min-width: 1000px) {
   .navbar-hover > li > a { line-height: 0px;  padding-top: 18px;  padding-left: 10px;  padding-right: 10px;  padding-bottom: 18px; }
-  .navbar-hover > li > a:hover { padding-bottom: 16px;  margin-bottom: -4px;  border-radius: 0px;  border-bottom-width: 4px;  border-bottom-style: solid;  border-bottom-color: #62228C;  color: #000 !important; }
+  .navbar-hover > li > a:hover { padding-bottom: 16px;  margin-bottom: -4px;  border-radius: 0px;  border-bottom-width: 4px;  border-bottom-style: solid;  border-bottom-color: #7419B2;  color: #7419B2 !important; }
   .image-inares { background-image: url("../images/logo-inares.jpg");      background-repeat: no-repeat;  background-size: cover; }
   .image-outils { background-image: url("../images/outils.jpg");           background-repeat: no-repeat; }
   .image-platon { background-image: url("../images/platon_aristote.jpg");  background-repeat: no-repeat; }
