@@ -26,7 +26,7 @@
   <%include file="../css-bootstrap.html" />
 
   <style type="text/css">
-    .course-image { margin: 2% }
+    .course-image { margin-left: 2%;  margin-bottom: 2%;  width: 96%; }
     .featurette-violet.border { border: 0px solid #222222;  border-radius: 5px 5px 5px 5px;  -moz-border-radius: 5px 5px 5px 5px;  -webkit-border-radius: 5px 5px 5px 5px; }
     .course-image.border      { border: 2px solid #222222;  border-radius: 5px 5px 5px 5px;  -moz-border-radius: 5px 5px 5px 5px;  -webkit-border-radius: 5px 5px 5px 5px;  -webkit-box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75);  -moz-box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75);  box-shadow: 5px 5px 5px 0px rgba(34,34,34,0.75); }
     .course-overview { padding: 1%; max-width: 800px; margin-right: auto;  margin-left: auto; }
@@ -35,13 +35,13 @@
     section{ margin-bottom: 40px; }
 
     @media(min-width: 1000px) {
-      .course-head { padding: 2px; overflow: hidden; max-width:900px; }
+      .course-head { /*padding: 2px;*/  overflow: hidden;  max-width:900px; }
       .course-heading { font-size: 50px;  font-weight: 600;  line-height: 1.1;  letter-spacing: -1px;  margin: 2% 0%; }
       .course-image { }
     }
 
     @media(max-width: 999px) {
-      .course-head { padding: 2%; overflow: hidden; }
+      .course-head { /*padding: 2%;*/ overflow: hidden; }
       .course-heading { font-size: 40px;  font-weight: 600;  line-height: 1;  letter-spacing: -1px;  margin: 2% 0%; }
       .course-image { margin-right: auto;  margin-left: auto; }
     }
@@ -63,7 +63,7 @@
 
   <div class="container">
     <div class="course-head featurette-violet border">
-			<img src="${course_image_url(course)}" class="pull-left-me course-image border img-responsive" />
+			<img src="${course_image_url(course)}" class="pull-left-me course-image border img-responsive" /><br />
       <div class="course-heading">${get_course_about_section(course, "title")}</div>
 			<div class="lead">${get_course_about_section(course, 'short_description')}</div>
       <div class="lead">
