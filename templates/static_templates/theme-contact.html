@@ -9,14 +9,14 @@
 <%block name="pagetitle">Cours francophone en ligne | Contact</%block>
 
 <%block name="css">
-  <%include file="css-bootstrap.html" />
+  <%include file="../css-bootstrap.html" />
   <style type="text/css">
   </style>
 </%block>
 
 
 <%block name="content">
-  	<%include file="navigation-bootstrap.html" />
+  	<%include file="../navigation-bootstrap.html" />
 
     <!-- === MAIN === -->
     <div class="container" id="accueil">
@@ -52,9 +52,6 @@
     <script type="text/javascript">
       $('#link-mooc').tooltip();
     </script>
-
-
-    <%include file="widgets/segment-io.html" />
 </%block>
 
 
@@ -62,16 +59,7 @@
 <%block name="js">
 </%block>
 
-
-
 <%block name="js_extra">
-   <script type="text/javascript">
-      $(window).load(function() {
-         if(getParameterByName('next')) {
-              $('#login').trigger("click");
-         }
-      })
-   </script>
 </%block>
 
 % if show_signup_immediately is not UNDEFINED:
