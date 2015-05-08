@@ -1,11 +1,5 @@
 <%inherit file="../main.html" />
 
-<%!
-  from django.utils.translation import ugettext as _
-  from django.core.urlresolvers import reverse
-%>
-
-
 <%block name="pagetitle">Cours francophone en ligne | Contact</%block>
 
 <%block name="css">
@@ -16,42 +10,41 @@
 
 
 <%block name="content">
-  	<%include file="../navigation-bootstrap.html" />
+  <%include file="../navigation-bootstrap.html" />
 
-    <!-- === MAIN === -->
-    <div class="container" id="accueil">
-      <h1><strong>INARES</strong> <span class="text-muted-feat">Apprendre les sciences</span></h1>
-      <p class="lead text-justify">Cours en ligne de l'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques.</p>
-      <p class="lead text-justify">Aristote a changé durablement l’approche des sciences avec une méthode réaliste basée sur l’observation. C'est cette démarche scientifique qui fait la force de notre enseignement.</p>
-      <br />
-      <br />
+  <div class="container" id="accueil">
+    <h1><strong>INARES</strong> <span class="text-muted-feat">Apprendre les sciences</span></h1>
+    <p class="lead text-justify">Cours en ligne de l'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques.</p>
+    <p class="lead text-justify">Aristote a changé durablement l’approche des sciences avec une méthode réaliste basée sur l’observation. C'est cette démarche scientifique qui fait la force de notre enseignement.</p>
+    <br />
+    <br />
+  </div><!-- /container -->
+
+
+  <div class="featurette-violet">
+    <div class="container" id="presentation">
+      <div class="featurette">
+        <div class="image-inares image-accueil pull-right-me img-circle"></div>
+        <p class="featurette-heading"><span class="fa fa-envelope-o"></span> Contact</p>
+        <br>
+        <p class="lead cap2 text-justify">
+          <span class="">L</span>'INARES est une association loi 1901 fondée en octobre 2014.
+        </p>
+        <p class="lead text-justify">
+          Nous cherchons toujours à améliorer nos cours et notre site. N'hésitez pas à nous envoyer vos remarques et suggestions. Si vous êtes un étudiant inscrit et avez des questions, des commentaires ou des suggestions spécifiques à un cours, merci de poster un nouveau message sur la discussion du cours.
+        </p>
+        <p class="lead">
+          Pour nous contacter, vous pouvez utiliser cette adresse mail : ${'<a href="mailto:{email}">{email}</a>'.format(email=settings.CONTACT_EMAIL)}
+        </p>
+      </div><!-- /featurette -->
     </div><!-- /container -->
+  </div><!-- /featurette-violet -->
 
+  <%include file="../footer-bootstrap.html" />	
 
-    <div class="featurette-violet">
-      <div class="container" id="presentation">
-        <div class="featurette">
-          <div class="image-inares image-accueil pull-right-me img-circle"></div>
-          <p class="featurette-heading"><span class="fa fa-user"></span> Contact</p>
-          <p class="lead cap2">
-            <br>
-            <span class="">L</span>'INARES est une association loi 1901 fondée en octobre 2014.
-          </p>
-          <p class="lead">
-            ${_("We are always seeking feedback to improve our courses. If you are an enrolled student and have any questions, feedback, suggestions, or any other issues specific to a particular class, please post on the discussion forums of that&nbsp;class.")}
-          </p>
-          
-          <p class="lead">
-            Pour nous contacter, vous pouvez utiliser cette adresse mail : '<a href="mailto:{email}">{email}</a>'.format(email=settings.CONTACT_EMAIL)
-          </p>
-        </div><!-- /featurette -->
-      </div><!-- /container -->
-    </div><!-- /featurette-violet -->
-
-
-    <script type="text/javascript">
-      $('#link-mooc').tooltip();
-    </script>
+  <script type="text/javascript">
+    $('#link-mooc').tooltip();
+  </script>
 </%block>
 
 

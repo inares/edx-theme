@@ -120,10 +120,10 @@
       % endif
 
       % if get_course_about_section(course, "effort"):
-      <!-- <div class="">
-        <span class="" style="margin-right: 5px;"><span class="fa fa-clock-o"></span> ${_("Estimated Effort")}</span>
-        <span class="">${get_course_about_section(course, "effort")}</span>
-      </div> -->
+      ## <div class="">
+      ##   <span class="" style="margin-right: 5px;"><span class="fa fa-clock-o"></span> ${_("Estimated Effort")}</span>
+      ##   <span class="">${get_course_about_section(course, "effort")}</span>
+      ## </div>
       <div class="">
         <span class="fa fa-clock-o" style="width: 18px;"></span> ${_("Estimated Effort")} : ${get_course_about_section(course, "effort")}
       </div>
@@ -149,7 +149,9 @@
       <input name="submit" type="submit" value="enroll">
     </form>
   </div>
-	%endif
+  %endif
+	
+  <%include file="../footer-bootstrap.html" />
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   <script type="text/javascript">
