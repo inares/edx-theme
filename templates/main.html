@@ -97,7 +97,9 @@
 
 
   <body class="<%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
+    <script>window.baseUrl = "${settings.STATIC_URL}";</script>
     <%block name="content">
+      <!-- Partie INUTILISEE (content est redéfini dans les pages enfants) -->
       <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to this view's content")}</a>
       <%include file="mathjax_accessible.html" />
       <%include file="theme-header.html" />
@@ -107,13 +109,15 @@
         <%block name="bodyextra"/>
       </div>
 
-      <%include file="theme-footer.html" />
-      <script>window.baseUrl = "${settings.STATIC_URL}";</script>
+      
       <%static:js group='application'/>
       <%static:js group='module-js'/>
-      <%block name="js_extra"/>
+      
       <%include file="widgets/segment-io.html" />
     </%block>
+    
+    <%block name="js_extra"/>
+    <%include file="theme-footer.html" />
   </body>
 </html>
 

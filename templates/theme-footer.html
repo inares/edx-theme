@@ -1,25 +1,21 @@
 ## mako
 <%! from django.core.urlresolvers import reverse %>
 <%namespace name='static' file='/static_content.html'/>
-<%! from datetime import datetime %>
-<%! from pytz import UTC %>
 
-<div class="wrapper-footer">
-  <footer>
-    <div class="colophon">
-      <nav class="nav-colophon">
-        <ol>
-          <!-- <li><a href="${reverse('tos')}">Conditions d&#39;utilisation</a></li>
-          <li><a href="${reverse('tos')}#privacy">Politique de confidentialité</a></li>
-          <li><a href="${reverse('tos')}#honor">Charte</a></li> -->
-          <!-- <li><a href="${reverse('tos')}#copyright">Copyright</a></li> -->
-          <!-- <li><a href="${reverse('contact')}#contact">Contact</a></li>
-          <li><a href="${marketing_link('FAQ')}">Aide</a></li> -->
-        </ol>
-      </nav>
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="nav nav-pills nav-justified">
+          <li><a href="#"><span class="fa fa-home"></span> Accueil</a></li>
+          <li><a href="${reverse('contact')}"><span class="fa fa-envelope-o fa-fw"></span> Contact</a></li>
+          <!-- <li><a href="#">Conditions d'utilisation</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Charte</a></li> -->
+        </ul>
+      </div>
     </div>
-    <div class="references">
-      <span>Basé sur <a href="http://code.edx.org">OpenEdX</a>.</span>
-    </div>
-  </footer>
+  </div>
 </div>
+
+<p class="text-muted text-right">Basé sur <a href="http://code.edx.org">OpenEdX</a>.</p>

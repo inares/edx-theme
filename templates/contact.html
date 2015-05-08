@@ -1,0 +1,86 @@
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+
+<%!
+  from microsite_configuration import microsite
+  from django.utils.translation import ugettext as _
+  from django.core.urlresolvers import reverse
+  from courseware.courses import course_image_url, get_course_about_section
+%>
+
+
+<%block name="pagetitle">INARES | Cours francophone en ligne | Contact</%block>
+
+<%block name="css">
+  <%include file="css-bootstrap.html" />
+  <style type="text/css">
+  </style>
+</%block>
+
+
+<%block name="content">
+  	<%include file="navigation-bootstrap.html" />
+
+    <!-- === MAIN === -->
+    <div class="container" id="accueil">
+      <h1><strong>INARES</strong> <span class="text-muted-feat">Apprendre les sciences</span></h1>
+      <p class="lead text-justify">Cours en ligne de l'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques.</p>
+      <p class="lead text-justify">Aristote a changé durablement l’approche des sciences avec une méthode réaliste basée sur l’observation. C'est cette démarche scientifique qui fait la force de notre enseignement.</p>
+      <br />
+      <br />
+    </div><!-- /container -->
+
+
+    <div class="featurette-violet">
+      <div class="container" id="presentation">
+        <div class="featurette">
+          <div class="image-inares image-accueil pull-right-me img-circle"></div>
+          <p class="featurette-heading"><span class="fa fa-user"></span> Contact</p>
+          <p class="lead cap2">
+            <br>
+            <span class="">L</span>'INARES est une association loi 1901 fondée en octobre 2014.
+          </p>
+          <p class="lead">
+            ${_("We are always seeking feedback to improve our courses. If you are an enrolled student and have any questions, feedback, suggestions, or any other issues specific to a particular class, please post on the discussion forums of that&nbsp;class.")}
+          </p>
+          
+          <p class="lead">
+            Pour nous contacter, vous pouvez utiliser cette adresse mail : '<a href="mailto:{email}">{email}</a>'.format(email=settings.CONTACT_EMAIL)
+          </p>
+        </div><!-- /featurette -->
+      </div><!-- /container -->
+    </div><!-- /featurette-violet -->
+
+
+    <script type="text/javascript">
+      $('#link-mooc').tooltip();
+    </script>
+
+
+    <%include file="widgets/segment-io.html" />
+</%block>
+
+
+
+<%block name="js">
+</%block>
+
+
+
+<%block name="js_extra">
+   <script type="text/javascript">
+      $(window).load(function() {
+         if(getParameterByName('next')) {
+              $('#login').trigger("click");
+         }
+      })
+   </script>
+</%block>
+
+% if show_signup_immediately is not UNDEFINED:
+  ## NOTE: This won't work in production, because anonymous views are cached, so it will
+  ## show either with or without this extra js for 3 minutes at a time.
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+</script>
+% endif
