@@ -1,8 +1,13 @@
+<%namespace name='static' file='static_content.html'/>
+<%!
+  from django.utils.translation import ugettext as _
+  from django.utils import html
+  from microsite_configuration import microsite, page_title_breadcrumbs
+%>
+
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7 lte9 lte8 lte7" lang="${LANGUAGE_CODE}"><![endif]-->
-<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="${LANGUAGE_CODE}"><![endif]-->
-<!--[if IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
-<!--[if gt IE 9]><!--><html lang="${LANGUAGE_CODE}"><!--<![endif]-->
+<!--[if lte IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
+<!--[if !IE]><!--><html lang="${LANGUAGE_CODE}"><!--<![endif]-->
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,7 +16,7 @@
   <meta name="keywords" content="INARES, MOOC, francophone, cours, course, e-learning, français, france, enseignement, formation, gratuit, online, en ligne, ligne, distance, à distance, philosophie, histoire, économie, pédagogie, apprentissage, certification, fun, institut, université, bac, lycée, university, 2015, droit, gestion de projet, management" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="INARES">
-  
+
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:site" content="@inares_fr"/>
   <meta name="twitter:title" content="INARES | MOOC francophone"/>
@@ -19,7 +24,7 @@
   <meta name="twitter:image:src" content="http://inares.org/static/themes/edx-theme/images/logo-inares.jpg"/>
   <meta name="twitter:creator" content="@inares_fr"/>
   <meta name="twitter:domain" content="inares.org"/>
-  
+
   <meta property="og:type"        content="website" />
   <meta property="og:title"       content="INARES | Cours francophone en ligne" />
   <meta property="og:description" content="L'INARES propose des cours en ligne gratuit et francophone pour la philosophie, l'histoire et l'économie. Nous allions un enseignement de qualité aux technologies et techniques modernes des MOOC." />
@@ -29,15 +34,6 @@
   <meta property="og:locale"      content="fr_FR" />
   <meta property="og:locale:alternate" content="en_GB" />
   <meta property="og:image"       content="http://inares.org/static/themes/edx-theme/images/logo-inares.jpg" />
-
-  <%!
-    from django.utils.translation import ugettext as _
-    from microsite_configuration import microsite, page_title_breadcrumbs
-  %>
-
-  <%namespace name='static' file='static_content.html'/>
-  <%! from django.utils import html %>
-
 
   <%def name="theme_enabled()">
     <% return True %>
@@ -76,19 +72,17 @@
 
     <%include file="theme-head-extra.html" />
 
-    <!--[if lt IE 9]>
-      <script src="${static.url('js/html5shiv.js')}"></script>
-    <![endif]-->
-
     <meta name="path_prefix" content="${EDX_ROOT_URL}" />
 
     <%include file="theme-google-analytics.html" />
 
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
+
     <%block name="css">
       <%static:css group='style-vendor'/>
       <%static:css group='style-app'/>
-      <%static:css group='style-app-extend1'/>
-      <%static:css group='style-app-extend2'/>
+      ##<%static:css group='style-app-extend1'/>
+      ##<%static:css group='style-app-extend2'/>
     </%block>
 
     <%block name="js">
@@ -100,7 +94,7 @@
     <script>window.baseUrl = "${settings.STATIC_URL}";</script>
     <%block name="content">
       <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to this view's content")}</a>
-      <%include file="mathjax_accessible.html" />
+      ##<%include file="mathjax_accessible.html" />
       <%include file="theme-header.html" />
 
       <div class="content-wrapper" id="content">
@@ -108,12 +102,12 @@
         <%block name="bodyextra"/>
       </div>
 
-      
+
       <%static:js group='application'/>
       <%static:js group='module-js'/>
-      <%include file="theme-footer.html" />  
+      <%include file="theme-footer.html" />
     </%block>
-    
+
     <%block name="js_extra"/>
   </body>
 </html>
