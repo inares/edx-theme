@@ -1,23 +1,21 @@
 ## mako
-##<%! from django.core.urlresolvers import reverse %>
 <%namespace name='static' file='/static_content.html'/>
-##<%! from datetime import datetime %>
-##<%! from pytz import UTC %>
+
+##<%!
+##    from django.utils.translation import ugettext as _
+##    from django.core.urlresolvers import reverse
+##%>
 
 <div class="wrapper-footer">
   <footer>
     <div class="colophon">
       <nav class="nav-colophon">
         <ol>
-          <li><a href="/">Accueil</a></li>
-          <li><a href="/contact">Contact</a></li>
-          
-          ##<li><a href="${reverse('tos')}">Conditions d&#39;utilisation</a></li>
-          ##<li><a href="${reverse('tos')}#privacy">Politique de confidentialité</a></li>
-          ##<li><a href="${reverse('tos')}#honor">Charte</a></li>
-          ##<li><a href="${reverse('tos')}#copyright">Copyright</a></li>
-          ##<li><a href="${reverse('contact')}#contact">Contact</a></li>
-          ##<li><a href="${marketing_link('FAQ')}">Aide</a></li>
+          <li><a href="/"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
+          <li><a href="/contact"><span class="fa fa-envelope-o fa-fw"></span> Contact</a></li>
+          <li><a href="/honor">Charte utilisateurs</a></li>
+          <li><a href="/tos">Conditions d’utilisation</a></li>
+          <li><a href="/privacy">Politique de confidentialité</a></li>
         </ol>
       </nav>
     </div>

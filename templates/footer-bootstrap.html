@@ -1,13 +1,10 @@
 ## mako
-##<%! from django.core.urlresolvers import reverse %>
 <%namespace name='static' file='/static_content.html'/>
-##<%! from datetime import datetime %>
-##<%! from pytz import UTC %>
 
-<%!
-    from django.utils.translation import ugettext as _
-    from django.core.urlresolvers import reverse
-%>
+##<%!
+##    from django.utils.translation import ugettext as _
+##    from django.core.urlresolvers import reverse
+##%>
 
 <div class="footer">
   <div class="container">
@@ -15,8 +12,8 @@
       <div class="col-lg-12">
         <ul class="nav nav-pills nav-justified">
           <li><a href="/"><span class="fa fa-home fa-fw"></span> Accueil</a></li>
-          ##<li><a href="/contact"><span class="fa fa-envelope-o fa-fw"></span> Contact</a></li>
-          <li><a href="${reverse('contact')}"><span class="fa fa-envelope-o fa-fw"></span> ${_("Contact")}</a></li>
+          <li><a href="/contact"><span class="fa fa-envelope-o fa-fw"></span> Contact</a></li>
+          ##<li><a href="${reverse('contact')}"><span class="fa fa-envelope-o fa-fw"></span> ${_("Contact")}</a></li>
           <li><a href="/honor">Charte utilisateurs</a></li>
           <li><a href="/tos">Conditions d’utilisation</a></li>
           <li><a href="/privacy">Politique de confidentialité</a></li>
