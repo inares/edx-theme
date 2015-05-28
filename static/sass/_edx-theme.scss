@@ -218,6 +218,19 @@ $register-banner-image: none;
 }*/
 
 
+/*header.global {
+  .user {
+    > .primary {
+      &:last-child {
+        > a {
+          padding: ($baseline/4) 8px 8px ($baseline/2);
+        }
+      }
+    }
+  }
+}*/
+
+
 
 .course-info {
   .container {
