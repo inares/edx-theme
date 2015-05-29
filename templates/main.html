@@ -4,6 +4,7 @@
   from django.utils import html
   from microsite_configuration import microsite, page_title_breadcrumbs
   from django.utils.translation import get_language_bidi
+  from django.utils.http import urlquote_plus
 
   dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
 %>
@@ -127,6 +128,7 @@
     <%block name="js_extra"/>
   </body>
 </html>
+
 
 <%def name="login_query()">${
   u"?course_id={0}&enrollment_action={1}{course_mode}{email_opt_in}".format(
