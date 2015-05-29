@@ -1,0 +1,28 @@
+{
+  "name": "INARES_Theme",
+  "version": "0.0.0",
+  "homepage": "https://github.com/inares/edx-theme",
+  "authors": [
+    "Aurélien DEVAUX"
+  ],
+  "description": "edX theme with Bootstrap for inares.org",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "edx",
+    "inares",
+    "edx-theme"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.4"
+  }
+}
