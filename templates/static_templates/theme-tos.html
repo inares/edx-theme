@@ -2,15 +2,14 @@
   from django.utils.translation import ugettext as _
 %>
 
-##<%namespace name='static' file='../static_content.html'/>
+<%namespace name='static' file='../static_content.html'/>
 <%inherit file="../main.html" />
 
 <%block name="pagetitle">Cours francophone en ligne | Conditions générales d’utilisation</%block>
 
 <%block name="css">
   <%include file="../css-bootstrap.html" />
-  <style type="text/css">
-  </style>
+  ##<style type="text/css"></style>
 </%block>
 
 
@@ -26,17 +25,16 @@
   </div><!-- /container -->
 
 
-  <div class="featurette-violet">
-    <div class="container" id="presentation">
-      <div class="featurette">
-        <div class="image-inares image-accueil pull-right-me img-circle"></div>
+  <div class="featurette-violet" id="presentation">
+    <div class="container">
+      <div class="featurette-text">
         <p class="featurette-heading"><span class="fa fa-file-text-o"></span> Conditions générales d’utilisation</p>
         <br>
 
         <h2>Préambule</h2>
 
-        <p class="lead cap2 text-justify">
-          <span class="">B</span>ienvenue à l'INARES ! L'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques (« INARES ») est une association à but non lucratif dont la mission est de proposer des cours en ligne dans les sciences, en suivant la méthodologie d'Aristote.
+        <p class="lead text-justify">
+          Bienvenue à l'INARES ! L'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques (« INARES ») est une association à but non lucratif dont la mission est de proposer des cours en ligne dans les sciences, en suivant la méthodologie d'Aristote.
         </p>
 
         <p class="text-justify">Les présentes Conditions générales d’utilisation décrivent les termes et conditions dans lesquels l'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques (ci-après « INARES ») fournit un service de cours sur son site Internet, <a href="http://www.inares.org/" target="_blank">www.inares.org</a> (ci-après désigné par « site »).</p>
@@ -180,9 +178,9 @@
         <p class="text-justify">L’utilisateur du site accepte que tout litige relatif à l’interprétation, l’exécution des présentes Conditions générales d’utilisation, annexes et/ou grief lié au fonctionnement de ce site soit réglé devant une juridiction du ressort de l'INARES et ce y compris en cas de référé, de requête ou de pluralité de défendeurs.</p>
 
         <p class="last-change">Dernière mise à jour le 20 mai 2015.</p>
-      </div><!-- /featurette -->
-    </div><!-- /container -->
-  </div><!-- /featurette-violet -->
+      </div> <!-- /media-body -->
+    </div> <!-- /media -->
+  </div> <!-- /featurette-violet -->
 
   <%include file="../footer-bootstrap.html" />
 

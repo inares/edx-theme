@@ -2,15 +2,14 @@
   from django.utils.translation import ugettext as _
 %>
 
-##<%namespace name='static' file='../static_content.html'/>
+<%namespace name='static' file='../static_content.html'/>
 <%inherit file="../main.html" />
 
 <%block name="pagetitle">Cours francophone en ligne | Politique de confidentialité</%block>
 
 <%block name="css">
   <%include file="../css-bootstrap.html" />
-  <style type="text/css">
-  </style>
+  ##<style type="text/css"></style>
 </%block>
 
 
@@ -26,12 +25,15 @@
   </div><!-- /container -->
 
 
-  <div class="featurette-violet">
-    <div class="container" id="presentation">
-      <div class="featurette">
-        <div class="image-inares image-accueil pull-right-me img-circle"></div>
+  <div class="featurette-violet" id="presentation">
+    <div class="container">
+      <div class="featurette-text">
         <p class="featurette-heading"><span class="fa fa-file-text-o"></span> Politique de confidentialité</p>
         <br>
+
+        <p class="lead text-justify">
+          Bienvenue à l'INARES ! L'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques (« INARES ») est une association à but non lucratif dont la mission est de proposer des cours en ligne dans les sciences, en suivant la méthodologie d'Aristote.
+        </p>
 
         <h2>Confidentialité et sécurité des informations personnelles</h2>
 
@@ -125,9 +127,10 @@
         <p class="text-justify">Pour toute question relative à la politique de confidentialité, veuillez nous adresser un mail à l'adresse ${'<a href="mailto:{email}">{email}</a>'.format(email=settings.CONTACT_EMAIL)}.</p>
 
         <p><em>Dernière mise à jour : 21 mai 2015.</em></p>
-      </div><!-- /featurette -->
-    </div><!-- /container -->
-  </div><!-- /featurette-violet -->
+        <br>
+      </div> <!-- /media-body -->
+    </div> <!-- /media -->
+  </div> <!-- /featurette-violet -->
 
   <%include file="../footer-bootstrap.html" />
 

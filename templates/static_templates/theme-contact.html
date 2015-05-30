@@ -1,12 +1,11 @@
-##<%namespace name='static' file='../static_content.html'/>
+<%namespace name='static' file='../static_content.html'/>
 <%inherit file="../main.html" />
 
 <%block name="pagetitle">Cours francophone en ligne | Contact</%block>
 
 <%block name="css">
   <%include file="../css-bootstrap.html" />
-  <style type="text/css">
-  </style>
+  ##<style type="text/css"></style>
 </%block>
 
 
@@ -21,15 +20,16 @@
     <br />
   </div><!-- /container -->
 
-
-  <div class="featurette-violet">
-    <div class="container" id="presentation">
-      <div class="featurette">
-        <div class="image-inares image-accueil pull-right-me img-circle"></div>
+  <div class="featurette-violet" id="presentation">
+    <div class="media container">
+      <div class="media-left media-middle">
+        <img class="media-object img-circle" src="${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.THEME_NAME))}" alt="...">
+      </div> <!-- /media-left -->
+      <div class="media-body media-middle featurette-text">
         <p class="featurette-heading"><span class="fa fa-envelope-o"></span> Contact</p>
         <br>
-        <p class="lead cap2 text-justify">
-          <span class="">L</span>'INARES est une association loi 1901 fondée en octobre 2014.
+        <p class="lead text-justify">
+          L'INARES est une association loi 1901 fondée en octobre 2014.
         </p>
         <p class="lead text-justify">
           Nous cherchons toujours à améliorer nos cours et notre site. N'hésitez pas à nous envoyer vos remarques et suggestions. Si vous êtes un étudiant inscrit et avez des questions, des commentaires ou des suggestions spécifiques à un cours, merci de poster un nouveau message sur la discussion du cours.
@@ -37,9 +37,9 @@
         <p class="lead">
           Pour nous contacter, vous pouvez utiliser cette adresse mail : ${'<a href="mailto:{email}">{email}</a>'.format(email=settings.CONTACT_EMAIL)}
         </p>
-      </div><!-- /featurette -->
-    </div><!-- /container -->
-  </div><!-- /featurette-violet -->
+      </div> <!-- /media-body -->
+    </div> <!-- /media -->
+  </div> <!-- /featurette-violet -->
 
   <%include file="../footer-bootstrap.html" />
 

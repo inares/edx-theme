@@ -2,15 +2,14 @@
   from django.utils.translation import ugettext as _
 %>
 
-##<%namespace name='static' file='../static_content.html'/>
+<%namespace name='static' file='../static_content.html'/>
 <%inherit file="../main.html" />
 
 <%block name="pagetitle">Cours francophone en ligne | Charte utilisateurs</%block>
 
 <%block name="css">
   <%include file="../css-bootstrap.html" />
-  <style type="text/css">
-  </style>
+  ##<style type="text/css"></style>
 </%block>
 
 
@@ -26,17 +25,16 @@
   </div><!-- /container -->
 
 
-  <div class="featurette-violet">
-    <div class="container" id="presentation">
-      <div class="featurette">
-        <div class="image-inares image-accueil pull-right-me img-circle"></div>
+  <div class="featurette-violet" id="presentation">
+    <div class="media container">
+      <div class="media-body media-middle featurette-text">
         <p class="featurette-heading"><span class="fa fa-file-text-o"></span> Charte utilisateurs</p>
         <br>
 
         <h2>Préambule</h2>
 
-        <p class="lead cap2 text-justify">
-          <span class="">B</span>ienvenue à l'INARES ! L'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques (« INARES ») est une association à but non lucratif dont la mission est de proposer des cours en ligne dans les sciences en suivant la méthodologie d'Aristote.
+        <p class="lead text-justify">
+          Bienvenue à l'INARES ! L'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques (« INARES ») est une association à but non lucratif dont la mission est de proposer des cours en ligne dans les sciences en suivant la méthodologie d'Aristote.
         </p>
 
         <p class="text-justify">Tout utilisateur souhaitant accéder au site de l'INARES doit donc avoir préalablement consulté la présente Charte Utilisateurs ainsi que les Conditions Générales d’Utilisation et la Politique de Confidentialité qui décrivent les conditions dans lesquelles l'INARES donne accès à ses services. </p>
@@ -67,9 +65,13 @@
         <p class="text-justify">(*) A noter : une fois les attestations éditées, il n’y aura plus possibilité de modifier le nom d’utilisateur sur le document.</p>
 
         <p><em>Dernière mise à jour : 20 mai 2015.</em></p>
-      </div><!-- /featurette -->
-    </div><!-- /container -->
-  </div><!-- /featurette-violet -->
+        <br>
+      </div> <!-- /media-body -->
+      <div class="media-left media-middle">
+        <img class="media-object img-circle" src="${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.THEME_NAME))}" alt="...">
+      </div> <!-- /media-left -->
+    </div> <!-- /media -->
+  </div> <!-- /featurette-violet -->
 
   <%include file="../footer-bootstrap.html" />
 

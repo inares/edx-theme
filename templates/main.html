@@ -1,13 +1,14 @@
 <%namespace name='static' file='static_content.html'/>
 <%!
   from django.utils.translation import ugettext as _
-  from django.utils import html
-  from microsite_configuration import microsite, page_title_breadcrumbs
+  from django.utils             import html
+  from microsite_configuration  import microsite, page_title_breadcrumbs
   from django.utils.translation import get_language_bidi
-  from django.utils.http import urlquote_plus
+  from django.utils.http        import urlquote_plus
 
   dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
 %>
+
 
 <!DOCTYPE html>
 <!--[if lte IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
@@ -80,14 +81,16 @@
 
     <%include file="theme-google-analytics.html" />
 
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
-
     <%block name="css">
       <%static:css group='style-vendor'/>
-      <%static:css group='style-app'/>
+      <%static:css group='style-main'/>
       ##<%static:css group='style-app-extend1'/>
       ##<%static:css group='style-app-extend2'/>
     </%block>
+
+##    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
+##    <link rel="stylesheet" type="text/css" href="${static.url('themes/{name}/css/all.min.css'.format(name=settings.THEME_NAME))}">
+##    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <style type="text/css">
       header.global .user > .primary:last-child > a {
