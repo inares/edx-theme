@@ -107,6 +107,14 @@ gulp.task('update-edx', function(){
 });
 
 
+gulp.task('sauv', function(){
+  exec('tar -jcf /edx/app/edxapp/themes/edx-theme_backup_$(date +%Y-%m-%d_%H-%M).tar.bz2 .', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
+
+
 // minify new or changed HTML pages
 /*gulp.task('html', function() {
   gulp.src(src.templates)
