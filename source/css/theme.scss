@@ -23,17 +23,17 @@ p {
     display: inline;  // Plutôt que table-cell, pour que les images ne soient pas à côté du texte, mais au-dessus ou en-dessous
   }
 
-  .media-object {   // Centre les images
+  .media-object {
+    // Centre les images
     margin-right: auto;
     margin-left:  auto;
+
+    // Redimensionne automatiquement les images lorsqu'elles sont trop grandes
+    height:    auto;
+    max-width: 100%;
+
+    padding:   2% 0;
   }
-}
-
-
-.media-object {      // Redimensionne automatiquement les images lorsqu'elles sont trop grandes
-  height:    auto;
-  max-width: 100%;
-  padding:   2% 0;
 }
 
 
