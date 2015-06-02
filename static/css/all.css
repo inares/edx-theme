@@ -3745,10 +3745,12 @@ p {
     display: inline; }
   .media-object {
     margin-right: auto;
-    margin-left: auto;
-    height: auto;
-    max-width: 100%;
-    padding: 2% 0; } }
+    margin-left: auto; } }
+
+.media-object {
+  height: auto;
+  max-width: 100%;
+  padding: 2% 0; }
 
 /***************************/
 /*    Theme definitions    */
