@@ -81,6 +81,7 @@
 
     <%include file="theme-google-analytics.html" />
 
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
     <%block name="css">
       <%static:css group='style-vendor'/>
       <%static:css group='style-main'/>
@@ -101,27 +102,51 @@
     </style>
 
     <%block name="js">
+      % if disable_courseware_js:
+        <%static:js group='base_vendor'/>
+      % else:
+        <%static:js group='main_vendor'/>
+      % endif
     </%block>
+
+    <script>
+      window.baseUrl = "${settings.STATIC_URL}";
+      (function (require) {
+      % if settings.DEBUG is True:
+          ## Using what amounts to a random number in the Development environment for cache-busting
+          var urlArgs = "bust=" + (new Date()).getTime();
+      % else:
+          var urlArgs = "v=${settings.EDX_PLATFORM_REVISION}";
+      % endif
+        require.config({
+            baseUrl: baseUrl,
+            urlArgs: urlArgs
+        });
+      }).call(this, require || RequireJS.require);
+    </script>
+    <script type="text/javascript" src="${static.url("require-config-lms.js")}"></script>
   </head>
 
 
-  <body class="<%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
-    <script>window.baseUrl = "${settings.STATIC_URL}";</script>
+  <body class="${dir_rtl} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
     <%block name="content">
-      <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to this view's content")}</a>
-      ##<%include file="mathjax_accessible.html" />
-      <%include file="theme-header.html" />
+      <div class="window-wrap" dir="${dir_rtl}">
+        <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to main content")}</a>
 
-      <div class="content-wrapper" id="content">
-        ${self.body()}
-        <%block name="bodyextra"/>
+        <%include file="theme-header.html" />
+
+        <div class="content-wrapper" id="content">
+          ${self.body()}
+          <%block name="bodyextra"/>
+        </div>
+
+        <%include file="theme-footer.html" />
       </div>
 
-      <%include file="theme-footer.html" />
-      % if not disable_courseware_js:
-        <%static:js group='application'/>
-        <%static:js group='module-js'/>
-      % endif
+    % if not disable_courseware_js:
+      <%static:js group='application'/>
+      <%static:js group='module-js'/>
+    % endif
     </%block>
 
     <%block name="js_extra"/>
