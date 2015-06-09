@@ -45,8 +45,8 @@ p {
 /***************************/
 
 html { min-height: 100%; color: #3E0466; background-color: #BF8A2E; }
-body { margin-bottom: 60px; -webkit-font-smoothing: antialiased !important; position: relative; }
-body > .container { padding: 60px 15px 0; }
+body { padding-top: 40px; -webkit-font-smoothing: antialiased !important; position: relative; }
+body > .container { padding: 20px 15px 0; }
 
 //.cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
 .nowrap { overflow-x: auto;  overflow-y: hidden;  white-space: nowrap; }
@@ -90,6 +90,19 @@ body > .container { padding: 60px 15px 0; }
 }
 //.featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }
 //.featurette-violet > .text-muted { color: $gray-lighter; }
+
+
+.login-register {
+  padding-bottom: 20px;
+}
+
+.container {
+  padding: 0;
+}
+
+label {
+  font: initial;
+}
 
 
 @media( min-width: $grid-float-breakpoint ) {

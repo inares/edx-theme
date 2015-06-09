@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext");
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -3759,12 +3760,12 @@ html {
   background-color: #BF8A2E; }
 
 body {
-  margin-bottom: 60px;
+  padding-top: 40px;
   -webkit-font-smoothing: antialiased !important;
   position: relative; }
 
 body > .container {
-  padding: 60px 15px 0; }
+  padding: 20px 15px 0; }
 
 .nowrap {
   overflow-x: auto;
@@ -3820,6 +3821,15 @@ body > .container {
   width: 100%;
   background-color: #3E0466;
   color: #cccccc; }
+
+.login-register {
+  padding-bottom: 20px; }
+
+.container {
+  padding: 0; }
+
+label {
+  font: initial; }
 
 @media (min-width: 992px) {
   .navbar-hover > li > a {
