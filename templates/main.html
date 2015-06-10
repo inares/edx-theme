@@ -65,10 +65,13 @@
           window.top.location = window.location;
         }
       })(this);
+
+      window.analytics=[];
+      window.analytics.track=function(){return ;}
     </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/jsi18n/"></script>
+    <script type="text/javascript" src="https://courses.edx.org/jsi18n/"></script>
     <%static:js group='main_vendor'/>
 
     <link rel="icon" type="image/x-icon" href="${static.url(microsite.get_value('favicon_path', settings.FAVICON_PATH))}" />
@@ -81,16 +84,16 @@
 
     <%include file="theme-google-analytics.html" />
 
-    ##<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&amp;subset=latin,latin-ext">
     <%block name="css">
       <%static:css group='style-vendor'/>
       <%static:css group='style-main'/>
     </%block>
 
     <style type="text/css">
-      /*header.global .user > .primary:last-child > a {
-        padding: 5px 8px 8px 10px;
-      }*/
+##      header.global .user > .primary:last-child > a {
+##        padding: 5px 8px 8px 10px;
+##      }
       .username-label {
         padding-left: 8px;
       }
