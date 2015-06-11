@@ -43,11 +43,16 @@ $black-80: #585858;
 //  Font Assignment
 //-----------------
 
-$theme-sans-font: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial;
-$sans-serif: $theme-sans-font, $sans-serif;
-$body-font-family: $sans-serif;
+$font-family-sans-serif: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: 'Crimson Text', Georgia, "Times New Roman", Times, serif;
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base: $font-family-sans-serif;
 
-$theme-serif-font: 'Crimson Text';
+$theme-sans-font: $font-family-sans-serif;
+$sans-serif: $font-family-sans-serif;
+$body-font-family: $font-family-sans-serif;
+
+$theme-serif-font: $font-family-serif;
 $serif: $theme-serif-font, $serif;
 
 

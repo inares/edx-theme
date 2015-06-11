@@ -65,10 +65,13 @@
           window.top.location = window.location;
         }
       })(this);
+
+      window.analytics=[];
+      window.analytics.track=function(){return ;}
     </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/jsi18n/"></script>
+    <script type="text/javascript" src="https://courses.edx.org/jsi18n/"></script>
     <%static:js group='main_vendor'/>
 
     <link rel="icon" type="image/x-icon" href="${static.url(microsite.get_value('favicon_path', settings.FAVICON_PATH))}" />
@@ -88,9 +91,9 @@
     </%block>
 
     <style type="text/css">
-      header.global .user > .primary:last-child > a {
-        padding: 5px 8px 8px 10px;
-      }
+##      header.global .user > .primary:last-child > a {
+##        padding: 5px 8px 8px 10px;
+##      }
       .username-label {
         padding-left: 8px;
       }
