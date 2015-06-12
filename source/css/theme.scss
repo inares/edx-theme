@@ -1,5 +1,5 @@
 /***************************/
-/*   Bootstrap overwrite   */
+/*   Bootstrap overriden   */
 /***************************/
 
 p {
@@ -34,6 +34,26 @@ p {
 
     padding:   2% 0;
   }
+}
+
+
+
+
+/***************************/
+/*      edX overriden      */
+/***************************/
+
+form {
+  font-size: $font-size-base;
+}
+
+textarea,
+label,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  font: inherit;
 }
 
 
@@ -176,3 +196,4 @@ body > .container { padding: 20px 15px 0; }
 
   .course-head { padding: 2% 2%; overflow: hidden; }
 }
+
