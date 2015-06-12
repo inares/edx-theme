@@ -1,4 +1,5 @@
 *.scssc
+source/css/edx-sass
 static/sass/bootstrap/.sass-cache/
 bower_components/
 node_modules/

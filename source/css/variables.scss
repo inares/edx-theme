@@ -1,6 +1,6 @@
 $theme-purple-dark:    #3E0466;
-$theme-purple-light:   lighten($theme-purple-dark, 10%);
-$theme-purple-lighter: lighten($theme-purple-dark, 20%);;
+$theme-purple-light:   #5c3097;
+$theme-purple-lighter: lighten($theme-purple-dark, 20%);
 //$theme-purple-lighter: #7419B2;
 $theme-orange:         #BF8A2E;
 $theme-green-dark:     #057F3A;
@@ -22,7 +22,7 @@ $text-color: $theme-purple-dark;
 $link-color: $theme-purple-lighter;
 $link-hover-color: darken($link-color, 15%);
 $link-hover-decoration: none;
-$font-family-sans-serif: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif: 'Crimson Text', Georgia, "Times New Roman", Times, serif;
 $font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-base: $font-family-sans-serif;
