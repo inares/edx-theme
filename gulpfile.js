@@ -52,6 +52,19 @@ function notifyOK( title ) {
 }
 
 
+gulp.task('cssedx', function() {
+  return gulp.src('/edx/app/edxapp/themes/edx-theme/source/css/edx-sass/lms/static/sass/lms-main.scss')
+    .pipe(sass({ includePaths: ['/edx/app/edxapp/themes/edx-theme/static/sass', '/edx/app/edxapp/themes/edx-theme/source/css/edx-sass/common/static/sass', '/edx/app/edxapp/themes/edx-theme/source/css/edx-sass/common/staticok'], /*style: 'compressed'*/ }).on('error', gutil.log))
+//    .pipe(gulp.dest(dest.css))
+//    .pipe(rename({suffix: '.min'}))
+    .pipe(postcss([csswring]))
+    //.pipe(sourcemap.write())
+//    .pipe(gulp.dest(dest.css))
+    .pipe(gulp.dest('/edx/app/edxapp/edx-platform/lms/static/sass/'))
+    .pipe( notifyOK('CSS edX') );
+});
+
+
 gulp.task('css', function() {
   return merge(
     gulp.src(src.sass)

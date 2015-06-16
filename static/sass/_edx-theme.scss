@@ -1,4 +1,5 @@
 /****************************************************************************************************
+*
 *   INARES Theming File
 *
 *   Contains all the theme color definitions for the INARES site
@@ -43,17 +44,34 @@ $black-80: #585858;
 //  Font Assignment
 //-----------------
 
-$font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-serif: 'Crimson Text', Georgia, "Times New Roman", Times, serif;
-$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-sans-serif: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:      "Crimson Text", Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-base: $font-family-sans-serif;
 
-$theme-sans-font: $font-family-sans-serif;
-$sans-serif: $font-family-sans-serif;
+$theme-sans-font:  $font-family-sans-serif;
+$sans-serif:       $font-family-sans-serif;
 $body-font-family: $font-family-sans-serif;
 
 $theme-serif-font: $font-family-serif;
-$serif: $theme-serif-font, $serif;
+$serif:            $theme-serif-font;
+
+$font-size-base: 14px;
+
+// FONT-WEIGHTS
+$font-light:    300;
+$font-regular:  400;
+$font-semibold: 500;   // 600 in the original theme
+$font-bold:     700;
+
+
+// SPLINT: fonts
+$f-serif:      $font-family-serif;
+$f-sans-serif: $font-family-sans-serif;
+$f-monospace:  $font-family-monospace;
+
+// SPLINT: Header specific sans-serif
+$header-sans-serif: $font-family-sans-serif;
 
 
 
@@ -190,23 +208,15 @@ $footer_margin: ($baseline/4) 0;
 //-----------------
 //  CSS BG Images
 //-----------------
-//$homepage-bg-image: url('../themes/edx-theme/images/logo-inares.jpg');
 
-$login-banner-image: none;
-$register-banner-image: none;
-
-//$video-thumb-url: '../themes/edx-theme/images/logo-inares.jpg';
-
-
-
-
-//@import "bootstrap/bootstrap";
+/*$login-banner-image: none;
+$register-banner-image: none;*/
 
 
 //-----------------
 //  Mixin Styles
 //-----------------
-@mixin login_register_h1_style {
+/*@mixin login_register_h1_style {
     clip: auto !important;
     height: 50px;
     width: 550px;
@@ -216,7 +226,7 @@ $register-banner-image: none;
 @mixin footer_references_style {
     margin: 0 !important;
     text-align: right;
-}
+}*/
 
 /*header.global .nav-global {
     margin-top: -5px;
@@ -236,7 +246,7 @@ $register-banner-image: none;
 }*/
 
 
-
+/*
 .course-info {
   .container {
     padding-bottom: 120px;
@@ -845,7 +855,7 @@ $register-banner-image: none;
       }
     }
   }
-}
+}*/
 
 
 
@@ -855,11 +865,12 @@ $register-banner-image: none;
 /*      edX overriden      */
 /***************************/
 
-$font-size-base: 14px;
 
+/* included in '_forms.scss' modifications
 form {
   font-size: $font-size-base;
 }
+
 
 textarea,
 label,
@@ -868,8 +879,9 @@ input[type="email"],
 input[type="password"],
 input[type="tel"] {
   font: inherit;
-}
+}*/
 
+/* included in '_header.scss' modifications
 header.global .user>.primary:last-child>a {
   padding: 4px 8px 10px 8px;
   height: 34px;
@@ -884,4 +896,8 @@ header.global .user a.user-link {
 
 header.global .user a.user-link .icon {
   margin: 1px 5px 0px 0px;
-}
+}*/
+
+/*label {
+  font: inherit;
+}*/

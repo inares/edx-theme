@@ -88,6 +88,7 @@
     <%block name="css">
       <%static:css group='style-vendor'/>
       <%static:css group='style-main'/>
+##      <link rel="stylesheet" type="text/css" href="${static.url('themes/{name}/css/lms-main.min.css'.format(name=settings.THEME_NAME))}">
     </%block>
 
     <style type="text/css">

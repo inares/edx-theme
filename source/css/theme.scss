@@ -116,17 +116,19 @@ body > .container { padding: 20px 15px 0; }
   padding-bottom: 20px;
 }
 
+/* included in '_base.scss' modifications
 .container {
   padding-top: 0;
   padding-bottom: 0;
   min-width: 0;
-}
+}*/
 
+/* included in '_login-register.scss' modifications
 .login-register {
   .form-type, .toggle-form  {
     min-width: 0;
   }
-}
+}*/
 
 
 
