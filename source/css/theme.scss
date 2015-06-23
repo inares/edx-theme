@@ -56,65 +56,38 @@ p {
 /*    Theme definitions    */
 /***************************/
 
-html { min-height: 100%; color: #3E0466; background-color: #BF8A2E; }
-body { padding-top: 40px; -webkit-font-smoothing: antialiased !important; position: relative; }
-body > .container { padding: 20px 15px 0; }
-
-//.cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
-.nowrap { overflow-x: auto;  overflow-y: hidden;  white-space: nowrap; }
-
-
-.navbar-hover { line-height: 0;  display: inline-block; float: none; }
-.navbar .navbar-collapse { text-align: center; }
-.navbar { line-height: 0; }
-
-.footer {
-  /*position: absolute;*/
-  bottom: 0;
-  width: 100%;
-  //height: 40px;
-  background-color: #f5f5f5;
-}
-
-.footer > .container { padding-right: 15px;  padding-left: 15px; }
-.navbar, .footer, a { font-weight: 600; }
-
-
-/*.parallax { }
+/*  Not used
+.parallax { }
 .background { background-repeat:no-repeat;  background-position:50% 50%;  background-position:50% 50%\9 !important; }
 
 .bgParallax {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}*/
-
-
-.text-muted-feat {
-  font-size: 80%;
-}
-.text-muted-feat.gray {
-  color: $gray-light;
-}
-.text-muted-feat.purple {
-  color: $theme-purple-light;
 }
 
-.featurette-transp {
-  width: 100%;
-}
-.featurette-violet {
-  width: 100%;
-  background-color: $theme-purple-dark;
-  color: $gray-lighter;
-}
-//.featurette-violet { width: 100%; background-color: #62228C;  color: rgb(204, 204, 204); }
-//.featurette-violet > .text-muted { color: $gray-lighter; }
+.course-head {
+  padding: 2% 2%;
+  overflow: hidden;
 
-
-.login-register {
-  padding-bottom: 20px;
+  @media( min-width: $grid-float-breakpoint ) {
+    max-width: $grid-float-breakpoint;
+  }
 }
+
+.nowrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+html {
+  min-height: 100%; color: #3E0466; background-color: #BF8A2E;
+}
+
+.cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
+*/
+
 
 /* included in '_base.scss' modifications
 .container {
@@ -130,6 +103,87 @@ body > .container { padding: 20px 15px 0; }
   }
 }*/
 
+
+body {
+  padding-top: 40px;    // Necessary, so that the pages begin after the menu
+  -webkit-font-smoothing: antialiased !important;
+  position: relative;
+
+  > .container {
+    padding: 30px 15px 0 15px;   // For homepage
+  }
+}
+
+
+.container {
+  @media( min-width: $grid-float-breakpoint ) {
+    max-width: $grid-float-breakpoint;
+  }
+
+  @media( max-width: $grid-float-breakpoint-max ) {
+    max-width: 600px;
+  }
+}
+
+
+a {
+  font-weight: $font-bold;
+}
+
+
+
+.navbar {
+  line-height: 0;
+  font-weight: $font-bold;
+
+  .navbar-collapse {
+    text-align: center;
+  }
+}
+
+
+.navbar-hover {
+  line-height: 0;
+  display: inline-block;
+  float: none;
+
+  > li {
+    > a {
+      line-height:    0;
+
+      @media( min-width: $grid-float-breakpoint ) {
+        padding-top:    18px;
+        padding-left:   10px;
+        padding-right:  10px;
+        padding-bottom: 18px;
+
+        &:hover {
+          padding-bottom: 16px;
+          margin-bottom: -4px;
+          border-radius:  0;
+          border-bottom-width: 4px;
+          border-bottom-style: solid;
+          border-bottom-color: $theme-purple-lighter;
+          color: $theme-purple-lighter !important;
+        }
+      }
+    }
+  }
+}
+
+
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  font-weight: $font-bold;
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
 
 
 .wrapper-footer {
@@ -149,65 +203,59 @@ body > .container { padding: 20px 15px 0; }
 
 
 
+.text-muted-feat {
+  font-size: 80%;
 
-/*label {
-  font: initial;
-}*/
+  &.gray {
+    color: $gray-light;
+  }
+
+  &.purple {
+    color: $theme-purple-light;
+  }
+}
+
+
+.featurette-transp {
+  width: 100%;
+}
+
+
+.featurette-violet {
+  width: 100%;
+  background-color: $theme-purple-dark;
+  color: $gray-lighter;
+}
+
+
+.featurette-heading {
+  font-weight: $font-semibold;
+  letter-spacing: -1px;
+
+  @media( min-width: $grid-float-breakpoint ) {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+
+  @media( max-width: $grid-float-breakpoint-max ) {
+    font-size: 38px;
+    line-height: 1;
+  }
+}
+
+
+.login-register {
+  padding-bottom: 20px;
+}
+
 
 
 @media( min-width: $grid-float-breakpoint ) {
-  .navbar-hover > li > a {
-    line-height: 0;
-    padding-top: 18px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 18px;
-  }
-  .navbar-hover > li > a:hover {
-    padding-bottom: 16px;
-    margin-bottom: -4px;
-    border-radius: 0;
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
-    border-bottom-color: $theme-purple-lighter;
-    color: $theme-purple-lighter !important;
-  }
-  /*.image-inares { background-image: url("../images/logo-inares.jpg");      background-repeat: no-repeat;  background-size: cover; }
-  .image-outils { background-image: url("../images/outils.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote.jpg");  background-repeat: no-repeat; }*/
-  /*.hidden-lg  { display:none  !important; }
-  .visible-lg { display:block !important; }*/
-  .container { max-width: $grid-float-breakpoint; }
-
   .featurette-text { padding: 5% 2%; }
-  .featurette-heading { font-size: 48px;  font-weight: 600;  line-height: 1.1;  letter-spacing: -1px; }
-  /*.image-accueil { width:400px;  height: 400px;  margin-bottom: 20px; }
-  .pull-left-me  { float: left  !important; }
-  .pull-right-me { float: right !important; }
-  .pull-left-me.image-accueil  { margin-right: 40px;  margin-left: auto; }
-  .pull-right-me.image-accueil { margin-right: auto;  margin-left: 40px; }*/
-  //.cap2::first-letter { display: block;  float: left;  font-size: 67px;  line-height: 80%;  font-weight: bold; }
-
-  .course-head { padding: 2% 2%; overflow: hidden; max-width:900px; }
 }
+
 
 @media( max-width: $grid-float-breakpoint-max ) {
-  .navbar-hover > li > a { line-height: 0; }
   .navbar-nav { margin: 0; }
-  /*.image-inares { background-image: url("../images/logo-inares-moyen.jpg");      background-repeat: no-repeat; }
-  .image-outils { background-image: url("../images/outils-petit.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote-petit.jpg");  background-repeat: no-repeat; }*/
-  /*.hidden-lg  { display:block !important; }
-  .visible-lg { display:none  !important; }*/
-  .container { max-width: 600px; }
-
   .featurette-text { padding: 2% 1%; }
-  .featurette-heading { font-size: 38px;  font-weight: 600;  line-height: 1;  letter-spacing: -1px; }
-  /*.image-accueil { width:200px;  height: 200px;  margin: 2%; }
-  .pull-left-me  { margin-right: auto;  margin-left: auto; }
-  .pull-right-me { margin-right: auto;  margin-left: auto; }*/
-  //.cap2::first-letter { display: block;  float: left;  font-size: 50px;  line-height: 80%;  font-weight: bold; }
-
-  .course-head { padding: 2% 2%; overflow: hidden; }
 }
-

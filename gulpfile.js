@@ -45,6 +45,8 @@ var dest = {
 
 function notifyOK( title ) {
     //gutil.log(gutil.colors.red('test'));
+    //gutil.log( 'Traitement OK pour', gutil.colors.green(file.relative), 'in', gutil.colors.magenta(prettyTime));
+    //https://github.com/edx/ux-pattern-library/blob/master/gulp/util/bundleLogger.js
     return notify( {
         message: 'Traitement OK pour \'<%= file.relative %>\'',
         title: title,

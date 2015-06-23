@@ -3759,76 +3759,37 @@ p {
 /***************************/
 /*    Theme definitions    */
 /***************************/
-html {
-  min-height: 100%;
-  color: #3E0466;
-  background-color: #BF8A2E; }
-
-body {
-  padding-top: 40px;
-  -webkit-font-smoothing: antialiased !important;
-  position: relative; }
-
-body > .container {
-  padding: 20px 15px 0; }
-
-.nowrap {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap; }
-
-.navbar-hover {
-  line-height: 0;
-  display: inline-block;
-  float: none; }
-
-.navbar .navbar-collapse {
-  text-align: center; }
-
-.navbar {
-  line-height: 0; }
-
-.footer {
-  /*position: absolute;*/
-  bottom: 0;
-  width: 100%;
-  background-color: #f5f5f5; }
-
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px; }
-
-.navbar, .footer, a {
-  font-weight: 600; }
-
-/*.parallax { }
+/*  Not used
+.parallax { }
 .background { background-repeat:no-repeat;  background-position:50% 50%;  background-position:50% 50%\9 !important; }
 
 .bgParallax {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}*/
-.text-muted-feat {
-  font-size: 80%; }
+}
 
-.text-muted-feat.gray {
-  color: #8c8c8c; }
+.course-head {
+  padding: 2% 2%;
+  overflow: hidden;
 
-.text-muted-feat.purple {
-  color: #5c3097; }
+  @media( min-width: $grid-float-breakpoint ) {
+    max-width: $grid-float-breakpoint;
+  }
+}
 
-.featurette-transp {
-  width: 100%; }
+.nowrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
 
-.featurette-violet {
-  width: 100%;
-  background-color: #3E0466;
-  color: #cccccc; }
+html {
+  min-height: 100%; color: #3E0466; background-color: #BF8A2E;
+}
 
-.login-register {
-  padding-bottom: 20px; }
-
+.cap { display: block;  float: left;  font-size: 70px;  line-height: 80%;  font-weight: bold; }
+*/
 /* included in '_base.scss' modifications
 .container {
   padding-top: 0;
@@ -3841,76 +3802,102 @@ body > .container {
     min-width: 0;
   }
 }*/
+body {
+  padding-top: 40px;
+  -webkit-font-smoothing: antialiased !important;
+  position: relative; }
+  body > .container {
+    padding: 30px 15px 0 15px; }
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 992px; } }
+
+@media (max-width: 991px) {
+  .container {
+    max-width: 600px; } }
+
+a {
+  font-weight: 700; }
+
+.navbar {
+  line-height: 0;
+  font-weight: 700; }
+  .navbar .navbar-collapse {
+    text-align: center; }
+
+.navbar-hover {
+  line-height: 0;
+  display: inline-block;
+  float: none; }
+  .navbar-hover > li > a {
+    line-height: 0; }
+    @media (min-width: 992px) {
+      .navbar-hover > li > a {
+        padding-top: 18px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 18px; }
+        .navbar-hover > li > a:hover {
+          padding-bottom: 16px;
+          margin-bottom: -4px;
+          border-radius: 0;
+          border-bottom-width: 4px;
+          border-bottom-style: solid;
+          border-bottom-color: #7a08c8;
+          color: #7a08c8 !important; } }
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  font-weight: 700; }
+  .footer .container {
+    padding-right: 15px;
+    padding-left: 15px; }
+
 .wrapper-footer footer#footer-openedx .nav-legal .nav-legal-02 a:before,
 .wrapper-footer footer#footer-openedx .nav-legal .nav-legal-03 a
 .nav-legal-04 a:before {
   margin-right: 0;
   content: " - "; }
 
-/*label {
-  font: initial;
-}*/
+.text-muted-feat {
+  font-size: 80%; }
+  .text-muted-feat.gray {
+    color: #8c8c8c; }
+  .text-muted-feat.purple {
+    color: #5c3097; }
+
+.featurette-transp {
+  width: 100%; }
+
+.featurette-violet {
+  width: 100%;
+  background-color: #3E0466;
+  color: #cccccc; }
+
+.featurette-heading {
+  font-weight: 500;
+  letter-spacing: -1px; }
+  @media (min-width: 992px) {
+    .featurette-heading {
+      font-size: 48px;
+      line-height: 1.1; } }
+  @media (max-width: 991px) {
+    .featurette-heading {
+      font-size: 38px;
+      line-height: 1; } }
+
+.login-register {
+  padding-bottom: 20px; }
+
 @media (min-width: 992px) {
-  .navbar-hover > li > a {
-    line-height: 0;
-    padding-top: 18px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 18px; }
-  .navbar-hover > li > a:hover {
-    padding-bottom: 16px;
-    margin-bottom: -4px;
-    border-radius: 0;
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
-    border-bottom-color: #7a08c8;
-    color: #7a08c8 !important; }
-  /*.image-inares { background-image: url("../images/logo-inares.jpg");      background-repeat: no-repeat;  background-size: cover; }
-  .image-outils { background-image: url("../images/outils.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote.jpg");  background-repeat: no-repeat; }*/
-  /*.hidden-lg  { display:none  !important; }
-  .visible-lg { display:block !important; }*/
-  .container {
-    max-width: 992px; }
   .featurette-text {
-    padding: 5% 2%; }
-  .featurette-heading {
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -1px; }
-  /*.image-accueil { width:400px;  height: 400px;  margin-bottom: 20px; }
-  .pull-left-me  { float: left  !important; }
-  .pull-right-me { float: right !important; }
-  .pull-left-me.image-accueil  { margin-right: 40px;  margin-left: auto; }
-  .pull-right-me.image-accueil { margin-right: auto;  margin-left: 40px; }*/
-  .course-head {
-    padding: 2% 2%;
-    overflow: hidden;
-    max-width: 900px; } }
+    padding: 5% 2%; } }
 
 @media (max-width: 991px) {
-  .navbar-hover > li > a {
-    line-height: 0; }
   .navbar-nav {
     margin: 0; }
-  /*.image-inares { background-image: url("../images/logo-inares-moyen.jpg");      background-repeat: no-repeat; }
-  .image-outils { background-image: url("../images/outils-petit.jpg");           background-repeat: no-repeat; }
-  .image-platon { background-image: url("../images/platon_aristote-petit.jpg");  background-repeat: no-repeat; }*/
-  /*.hidden-lg  { display:block !important; }
-  .visible-lg { display:none  !important; }*/
-  .container {
-    max-width: 600px; }
   .featurette-text {
-    padding: 2% 1%; }
-  .featurette-heading {
-    font-size: 38px;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -1px; }
-  /*.image-accueil { width:200px;  height: 200px;  margin: 2%; }
-  .pull-left-me  { margin-right: auto;  margin-left: auto; }
-  .pull-right-me { margin-right: auto;  margin-left: auto; }*/
-  .course-head {
-    padding: 2% 2%;
-    overflow: hidden; } }
+    padding: 2% 1%; } }

@@ -11,31 +11,31 @@
 //-----------------
 
 //Main Color Variables
-$main-color: #B9B9B9;
-$dark-color: #727372; //Link Color
+$main-color:  #B9B9B9;
+$dark-color:  #727372; //Link Color
 $light-color: #E1E1E1; //Selected Header BG Color, ie. calendar        ***Custom, not from palette***
-$bg-color: #959595; //Selected Content BG Color, ie. calendar          ***Custom, not from palette***
+$bg-color:    #959595; //Selected Content BG Color, ie. calendar          ***Custom, not from palette***
 
 //Main BG Color Variables
-$main-bg: #3E0466;
+$main-bg:    #3E0466;
 $main-bg-60: lighten($main-bg, 18.5%); //Main Border/HR Color
 $main-bg-25: lighten($main-bg, 25%);
 
 //Secondary Color Variables
-$secondary: #BF8A2E;
+$secondary:    #BF8A2E;
 $secondary-50: lighten($secondary, 9%);
 $secondary-25: lighten($secondary, 20%); //Important Heading BG Color
 
 //Gray Color Variables
-$gray: #3f3f3f; //Main Text Color
+$gray:    #3f3f3f; //Main Text Color
 $gray-75: lighten($gray, 18.25%); //Lighter Text Color
 
 $gray-3: #e9e9e9; //Block/Course BG Color
 $gray-2: #f2f2f2;
 $gray-1: #fbfbfb; //Main BG Color
-$white: $gray-1;
+$white:  $gray-1;
 
-$black: #2e2e2e;
+$black:    #2e2e2e;
 $black-80: #585858;
 
 
@@ -44,10 +44,10 @@ $black-80: #585858;
 //  Font Assignment
 //-----------------
 
-$font-family-sans-serif: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-serif:      "Crimson Text", Georgia, "Times New Roman", Times, serif;
-$font-family-monospace:  Menlo, Monaco, Consolas, "Courier New", monospace;
-$font-family-base: $font-family-sans-serif;
+$font-family-sans-serif: "Roboto", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+$font-family-serif:      "Crimson Text", "Georgia", "Times New Roman", "Times", "serif";
+$font-family-monospace:  "Menlo", "Monaco", "Consolas", "Courier New", "monospace";
+$font-family-base:       $font-family-sans-serif;
 
 $theme-sans-font:  $font-family-sans-serif;
 $sans-serif:       $font-family-sans-serif;
@@ -61,7 +61,7 @@ $font-size-base: 14px;
 // FONT-WEIGHTS
 $font-light:    300;
 $font-regular:  400;
-$font-semibold: 500;   // 600 in the original theme
+$font-semibold: 500;   // 600 in the original theme, we use 500 for Roboto font
 $font-bold:     700;
 
 

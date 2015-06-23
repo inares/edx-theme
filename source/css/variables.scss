@@ -6,6 +6,12 @@ $theme-orange:         #BF8A2E;
 $theme-green-dark:     #057F3A;
 $theme-green-light:    #18FF7B;
 
+$font-light:     300;
+$font-regular:   400;
+$font-semibold:  500;
+$font-bold:      700;
+$font-extrabold: 900;
+
 $gray-base: #CCC;
 $gray-darker: lighten(#000, 13.5%);
 $gray-dark: lighten(#000, 20%);
@@ -38,7 +44,7 @@ $font-size-h6: ceil(($font-size-base * 0.85));
 $line-height-base: 1.428571429;
 $line-height-computed: floor(($font-size-base * $line-height-base));
 $headings-font-family: inherit;
-$headings-font-weight: 500;
+$headings-font-weight: $font-semibold;
 $headings-line-height: 1.1;
 $headings-color: inherit;
 $icon-font-path: "../fonts/";
