@@ -3769,15 +3769,6 @@ p {
   background-attachment: fixed;
 }
 
-.course-head {
-  padding: 2% 2%;
-  overflow: hidden;
-
-  @media( min-width: $grid-float-breakpoint ) {
-    max-width: $grid-float-breakpoint;
-  }
-}
-
 .nowrap {
   overflow-x: auto;
   overflow-y: hidden;
@@ -3809,6 +3800,13 @@ body {
   body > .container {
     padding: 30px 15px 0 15px; }
 
+.course-head {
+  padding: 2% 2%;
+  overflow: hidden; }
+  @media (min-width: 992px) {
+    .course-head {
+      max-width: 992px; } }
+
 @media (min-width: 992px) {
   .container {
     max-width: 992px; } }
@@ -3819,6 +3817,41 @@ body {
 
 a {
   font-weight: 700; }
+  a:active {
+    top: 1px; }
+
+input:disabled {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat; }
+
+.thumbnail {
+  position: relative;
+  overflow: hidden; }
+  .thumbnail .th-caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(62, 4, 102, 0.85);
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    display: none;
+    text-align: center;
+    color: #bf8a2e;
+    z-index: 2;
+    font-size: 16px;
+    font-weight: 500; }
+  .thumbnail .title {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 3%;
+    width: 97%;
+    text-align: center;
+    position: absolute;
+    top: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: #BF8A2E; }
 
 .navbar {
   line-height: 0;
@@ -3876,6 +3909,8 @@ a {
   width: 100%;
   background-color: #3E0466;
   color: #cccccc; }
+  .featurette-violet .featurette-heading::first-line {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
 .featurette-heading {
   font-weight: 500;

@@ -81,6 +81,10 @@
   </div>
 
 
+##<style type="text/css">
+##</style>
+
+
   <div class="featurette-transp">
     <div class="container" id="cours">
       <div class="featurette">
@@ -89,28 +93,29 @@
           % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
             <div class="row">
                 %for course in courses:
-                  <div class="col-xs-12 col-md-6 col-lg-4" id="${course.id.to_deprecated_string()}">
-                    <a href="${reverse('about_course', args=[course.id.to_deprecated_string()])}">
-                      <div class="thumbnail">
-                        <img src="${course_image_url(course)}" alt="${course.display_number_with_default | h} ${get_course_about_section(course, 'title')} Cover Image" />
-                        <div class="caption">
-                          %if course.is_newish:
-                            <!-- <p>Nouveau cours</p> -->
-                          %endif
-                          <h3>${get_course_about_section(course, 'title')}</h3>
-                          <p>${get_course_about_section(course, 'short_description')}</p>
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="${course.id.to_deprecated_string()}">
+                    <div class="thumbnail">
+                      <img src="${course_image_url(course)}" class="img-rounded" alt="PhiloCY01x Philosophie Cycle 01 - La philosophie du réel Cover Image" />
+                      <div class="title">${get_course_about_section(course, 'title')}</div>
+                      <div class="th-caption">
 
-                          % if not course.start_date_is_still_default:
-                            <p>${course.start_datetime_text()}</p>
-                          % endif
-                        </div>
+                        <p>
+          								## %if course.is_newish:
+                          ##   <!-- <p>Nouveau cours</p> -->
+                          ## %endif
+                          ## % if not course.start_date_is_still_default:
+                          ##   <p>${course.start_datetime_text()}</p>
+                          ## % endif
+                          ${get_course_about_section(course, 'short_description')}
+                          <br>
+                          <a class="btn btn-default" href="${reverse('about_course', args=[course.id.to_deprecated_string()])}"><span class="glyphicon glyphicon-plus"> En savoir plus</span></a>
+                        </p>
                       </div>
-                    </a>
+                    </div>
                   </div>
                 %endfor
             </div>
           % endif
-
       </div>
     </div><!-- /container -->
   </div><!-- /featurette-transp -->
@@ -118,6 +123,15 @@
 
   <script type="text/javascript">
     $('#link-mooc').tooltip();
+
+    $('.thumbnail').hover(
+      function(){
+        $(this).find('.th-caption').slideDown(250); //.fadeIn(250)
+      },
+      function(){
+        $(this).find('.th-caption').slideUp(250); //.fadeOut(205)
+      }
+    );
   </script>
 
 	<%include file="footer-bootstrap.html" />
