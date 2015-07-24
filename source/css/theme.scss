@@ -141,7 +141,7 @@ input:disabled {
 
 
 
-.thumbnail {
+/*.thumbnail {
   position: relative;
   overflow: hidden;
 
@@ -174,7 +174,7 @@ input:disabled {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     color: $theme-orange;
   }
-}
+}*/
 
 
 
@@ -309,3 +309,126 @@ input:disabled {
   .navbar-nav { margin: 0; }
   .featurette-text { padding: 2% 1%; }
 }
+
+
+
+
+/*   THUMBNAILS (for courses on home page)   */
+
+.thumb {
+  border:        1px solid $theme-purple-dark;
+  border-radius: 4px;
+  overflow:      hidden;
+  margin-bottom: 20px;
+  height:        250px;
+
+  /*@media (min-width: $screen-sm-min) {
+    height: 250px;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    height: 200px;
+  }*/
+
+  > .thumb-overlay {
+    background-image:  inherit;
+    background-repeat: inherit;
+    background-size:   inherit;
+
+    position:      relative;
+    border-bottom: 2px solid white;
+    overflow:      hidden;
+
+    > .thumb-bg {
+      background-image:  inherit;
+      background-repeat: inherit;
+      background-size:   inherit;
+
+      position: absolute;
+      top:      0;
+      right:    0;
+      bottom:   0;
+      left:     0;
+      z-index:  99;
+
+      -webkit-filter: blur(2px);
+      -moz-filter:    blur(2px);
+      -o-filter:      blur(2px);
+      -ms-filter:     blur(2px);
+      filter:         blur(2px);
+    }
+
+    > .thumb-txt {
+      position:   relative;
+      z-index:    100;
+      padding:    10px;
+      background: rgb (34, 34, 34); /* for IE */
+      background: rgba(34, 34, 34, 0.75);
+      text-align: center;
+      color:      #FFFFFF;
+
+      > thumb-title {
+        font-weight: 700;
+        font-size:   24px;
+        overflow:    hidden;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        height:      auto;
+        opacity:     1;
+        transition:  opacity 0.7s ease-out;
+      }
+
+      > thumb-infos {
+        font-weight: normal;
+        font-size:   16px;
+        overflow:    hidden;
+        display:     block;
+        height:      0;
+        opacity:     0;
+        transition:  opacity 0.7s ease-out;
+
+        .btn {
+          padding: 3px 12px;
+        }
+      }
+    }
+  }
+
+
+  &:hover {
+    > .thumb-overlay {
+      height:        100%;
+      border-bottom: none;
+
+      > .thumb-txt {
+        padding: 5px;
+        height:  100%;
+
+        > thumb-title {
+          font-weight: 500;
+          font-size:   20px;
+          height:      0;
+          opacity:     0.5;
+        }
+
+        > thumb-infos {
+          height:  auto;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+/* MD */
+/*@media (min-width: 992px) {
+  height: 250px;
+}*/
+
+/* LG */
+/*@media (min-width: 1200px) {
+}*/

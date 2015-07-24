@@ -2,7 +2,7 @@
 <%namespace name='static' file='static_content.html'/>
 
 <%!
-  from microsite_configuration  import microsite
+##  from microsite_configuration  import microsite
   from django.utils.translation import ugettext as _
   from django.core.urlresolvers import reverse
   from courseware.courses       import course_image_url, get_course_about_section
@@ -24,9 +24,8 @@
     <p class="featurette-heading">INARES <span class="text-muted-feat purple">Apprendre les sciences</span></p>
     <p class="lead text-justify">Cours en ligne de l'<b>In</b>stitut <b>Ar</b>istotélicien d'<b>É</b>tudes <b>S</b>cientifiques.</p>
     <p class="lead text-justify">Aristote a changé durablement l’approche des sciences avec une méthode réaliste basée sur l’observation. C'est cette démarche scientifique qui fait la force de notre enseignement.</p>
-    <br />
-    <br />
-  </div>
+    <br /><br />
+  </div> <!-- /container -->
 
 
   <div class="featurette-violet" id="presentation">
@@ -43,8 +42,8 @@
       <div class="media-left media-middle">
         <img class="media-object img-circle" src="${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.THEME_NAME))}" alt="INARES">
       </div>
-    </div>
-  </div>
+    </div> <!-- /media -->
+  </div> <!-- /featurette-violet -->
 
   <div class="featurette-transp" id="fonctionnement">
     <div class="media .featurette-transp container">
@@ -60,8 +59,8 @@
           Nos cours allient les derniers outils technologiques, comme la vidéos, le web 2.0, la visioconférence ou les réseaux sociaux, à des méthodes pédagogiques adaptées. L’INARES propose des cours depuis quatre ans, en mettant l’<strong>innovation au service de l’enseignement</strong>.
         </p>
       </div>
-    </div>
-  </div>
+    </div> <!-- /media -->
+  </div> <!-- /featurette-transp -->
 
   <div class="featurette-violet" id="pedagogie">
     <div class="media container">
@@ -77,8 +76,8 @@
       <div class="media-left media-middle">
         <img class="media-object img-circle" src="${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}" alt="Pédagogie">
       </div>
-    </div>
-  </div>
+    </div> <!-- /media -->
+  </div> <!-- /featurette-violet -->
 
 
 ##<style type="text/css">
@@ -90,50 +89,50 @@
       <div class="featurette">
         <p class="featurette-heading"><span class="fa fa-graduation-cap"></span> Cours</p>
         <br />
-          % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+          ##% if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
             <div class="row">
-                %for course in courses:
-                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="${course.id.to_deprecated_string()}">
-                    <div class="thumbnail">
-                      <img src="${course_image_url(course)}" class="img-rounded" alt="PhiloCY01x Philosophie Cycle 01 - La philosophie du réel Cover Image" />
-                      <div class="title">${get_course_about_section(course, 'title')}</div>
-                      <div class="th-caption">
-
-                        <p>
-          								## %if course.is_newish:
+              %for course in courses:
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="${course.id.to_deprecated_string()}">
+                  <div class="thumb" style="background-image: url(${course_image_url(course)}); background-repeat: no-repeat; background-size: cover;">
+                    <div class="thumb-overlay">
+                      <div class="thumb-bg"></div>
+                      <div class="thumb-txt">
+                        <thumb-title>${get_course_about_section(course, 'title')}</thumb-title>
+                        <thumb-infos>
+                          ## %if course.is_newish:
                           ##   <!-- <p>Nouveau cours</p> -->
                           ## %endif
                           ## % if not course.start_date_is_still_default:
                           ##   <p>${course.start_datetime_text()}</p>
                           ## % endif
-                          ${get_course_about_section(course, 'short_description')}
-                          <br>
-                          <a class="btn btn-default" href="${reverse('about_course', args=[course.id.to_deprecated_string()])}"><span class="glyphicon glyphicon-plus"> En savoir plus</span></a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                %endfor
-            </div>
-          % endif
-      </div>
-    </div><!-- /container -->
-  </div><!-- /featurette-transp -->
+                          ${get_course_about_section(course, 'short_description')}<br>
+                          <a class="btn btn-default" href="${reverse('about_course', args=[course.id.to_deprecated_string()])}"><span class="fa fa-info"></span>&nbsp;&nbsp;En savoir plus</a>
+                        </thumb-infos>
+                      </div> <!-- /thumb-text -->
+                    </div> <!-- /thumb-overlay -->
+                  </div> <!-- /thumb -->
+                </div> <!-- /col -->
+              %endfor
+            </div> <!-- /row -->
+          ##% endif
+      </div> <!-- /featurette -->
+    </div> <!-- /container -->
+  </div> <!-- /featurette-transp -->
 
-
-  <script type="text/javascript">
-    $('#link-mooc').tooltip();
-
-    $('.thumbnail').hover(
-      function(){
-        $(this).find('.th-caption').slideDown(250); //.fadeIn(250)
-      },
-      function(){
-        $(this).find('.th-caption').slideUp(250); //.fadeOut(205)
-      }
-    );
-  </script>
-
+##
+##  <script type="text/javascript">
+##    $('#link-mooc').tooltip();
+##
+##    $('.thumbnail').hover(
+##      function(){
+##        $(this).find('.th-caption').slideDown(250); //.fadeIn(250)
+##      },
+##      function(){
+##        $(this).find('.th-caption').slideUp(250); //.fadeOut(205)
+##      }
+##    );
+##  </script>
+##
 	<%include file="footer-bootstrap.html" />
 </%block>
 
@@ -145,10 +144,10 @@
 <%block name="js_extra">
 </%block>
 
-% if show_signup_immediately is not UNDEFINED:
+##% if show_signup_immediately is not UNDEFINED:
   ## NOTE: This won't work in production, because anonymous views are cached, so it will
   ## show either with or without this extra js for 3 minutes at a time.
-<script type="text/javascript">
-  $(window).load(function() {$('#signup_action').trigger("click");});
-</script>
-% endif
+##<script type="text/javascript">
+##  $(window).load(function() {$('#signup_action').trigger("click");});
+##</script>
+##% endif
