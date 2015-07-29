@@ -19,8 +19,12 @@ var postcss      = require('gulp-postcss');
 var csswring     = require('csswring');
 var sourcemap    = require('gulp-sourcemaps');
 var runSequence  = require('run-sequence');
+var uglify       = require('gulp-uglify');
+//var uncss        = require('gulp-uncss');
+
 
 var configDir = {
+    bower:     './bower_components/',
     bootstrap: './bower_components/bootstrap-sass/',
     source:    './source/',
     static:    './static/',
@@ -67,21 +71,50 @@ gulp.task('cssedx', function() {
 });
 
 
+/*merge(
+      gulp.src(src.sass)
+        .pipe(sass({ includePaths: [src.css_boots] }).on('error', gutil.log)),
+      gulp.src(dest.css+'main.css')
+    )*/
+
+
 gulp.task('css', function() {
-  return merge(
-    gulp.src(src.sass)
-      .pipe(sass({ includePaths: [src.css_boots], /*style: 'compressed'*/ }).on('error', gutil.log))
-      /*.pipe(sourcemap.write())*/,
-    gulp.src(dest.css+'main.css')
-      /*.pipe(sourcemap.init())*/
-  )
-  .pipe(concat('all.css'))
-  .pipe(gulp.dest(dest.css))
-  .pipe(rename({suffix: '.min'}))
-  .pipe(postcss([csswring]))
-  //.pipe(sourcemap.write())
-  .pipe(gulp.dest(dest.css))
-  .pipe( notifyOK('CSS') );
+  return gulp.src(src.sass)
+    .pipe(sass({includePaths: [src.css_boots]}).on('error', gutil.log))
+    .pipe(concat('all.css'))
+    .pipe(gulp.dest(dest.css))
+    //.pipe(uncss({html: ['templates/**/*.html', 'https://test1.inares.org/']}))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(postcss([csswring]))
+    //.pipe(sourcemap.write())
+    .pipe(gulp.dest(dest.css))
+    .pipe( notifyOK('CSS') );
+});
+
+
+gulp.task('js', function() {
+  return gulp.src([
+        configDir.source+'js/main.js',
+        configDir.source+'js/webfont.js',
+        configDir.bower+'jquery/dist/jquery.js',
+        configDir.bower+'jquery.cookie/jquery.cookie.js',
+        configDir.bower+'js-url/url.js',
+        configDir.bower+'underscore/underscore.js',
+        configDir.bower+'require/build/require.js',
+        configDir.bower+'uri.js/src/URI.js',
+        configDir.bower+'backbone/backbone.js',
+        configDir.bower+'json2/json2.js',
+        configDir.bower+'jquery-ui/jquery-ui.js',
+        configDir.bower+'qTip2/jquery.qtip.js',
+        configDir.bower+'swfobject/swfobject/swfobject.js',
+//        configDir.bower+'jquery.bbq/jquery.ba-bbq.js',
+        configDir.bower+'bootstrap-sass/assets/javascripts/bootstrap.js'
+      ])
+    .pipe(concat('main-vendor.js'))
+    .pipe(gulp.dest(configDir.static+'js'))
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest(configDir.static+'js'));
 });
 
 
@@ -144,4 +177,13 @@ gulp.task( 'default', ['css', 'fonts', 'images'] );
 
 gulp.task( 'cssa', function() {
     runSequence('css', 'assets', function() { });
+} );
+
+gulp.task( 'jsa', function() {
+    runSequence('js', 'assets', function() { });
+} );
+
+
+gulp.task( 'cjsa', function() {
+    runSequence('js', 'css', 'assets', function() { });
 } );

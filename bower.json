@@ -23,6 +23,18 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "~3.3.4"
+    "jquery": "2.1.4",
+    "bootstrap-sass": "~3.3.4",
+    "jquery-ui": "~1.11.4",
+    "jquery.cookie": "~1.4.1",
+    "require": "*",
+    "json2": "*",
+    "swfobject": "*",
+    "jquery.bbq": "~1.2.1",
+    "backbone": "~1.2.1",
+    "uri.js": "~1.16.0",
+    "qTip2": "~2.2.1",
+    "js-url": "~1.8.7",
+    "underscore": "~1.8.3"
   }
 }

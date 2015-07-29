@@ -70,9 +70,6 @@
       window.analytics.track=function(){return ;}
     </script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://courses.edx.org/jsi18n/"></script>
-    <%static:js group='main_vendor'/>
 
     <link rel="icon" type="image/x-icon" href="${static.url(microsite.get_value('favicon_path', settings.FAVICON_PATH))}" />
 
@@ -82,14 +79,8 @@
 
     <meta name="path_prefix" content="${EDX_ROOT_URL}" />
 
-    <%include file="theme-google-analytics.html" />
+##    <%include file="theme-google-analytics.html" />
 
-##    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic">
-    <%block name="css">
-      <%static:css group='style-vendor'/>
-      <%static:css group='style-main'/>
-##      <link rel="stylesheet" type="text/css" href="${static.url('themes/{name}/css/lms-main.min.css'.format(name=settings.THEME_NAME))}">
-    </%block>
 
     <style type="text/css">
 ##      header.global .user > .primary:last-child > a {
@@ -103,46 +94,60 @@
       }
     </style>
 
-    <%block name="js">
-      % if disable_courseware_js:
-        <%static:js group='base_vendor'/>
-      % else:
-        <%static:js group='main_vendor'/>
-      % endif
-    </%block>
+##    <%block name="js">
+##      % if disable_courseware_js:
+##        <%static:js group='base_vendor'/>
+##      % else:
+##        <%static:js group='main_vendor'/>
+##      % endif
+##    </%block>
 
-    <script>
-      window.baseUrl = "${settings.STATIC_URL}";
-      (function (require) {
-      % if settings.DEBUG is True:
-          ## Using what amounts to a random number in the Development environment for cache-busting
-          var urlArgs = "bust=" + (new Date()).getTime();
-      % else:
-          var urlArgs = "v=${settings.EDX_PLATFORM_REVISION}";
-      % endif
-        require.config({
-            baseUrl: baseUrl,
-            urlArgs: urlArgs
-        });
-      }).call(this, require || RequireJS.require);
-
-      WebFontConfig = {
-        google: { families: [ 'Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
-    </script>
-    <script type="text/javascript" src="${static.url("require-config-lms.js")}"></script>
   </head>
 
 
   <body class="${dir_rtl} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}" id="accueil">
+    <%block name="css">
+      <%static:css group='style-vendor'/>
+      <%static:css group='style-main'/>
+    </%block>
+    % if user.is_authenticated():
+      <%static:js group='main_vendor'/>
+      <script>
+        window.baseUrl = "${settings.STATIC_URL}";
+        (function (require) {
+          require.config({
+              baseUrl: window.baseUrl
+          });
+        }).call(this, require || RequireJS.require);
+
+        WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+      </script>
+      <script type="text/javascript" src="${static.url("lms/js/require-config.js")}"></script>
+      <script type="text/javascript" src="/i18n.js"></script>
+    % else:
+      <script type="text/javascript" src="${static.url('themes/{name}/js/main-vendor.min.js'.format(name=settings.THEME_NAME))}"></script>
+    % endif
+###    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+###      WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+##
+##      WebFontConfig = {
+##        google: { families: [ 'Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin' ] }
+##      };
+##      (function() {
+##        var wf = document.createElement('script');
+##        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+##        wf.type = 'text/javascript';
+##        wf.async = 'true';
+##        var s = document.getElementsByTagName('script')[0];
+##        s.parentNode.insertBefore(wf, s);
+##      })();
+    </script>
+###    <%static:js group='main_vendor'/>
+    <%include file="theme-google-analytics.html" />
+    <%block name="js">
+    </%block>
     <%block name="content">
       <div class="window-wrap" dir="${dir_rtl}">
         <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to main content")}</a>
@@ -157,12 +162,11 @@
         <%include file="theme-footer.html" />
       </div>
 
-    % if not disable_courseware_js:
-      <%static:js group='application'/>
-      <%static:js group='module-js'/>
-    % endif
+      % if not disable_courseware_js:
+        <%static:js group='application'/>
+        <%static:js group='module-js'/>
+      % endif
     </%block>
-
     <%block name="js_extra"/>
   </body>
 </html>
