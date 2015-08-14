@@ -3897,6 +3897,9 @@ p {
     .lead {
       font-size: 20px; } }
 
+html, button, input, select, textarea {
+  font-family: inherit; }
+
 /***************************/
 /*    Theme definitions    */
 /***************************/
