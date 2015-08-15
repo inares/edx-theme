@@ -110,33 +110,43 @@
       <%static:css group='style-vendor'/>
       <%static:css group='style-main'/>
     </%block>
-    % if user.is_authenticated():
-      <script type="text/javascript" src="/i18n.js"></script>
-      <%static:js group='main_vendor'/>
-      <script>
-        WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
-      </script>
+
+    <script type="text/javascript" src="/i18n.js"></script>
+
+    % if disable_courseware_js:
+      <%static:js group='base_vendor'/>
+      <%static:js group='base_application'/>
     % else:
-      <script type="text/javascript" src="${static.url('themes/{name}/js/main-vendor.min.js'.format(name=settings.THEME_NAME))}"></script>
+      <%static:js group='main_vendor'/>
+      <%static:js group='application'/>
+      <%static:js group='module-js'/>
     % endif
-###    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script>
-###      WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
-##
-##      WebFontConfig = {
-##        google: { families: [ 'Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin' ] }
-##      };
-##      (function() {
-##        var wf = document.createElement('script');
-##        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-##        wf.type = 'text/javascript';
-##        wf.async = 'true';
-##        var s = document.getElementsByTagName('script')[0];
-##        s.parentNode.insertBefore(wf, s);
-##      })();
+      window.baseUrl = "${settings.STATIC_URL}";
+      (function (require) {
+        require.config({
+            baseUrl: window.baseUrl
+        });
+      }).call(this, require || RequireJS.require);
     </script>
-###    <%static:js group='main_vendor'/>
+    <script type="text/javascript" src="${static.url("lms/js/require-config.js")}"></script>
+    <script>
+      WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+    </script>
+
+
+##% if user.is_authenticated():
+##      <script type="text/javascript" src="/i18n.js"></script>
+##      <%static:js group='main_vendor'/>
+##      <script>
+##        WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+##      </script>
+##    % else:
+##      <script type="text/javascript" src="${static.url('themes/{name}/js/main-vendor.min.js'.format(name=settings.THEME_NAME))}"></script>
+##    % endif
+
+
     <%include file="theme-google-analytics.html" />
     <%block name="js">
     </%block>
@@ -154,20 +164,6 @@
         <%include file="theme-footer.html" />
       </div>
 
-      % if not disable_courseware_js:
-        <%static:js group='application'/>
-        <%static:js group='module-js'/>
-      % endif
-
-      <script>
-        window.baseUrl = "${settings.STATIC_URL}";
-        (function (require) {
-          require.config({
-              baseUrl: window.baseUrl
-          });
-        }).call(this, require || RequireJS.require);
-      </script>
-      <script type="text/javascript" src="${static.url("lms/js/require-config.js")}"></script>
     </%block>
     <%block name="js_extra"/>
   </body>
