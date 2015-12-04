@@ -38,6 +38,11 @@
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="${reverse('dashboard')}">${_("Dashboard")}</a></li>
                       <li><a href="${reverse('logout')}">${_("Log Out")}</a></li>
+%if settings.FEATURES.get('ENABLE_SYSADMIN_DASHBOARD','') and user.is_staff:
+<li>
+<a href="${reverse('sysadmin')}">${_("Sysadmin")}</a>
+</li>
+%endif
                     </ul>
                   </li>
                 % else:
