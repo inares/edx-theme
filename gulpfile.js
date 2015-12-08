@@ -20,6 +20,8 @@ var csswring     = require('csswring');
 var sourcemap    = require('gulp-sourcemaps');
 var runSequence  = require('run-sequence');
 var uglify       = require('gulp-uglify');
+require('es6-promise').polyfill()
+
 //var uncss        = require('gulp-uncss');
 
 
@@ -37,6 +39,7 @@ var src = {
     sass:      configDir.source + 'css/main.scss',
     images:    configDir.source + 'images/**/*',
     templates: configDir.source + 'templates/**/*.html',
+    js:        configDir.source + 'js',
 }
 
 var dest = {
@@ -94,13 +97,14 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
   return gulp.src([
-        configDir.source+'js/main.js',
-        configDir.source+'js/webfont.js',
+        src.js+'js/main.js',
+        src.js+'js/webfont.js',
+        src.js+'js/url.js',
         configDir.bower+'jquery/dist/jquery.js',
         configDir.bower+'jquery.cookie/jquery.cookie.js',
         configDir.bower+'js-url/url.js',
         configDir.bower+'underscore/underscore.js',
-        configDir.bower+'require/build/require.js',
+        configDir.bower+'requirejs/require.js',
         configDir.bower+'uri.js/src/URI.js',
         configDir.bower+'backbone/backbone.js',
         configDir.bower+'json2/json2.js',
@@ -108,7 +112,8 @@ gulp.task('js', function() {
         configDir.bower+'qTip2/jquery.qtip.js',
         configDir.bower+'swfobject/swfobject/swfobject.js',
 //        configDir.bower+'jquery.bbq/jquery.ba-bbq.js',
-        configDir.bower+'bootstrap-sass/assets/javascripts/bootstrap.js'
+        configDir.bower+'bootstrap-sass/assets/javascripts/bootstrap.js',
+        src.js+'js/RequireJS-namespace-undefine.js',
       ])
     .pipe(concat('main-vendor.js'))
     .pipe(gulp.dest(configDir.static+'js'))

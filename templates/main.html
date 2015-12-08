@@ -1,5 +1,7 @@
 <%namespace name='static' file='static_content.html'/>
 <%!
+  ##from django.core.urlresolvers import reverse
+  ##from branding import api as branding_api
   from django.utils.translation import ugettext as _
   from django.utils             import html
   from microsite_configuration  import microsite, page_title_breadcrumbs
@@ -55,7 +57,7 @@
 
   <%def name="pagetitle()" />
   <%block name="title">
-    <title>${page_title_breadcrumbs(self.pagetitle())}</title>
+    <title>V8 | ${page_title_breadcrumbs(self.pagetitle())}</title>
   </%block>
 
     <script type="text/javascript">
@@ -107,20 +109,25 @@
 
   <body class="${dir_rtl} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}" id="accueil">
     <%block name="css">
-      <%static:css group='style-vendor'/>
-      <%static:css group='style-main'/>
+      ##<%static:css group='style-vendor'/>
+      ##<%static:css group='style-main'/><%static:css group='style-vendor'/>
+      <link rel="stylesheet" href="${static.url('css/lms-main.css')}" type="text/css" media="all" />
     </%block>
 
     <script type="text/javascript" src="/i18n.js"></script>
 
-    % if disable_courseware_js:
-      <%static:js group='base_vendor'/>
-      <%static:js group='base_application'/>
-    % else:
-      <%static:js group='main_vendor'/>
-      <%static:js group='application'/>
-      <%static:js group='module-js'/>
-    % endif
+    <%block name="js_main">
+      ##% if disable_courseware_js:
+      ##  <%static:js group='base_vendor'/>
+      ##  <%static:js group='base_application'/>
+      ##% else:
+        <%static:js group='main_vendor'/>
+        <%static:js group='application'/>
+        <%static:js group='module-js'/>
+      ##% endif
+    </%block>
+
+
 
     <script>
       window.baseUrl = "${settings.STATIC_URL}";
