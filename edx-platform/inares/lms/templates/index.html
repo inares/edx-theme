@@ -1,11 +1,25 @@
 <%inherit file="main.html" />
 <%namespace name='static' file='static_content.html'/>
 
-<%!
-##  from microsite_configuration  import microsite
+<%!  
+##  from django.template import RequestContext
+##  from pipeline_mako import render_require_js_path_overrides
   from django.utils.translation import ugettext as _
   from django.core.urlresolvers import reverse
-  from courseware.courses       import course_image_url, get_course_about_section
+  from courseware.courses       import get_course_about_section
+  from django.conf              import settings
+  from edxmako.shortcuts        import marketing_link
+  from openedx.core.lib.courses import course_image_url
+  from util.enterprise_helpers  import get_enterprise_customer_logo_url
+  from branding                 import api as branding_api
+  
+
+##  logo_url  = get_enterprise_customer_logo_url(request)
+##  logo_url  = None
+##  logo_size = 'ec-logo-size'
+##  if logo_url is None:
+##      logo_url = branding_api.get_logo_url(is_secure)
+##      logo_size = ''
 %>
 
 
@@ -44,7 +58,17 @@
         </p>
       </div>
       <div class="media-left media-middle">
-        <img class="media-object img-circle" src="${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.THEME_NAME))}" height="270px" width="270px" alt="INARES">
+        <img class="media-object img-circle" src="${static.url('themes/{name}/images/logo-inares.jpg'.format(name=settings.DEFAULT_SITE_THEME))}" height="270px" width="270px" alt="INARES">
+        
+        <%
+        logo_url = get_enterprise_customer_logo_url(request)
+        logo_size = 'ec-logo-size'
+        if logo_url is None:
+            logo_url = branding_api.get_logo_url(is_secure)
+            logo_size = ''
+        %>
+        
+        <!-- <img class="media-object img-circle" src="${logo_url}" height="270px" width="270px" alt="INARES"> -->
       </div>
     </div> <!-- /media -->
   </div> <!-- /featurette-violet -->
@@ -52,7 +76,7 @@
   <div class="featurette-transp" id="fonctionnement">
     <div class="media .featurette-transp container">
       <div class="media-left media-middle">
-        <img class="media-object img-circle" src="${static.url('themes/{name}/images/outils.jpg'.format(name=settings.THEME_NAME))}" height="400px" width="400px" alt="Fonctionnement">
+        <img class="media-object img-circle" src="${static.url('themes/{name}/images/outils.jpg'.format(name=settings.DEFAULT_SITE_THEME))}" height="400px" width="400px" alt="Fonctionnement">
       </div>
       <div class="media-body media-middle featurette-text">
         <p class="featurette-heading"><span class="fa fa-cogs"></span> Fonctionnement<br><span class="text-muted-feat purple">Des cours ouverts à tous</span></p>
@@ -78,7 +102,7 @@
         </p>
       </div>
       <div class="media-left media-middle">
-        <img class="media-object img-circle" src="${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.THEME_NAME))}" height="400px" width="400px" alt="Pédagogie">
+        <img class="media-object img-circle" src="${static.url('themes/{name}/images/platon_aristote.jpg'.format(name=settings.DEFAULT_SITE_THEME))}" height="400px" width="400px" alt="Pédagogie">
       </div>
     </div> <!-- /media -->
   </div> <!-- /featurette-violet -->
@@ -95,13 +119,14 @@
         <br />
           ##% if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
             <div class="row">
-              %for course in courses:
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="${course.id.to_deprecated_string()}">
-                  <div class="thumb" style="background-image: url(${course_image_url(course)}); background-repeat: no-repeat; background-size: cover;">
+              ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+              %for course in courses[:settings.HOMEPAGE_COURSE_MAX]:
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" id="${course.display_number_with_default}">
+                  <div class="thumb" style="background-image: url(${course.course_image_url}); background-repeat: no-repeat; background-size: cover;">
                     <div class="thumb-overlay">
                       <div class="thumb-bg"></div>
                       <div class="thumb-txt">
-                        <thumb-title>${get_course_about_section(course, 'title')}</thumb-title>
+                        <thumb-title>${course.display_name_with_default}</thumb-title>
                         <thumb-infos>
                           ## %if course.is_newish:
                           ##   <!-- <p>Nouveau cours</p> -->
@@ -109,7 +134,7 @@
                           ## % if not course.start_date_is_still_default:
                           ##   <p>${course.start_datetime_text()}</p>
                           ## % endif
-                          ${get_course_about_section(course, 'short_description')}<br>
+                          ${course.short_description}<br>
                           <a class="btn btn-default" href="${reverse('about_course', args=[course.id.to_deprecated_string()])}"><span class="fa fa-info"></span>&nbsp;&nbsp;En savoir plus</a>
                         </thumb-infos>
                       </div> <!-- /thumb-text -->

@@ -1,0 +1,11 @@
+<%namespace name='static' file='static_content.html'/>
+
+<%!  
+  from django.conf import settings
+%>
+
+<link rel="stylesheet" type="text/css" href="${static.url('themes/{name}/css/all.min.css'.format(name=settings.DEFAULT_SITE_THEME))}">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+

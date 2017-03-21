@@ -1,0 +1,195 @@
+## coding=utf-8
+
+<%namespace name='static' file='static_content.html'/>
+<%!
+  ##from django.core.urlresolvers import reverse
+  ##from branding import api as branding_api
+  from django.utils.translation import ugettext as _
+  from django.utils             import html
+  from microsite_configuration  import microsite
+  from django.utils.translation import get_language_bidi
+  from django.utils.http        import urlquote_plus
+
+  dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
+%>
+
+
+<!DOCTYPE html>
+<!--[if lte IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
+<!--[if !IE]><!--><html lang="${LANGUAGE_CODE}"><!--<![endif]-->
+<head dir="${dir_rtl}">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"    content="width=device-width, initial-scale=1" />
+  <meta name="description" content="L'INARES propose des cours en ligne gratuit et francophone pour la philosophie, l'histoire et l'économie. Nous allions un enseignement de qualité aux technologies et techniques modernes des MOOC. Tout le monde peut ainsi profiter de ces savoirs." />
+  <meta name="keywords"    content="INARES, MOOC, francophone, cours, course, e-learning, français, france, enseignement, formation, gratuit, online, en ligne, ligne, distance, à distance, philosophie, histoire, économie, pédagogie, apprentissage, certification, fun, institut, université, bac, lycée, university, 2015, droit, gestion de projet, management" />
+  <meta name="robots"      content="index, follow" />
+  <meta name="author"      content="INARES">
+
+  <meta name="twitter:card"        content="summary"/>
+  <meta name="twitter:site"        content="@inares_fr"/>
+  <meta name="twitter:title"       content="INARES | MOOC francophone"/>
+  <meta name="twitter:description" content="L'INARES propose des cours en ligne gratuit et francophone pour la philosophie, l'histoire et l'économie. Nous allions un enseignement de qualité aux technologies et techniques modernes des MOOC."/>
+  <meta name="twitter:image:src"   content="http://inares.org/static/themes/edx-theme/images/logo-inares.jpg"/>
+  <meta name="twitter:creator"     content="@inares_fr"/>
+  <meta name="twitter:domain"      content="inares.org"/>
+
+  <meta property="og:type"             content="website" />
+  <meta property="og:title"            content="INARES | Cours francophone en ligne" />
+  <meta property="og:description"      content="L'INARES propose des cours en ligne gratuit et francophone pour la philosophie, l'histoire et l'économie. Nous allions un enseignement de qualité aux technologies et techniques modernes des MOOC." />
+  <meta property="og:url"              content="http://www.inares.org" />
+  <meta property="og:secure_url"       content="https://www.inares.org" />
+  <meta property="og:site_name"        content="INARES" />
+  <meta property="og:locale"           content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:image"            content="http://inares.org/static/themes/edx-theme/images/logo-inares.jpg" />
+
+  <%def name="theme_enabled()">
+    <% return True %>
+  </%def>
+
+  <%def name="is_microsite()">
+    <% return False %>
+  </%def>
+
+  <%def name="stanford_theme_enabled()">
+    <% return False %>
+  </%def>
+
+
+  <%def name="pagetitle()" />
+  <%block name="title">
+    <title>V2 | ${static.get_page_title_breadcrumbs(self.pagetitle())}</title>
+  </%block>
+
+    <script type="text/javascript">
+      /* immediately break out of an iframe if coming from the marketing website */
+      (function(window) {
+        if (window.location !== window.top.location) {
+          window.top.location = window.location;
+        }
+      })(this);
+
+      window.analytics=[];
+      window.analytics.track=function(){return ;}
+    </script>
+
+
+    <link rel="icon" type="image/x-icon" href="${static.url(microsite.get_value('favicon_path', settings.FAVICON_PATH))}" />
+
+    <%block name="headextra" />
+
+    <%include file="theme-head-extra.html" />
+
+    <meta name="path_prefix" content="${EDX_ROOT_URL}" />
+
+##    <%include file="theme-google-analytics.html" />
+
+
+    <style type="text/css">
+##      header.global .user > .primary:last-child > a {
+##        padding: 5px 8px 8px 10px;
+##      }
+      .username-label {
+        padding-left: 8px;
+      }
+      .dashboard .profile-sidebar .user-info > ul {
+        padding: 0px 15px 10px 15px;
+      }
+    </style>
+
+##    <%block name="js">
+##      % if disable_courseware_js:
+##        <%static:js group='base_vendor'/>
+##      % else:
+##        <%static:js group='main_vendor'/>
+##      % endif
+##    </%block>
+
+  </head>
+
+
+  <body class="${dir_rtl} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}" id="accueil">
+    <%block name="css">
+      ##<%static:css group='style-vendor'/>
+      ##<%static:css group='style-main'/><%static:css group='style-vendor'/>
+      <link rel="stylesheet" href="${static.url('css/lms-main.css')}" type="text/css" media="all" />
+    </%block>
+
+    <script type="text/javascript" src="/i18n.js"></script>
+
+    <%block name="js_main">
+      ##% if disable_courseware_js:
+      ##  <%static:js group='base_vendor'/>
+      ##  <%static:js group='base_application'/>
+      ##% else:
+        <%static:js group='main_vendor'/>
+        <%static:js group='application'/>
+        <%static:js group='module-js'/>
+      ##% endif
+    </%block>
+
+
+
+    <script>
+      window.baseUrl = "${settings.STATIC_URL}";
+      (function (require) {
+        require.config({
+            baseUrl: window.baseUrl
+        });
+      }).call(this, require || RequireJS.require);
+    </script>
+    <script type="text/javascript" src="${static.url("lms/js/require-config.js")}"></script>
+    <script>
+      WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+    </script>
+
+
+##% if user.is_authenticated():
+##      <script type="text/javascript" src="/i18n.js"></script>
+##      <%static:js group='main_vendor'/>
+##      <script>
+##        WebFontConfig={google:{families:["Roboto:300,300italic,400,400italic,500,500italic,700,700italic,900,900italic:latin"]}};(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";a.type="text/javascript";a.async="true";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+##      </script>
+##    % else:
+##      <script type="text/javascript" src="${static.url('themes/{name}/js/main-vendor.min.js'.format(name=settings.DEFAULT_SITE_THEME))}"></script>
+##    % endif
+
+
+    <%include file="theme-google-analytics.html" />
+    <%block name="js">
+    </%block>
+    <%block name="content">
+      <div class="window-wrap" dir="${dir_rtl}">
+        <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to main content")}</a>
+
+        <%include file="theme-header.html" />
+
+        <div class="content-wrapper" id="content">
+          ${self.body()}
+          <%block name="bodyextra"/>
+        </div>
+
+        <%include file="theme-footer.html" />
+      </div>
+
+    </%block>
+    <%block name="js_extra"/>
+  </body>
+</html>
+
+
+<%def name="login_query()">${
+  u"?course_id={0}&enrollment_action={1}{course_mode}{email_opt_in}".format(
+    urlquote_plus(course_id),
+    urlquote_plus(enrollment_action),
+    course_mode=(
+      u"&course_mode=" + urlquote_plus(course_mode)
+      if course_mode else ""
+    ),
+    email_opt_in=(
+      u"&email_opt_in=" + urlquote_plus(email_opt_in)
+      if email_opt_in else ""
+    )
+  ) if course_id and enrollment_action else ""
+}</%def>
