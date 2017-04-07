@@ -1,35 +1,11 @@
 {
   "name": "INARES_Theme",
   "version": "1.0.0",
-  "description": "edX theme with Bootstrap for inares.org",
-  "main": "index.js",
+  "description": "edX theme for inares.org",
+  "main": "",
   "dependencies": {
-    "gulp-sass": ">=2.0.1",
-    "gulp-bower": ">=0.0.10",
-    "gulp": ">=3.8.11"
   },
   "devDependencies": {
-    "csswring": ">=3.0.5",
-    "es6-promise": "^3.0.2",
-    "gulp": ">=3.8.11",
-    "gulp-autoprefixer": ">=2.3.0",
-    "gulp-bower": "0.0.10",
-    "gulp-cache": ">=0.2.9",
-    "gulp-changed": ">=1.2.1",
-    "gulp-concat": ">=2.5.2",
-    "gulp-git": ">=1.2.4",
-    "gulp-imagemin": ">=2.2.1",
-    "gulp-minify-css": ">=1.1.1",
-    "gulp-minify-html": ">=1.0.2",
-    "gulp-notify": ">=2.2.0",
-    "gulp-postcss": ">=5.1.8",
-    "gulp-rename": ">=1.2.2",
-    "gulp-sass": ">=2.0.1",
-    "gulp-sourcemaps": ">=1.5.2",
-    "gulp-uglify": ">=1.2.0",
-    "gulp-util": ">=3.0.4",
-    "merge2": ">=0.3.5",
-    "run-sequence": ">=1.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -44,9 +20,9 @@
     "edx-theme"
   ],
   "author": "Aurélien DEVAUX",
-  "license": "ISC",
+  "license": "Apache License 2.0",
   "bugs": {
     "url": "https://github.com/inares/edx-theme/issues"
   },
-  "homepage": "https://github.com/inares/edx-theme"
+  "homepage": "https://www.inares.org"
 }
