@@ -125,7 +125,7 @@ from openedx.core.lib.courses import course_image_url
             <a href="${course_target}">
           %endif
 
-          <span class="register disabled">${_("You are enrolled in this course")}</span>
+          <span class="register disabled">Vous êtes déjà inscrit à ce cours</span>
 
           %if show_courseware_link:
             <strong>${_("View Course")}</strong>
@@ -177,7 +177,7 @@ from openedx.core.lib.courses import course_image_url
               href_class = "register"
           %>
           <a href="${reg_href}" class="${href_class}">
-            ${_("Enroll in {course_name}").format(course_name=course.display_number_with_default) | h}
+            ${"S'inscrire au cours" | h}
           </a>
           <div id="register_error"></div>
         %endif
@@ -224,7 +224,7 @@ from openedx.core.lib.courses import course_image_url
           <li class="important-dates-item"><span class="icon fa fa-info-circle" aria-hidden="true"></span><p class="important-dates-item-title">${_("Course Number")}</p><span class="important-dates-item-text course-number">${course.display_number_with_default | h}</span></li>
           % if not course.start_date_is_still_default:
               <%
-                  course_start_date = "ZORRO !"
+                  course_start_date = course.start
               %>
             <li class="important-dates-item">
               <span class="icon fa fa-calendar" aria-hidden="true"></span>
@@ -233,9 +233,9 @@ from openedx.core.lib.courses import course_image_url
                   <span class="important-dates-item-text start-date">${course_start_date}</span>
               % else:
                   <%
-                     course_date_string = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                     course_date_string = course_start_date.strftime('%d/%m/%Y')
                   %>
-                  <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
+                  <span class="important-dates-item-text start-date">${course_date_string}</span>
               % endif
             </li>
           % endif
@@ -253,9 +253,9 @@ from openedx.core.lib.courses import course_image_url
                       <span class="important-dates-item-text final-date">${course_end_date}</span>
                   % else:
                     <%
-                        course_date_string = course_end_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                        course_date_string = course_end_date.strftime('%d/%m/%Y')
                     %>
-                    <span class="important-dates-item-text final-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
+                      <span class="important-dates-item-text final-date">${course_date_string}</span>
                   % endif
             </li>
             % endif
